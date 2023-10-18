@@ -1,0 +1,15 @@
+F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.Infrastructures\bin\Debug\net6.0\Stas.Monitor.Infrastructures.deps.json
+F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.Infrastructures\bin\Debug\net6.0\Stas.Monitor.Infrastructures.dll
+F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.Infrastructures\bin\Debug\net6.0\Stas.Monitor.Infrastructures.pdb
+F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.Infrastructures\bin\Debug\net6.0\Stas.Monitor.Domains.dll
+F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.Infrastructures\bin\Debug\net6.0\Stas.Monitor.Domains.pdb
+F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.Infrastructures\obj\Debug\net6.0\Stas.Monitor.Infrastructures.csproj.AssemblyReference.cache
+F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.Infrastructures\obj\Debug\net6.0\Stas.Monitor.Infrastructures.GeneratedMSBuildEditorConfig.editorconfig
+F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.Infrastructures\obj\Debug\net6.0\Stas.Monitor.Infrastructures.AssemblyInfoInputs.cache
+F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.Infrastructures\obj\Debug\net6.0\Stas.Monitor.Infrastructures.AssemblyInfo.cs
+F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.Infrastructures\obj\Debug\net6.0\Stas.Monitor.Infrastructures.csproj.CoreCompileInputs.cache
+F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.Infrastructures\obj\Debug\net6.0\Stas.Monitor.Infrastructures.csproj.CopyComplete
+F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.Infrastructures\obj\Debug\net6.0\Stas.Monitor.Infrastructures.dll
+F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.Infrastructures\obj\Debug\net6.0\refint\Stas.Monitor.Infrastructures.dll
+F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.Infrastructures\obj\Debug\net6.0\Stas.Monitor.Infrastructures.pdb
+F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.Infrastructures\obj\Debug\net6.0\ref\Stas.Monitor.Infrastructures.dll

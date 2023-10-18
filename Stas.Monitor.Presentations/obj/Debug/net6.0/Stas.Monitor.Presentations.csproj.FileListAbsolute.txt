@@ -1,0 +1,15 @@
+F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.Presentations\bin\Debug\net6.0\Stas.Monitor.Presentations.deps.json
+F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.Presentations\bin\Debug\net6.0\Stas.Monitor.Presentations.dll
+F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.Presentations\bin\Debug\net6.0\Stas.Monitor.Presentations.pdb
+F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.Presentations\bin\Debug\net6.0\Stas.Monitor.Domains.dll
+F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.Presentations\bin\Debug\net6.0\Stas.Monitor.Domains.pdb
+F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.Presentations\obj\Debug\net6.0\Stas.Monitor.Presentations.csproj.AssemblyReference.cache
+F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.Presentations\obj\Debug\net6.0\Stas.Monitor.Presentations.GeneratedMSBuildEditorConfig.editorconfig
+F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.Presentations\obj\Debug\net6.0\Stas.Monitor.Presentations.AssemblyInfoInputs.cache
+F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.Presentations\obj\Debug\net6.0\Stas.Monitor.Presentations.AssemblyInfo.cs
+F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.Presentations\obj\Debug\net6.0\Stas.Monitor.Presentations.csproj.CoreCompileInputs.cache
+F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.Presentations\obj\Debug\net6.0\Stas.Monitor.Presentations.csproj.CopyComplete
+F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.Presentations\obj\Debug\net6.0\Stas.Monitor.Presentations.dll
+F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.Presentations\obj\Debug\net6.0\refint\Stas.Monitor.Presentations.dll
+F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.Presentations\obj\Debug\net6.0\Stas.Monitor.Presentations.pdb
+F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.Presentations\obj\Debug\net6.0\ref\Stas.Monitor.Presentations.dll

@@ -1,0 +1,65 @@
+﻿root = true
+
+[*.cs]
+# Most of the standard properties are supported
+indent_size=2
+indent_style=space
+max_line_length=100
+
+# Most frequently used .NET-coding-convention properties are supported
+csharp_space_between_parentheses=expressions, type_casts, control_flow_statements
+csharp_style_var_for_built_in_types=true
+
+# Newline settings
+csharp_new_line_before_open_brace = all
+csharp_new_line_before_else = true
+csharp_new_line_before_catch = true
+csharp_new_line_before_finally = true
+csharp_new_line_before_members_in_object_initializers = true
+csharp_new_line_before_members_in_anonymous_types = true
+
+# Namespace settings
+csharp_style_namespace_declarations = file_scoped
+
+# Brace settings
+csharp_prefer_braces = true # Prefer curly braces even for one line of code
+
+# name all constant fields using PascalCase
+dotnet_naming_rule.constant_fields_should_be_pascal_case.severity = suggestion
+dotnet_naming_rule.constant_fields_should_be_pascal_case.symbols  = constant_fields
+dotnet_naming_rule.constant_fields_should_be_pascal_case.style    = pascal_case_style
+
+dotnet_naming_symbols.constant_fields.applicable_kinds   = field
+dotnet_naming_symbols.constant_fields.required_modifiers = const
+
+# internal and private fields should be _camelCase
+dotnet_naming_rule.types_should_be_pascal_case.severity = warning
+dotnet_naming_rule.event_should_be_pascal_case.severity = warning
+dotnet_naming_rule.properties_should_be_pascal_case.severity = warning
+dotnet_naming_rule.method_should_be_pascal_case.severity = warning
+dotnet_naming_rule.constant_fields_should_be_pascal_case.severity = warning
+dotnet_naming_rule.static_fields_should_be_pascal_case.severity = warning
+
+braces_for_ifelse=not_required
+
+# JetBrains Rider custom properties for code inspections
+resharper_possible_null_reference_exception_highlighting=warning
+resharper_replace_with_string_is_null_or_empty_highlighting=hint
+
+
+# Code metrics
+dotnet_diagnostic.CA1502.severity = warning
+dotnet_diagnostic.CA1506.severity = warning
+
+# dotnet_diagnostic rules are supported
+dotnet_diagnostic.HE0001.threshold=5
+dotnet_diagnostic.HE0002.threshold=15
+dotnet_diagnostic.HE0005.threshold=20
+
+[**/*.axaml.cs]
+# Code metrics
+dotnet_diagnostic.CA1502.severity = none
+dotnet_diagnostic.CA1506.severity = none
+dotnet_diagnostic.HE0001.severity=none
+dotnet_diagnostic.HE0002.severity=none
+dotnet_diagnostic.HE0005.severity=none

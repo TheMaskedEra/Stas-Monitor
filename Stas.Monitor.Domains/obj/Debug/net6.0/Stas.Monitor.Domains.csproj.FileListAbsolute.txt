@@ -1,0 +1,12 @@
+F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.Domains\bin\Debug\net6.0\Stas.Monitor.Domains.deps.json
+F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.Domains\bin\Debug\net6.0\Stas.Monitor.Domains.dll
+F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.Domains\bin\Debug\net6.0\Stas.Monitor.Domains.pdb
+F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.Domains\obj\Debug\net6.0\Stas.Monitor.Domains.GeneratedMSBuildEditorConfig.editorconfig
+F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.Domains\obj\Debug\net6.0\Stas.Monitor.Domains.AssemblyInfoInputs.cache
+F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.Domains\obj\Debug\net6.0\Stas.Monitor.Domains.AssemblyInfo.cs
+F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.Domains\obj\Debug\net6.0\Stas.Monitor.Domains.csproj.CoreCompileInputs.cache
+F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.Domains\obj\Debug\net6.0\Stas.Monitor.Domains.dll
+F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.Domains\obj\Debug\net6.0\refint\Stas.Monitor.Domains.dll
+F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.Domains\obj\Debug\net6.0\Stas.Monitor.Domains.pdb
+F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.Domains\obj\Debug\net6.0\ref\Stas.Monitor.Domains.dll
+F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.Domains\obj\Debug\net6.0\Stas.Monitor.Domains.csproj.AssemblyReference.cache
