@@ -13,7 +13,7 @@
           "Avalonia.Diagnostics": "11.0.2",
           "Avalonia.Fonts.Inter": "11.0.2",
           "Avalonia.Themes.Fluent": "11.0.2",
-          "CommandLineParser": "2.9.1",
+          "CommandLineParser.Net": "3.2.0.601",
           "Serilog": "3.1.0-dev-02078",
           "Serilog.Sinks.Console": "5.0.0-dev-00923",
           "Stas.Monitor.Domains": "1.0.0",
@@ -276,11 +276,11 @@
           }
         }
       },
-      "CommandLineParser/2.9.1": {
+      "CommandLineParser.Net/3.2.0.601": {
         "runtime": {
-          "lib/netstandard2.0/CommandLine.dll": {
-            "assemblyVersion": "2.9.1.0",
-            "fileVersion": "2.9.1.0"
+          "lib/netcoreapp3.1/CommandLineParser.Net.dll": {
+            "assemblyVersion": "3.2.0.601",
+            "fileVersion": "3.2.0.601"
           }
         }
       },
@@ -919,12 +919,12 @@
       "path": "be.henni.analyzers/1.0.2",
       "hashPath": "be.henni.analyzers.1.0.2.nupkg.sha512"
     },
-    "CommandLineParser/2.9.1": {
+    "CommandLineParser.Net/3.2.0.601": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-OE0sl1/sQ37bjVsPKKtwQlWDgqaxWgtme3xZz7JssWUzg5JpMIyHgCTY9MVMxOg48fJ1AgGT3tgdH5m/kQ5xhA==",
-      "path": "commandlineparser/2.9.1",
-      "hashPath": "commandlineparser.2.9.1.nupkg.sha512"
+      "sha512": "sha512-E9vxyqDk1yw18JwUm9edzudnHJR6Hbqlg9TQSoGT23AQdI8A2vYZ5rG00yyxNWkSt/xlRci15c7o4+oLj57jbg==",
+      "path": "commandlineparser.net/3.2.0.601",
+      "hashPath": "commandlineparser.net.3.2.0.601.nupkg.sha512"
     },
     "HarfBuzzSharp/2.8.2.3": {
       "type": "package",

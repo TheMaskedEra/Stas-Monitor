@@ -348,17 +348,13 @@
           "lib/netstandard2.0/Be.HenNi.Analyzers.dll": {}
         }
       },
-      "CommandLineParser/2.9.1": {
+      "CommandLineParser.Net/3.2.0.601": {
         "type": "package",
         "compile": {
-          "lib/netstandard2.0/CommandLine.dll": {
-            "related": ".xml"
-          }
+          "lib/netcoreapp3.1/CommandLineParser.Net.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/CommandLine.dll": {
-            "related": ".xml"
-          }
+          "lib/netcoreapp3.1/CommandLineParser.Net.dll": {}
         }
       },
       "coverlet.collector/3.1.2": {
@@ -1982,7 +1978,7 @@
           "Avalonia.Diagnostics": "11.0.2",
           "Avalonia.Fonts.Inter": "11.0.2",
           "Avalonia.Themes.Fluent": "11.0.2",
-          "CommandLineParser": "2.9.1",
+          "CommandLineParser.Net": "3.2.0.601",
           "Serilog": "3.1.0-dev-02078",
           "Serilog.Sinks.Console": "5.0.0-dev-00923",
           "Stas.Monitor.Domains": "1.0.0",
@@ -2516,26 +2512,19 @@
         "tools/tools/uninstall.ps1"
       ]
     },
-    "CommandLineParser/2.9.1": {
-      "sha512": "OE0sl1/sQ37bjVsPKKtwQlWDgqaxWgtme3xZz7JssWUzg5JpMIyHgCTY9MVMxOg48fJ1AgGT3tgdH5m/kQ5xhA==",
+    "CommandLineParser.Net/3.2.0.601": {
+      "sha512": "E9vxyqDk1yw18JwUm9edzudnHJR6Hbqlg9TQSoGT23AQdI8A2vYZ5rG00yyxNWkSt/xlRci15c7o4+oLj57jbg==",
       "type": "package",
-      "path": "commandlineparser/2.9.1",
+      "path": "commandlineparser.net/3.2.0.601",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "CommandLine20.png",
-        "License.md",
-        "README.md",
-        "commandlineparser.2.9.1.nupkg.sha512",
-        "commandlineparser.nuspec",
-        "lib/net40/CommandLine.dll",
-        "lib/net40/CommandLine.xml",
-        "lib/net45/CommandLine.dll",
-        "lib/net45/CommandLine.xml",
-        "lib/net461/CommandLine.dll",
-        "lib/net461/CommandLine.xml",
-        "lib/netstandard2.0/CommandLine.dll",
-        "lib/netstandard2.0/CommandLine.xml"
+        "commandlineparser.net.3.2.0.601.nupkg.sha512",
+        "commandlineparser.net.nuspec",
+        "icon.png",
+        "lib/net452/CommandLineParser.Net.dll",
+        "lib/netcoreapp3.1/CommandLineParser.Net.dll",
+        "lib/netstandard2.0/CommandLineParser.Net.dll"
       ]
     },
     "coverlet.collector/3.1.2": {

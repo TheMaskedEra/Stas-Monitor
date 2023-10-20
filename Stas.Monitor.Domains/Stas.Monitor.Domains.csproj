@@ -16,4 +16,8 @@
       </AdditionalFiles>
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="exceptions\" />
+    </ItemGroup>
+
 </Project>

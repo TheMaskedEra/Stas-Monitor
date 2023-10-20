@@ -5,6 +5,11 @@ using Avalonia.Markup.Xaml;
 using Avalonia.Threading;
 using Serilog;
 using Stas.Monitor.Views;
+using ClpNet;
+using ClpNet.Extensions;
+using Stas.Monitor.Domains;
+using Stas.Monitor.Infrastructures;
+using Stas.Monitor.Presentations;
 
 namespace Stas.Monitor.App;
 
@@ -44,6 +49,14 @@ public partial class App : Application
 
     private void SetupApp(string[] args)
     {
+      CommandLineParser cmdParser = new CommandLineParser(args);
+      if ( !cmdParser.HasParameter("config-file") || string.IsNullOrEmpty(cmdParser.GetParameterValue("config-file")))
+      {
+        throw new ArgumentException("monitor: missing configuration file argument");
+      }
+
+      IConfigurationReader reader = new IniConfigurationReader(cmdParser.GetParameterValue("config-file"));
+      reader.ConfigureData();
+      MainPresenter mainPresenter = new MainPresenter();
     }
-    
 }
