@@ -22,4 +22,13 @@
       <ProjectReference Include="..\Stas.Monitor.Infrastructures\Stas.Monitor.Infrastructures.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Update="configs\MissingArgument.ini">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="configs\config.ini">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>

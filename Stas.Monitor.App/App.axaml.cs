@@ -56,7 +56,7 @@ public partial class App : Application
       }
 
       IConfigurationReader reader = new IniConfigurationReader(cmdParser.GetParameterValue("config-file"));
-      reader.ConfigureData();
-      MainPresenter mainPresenter = new MainPresenter();
+      Configuration configuration = reader.ConfigureThermometers();
+      MainPresenter mainPresenter = new MainPresenter(configuration);
     }
 }

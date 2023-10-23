@@ -5,8 +5,11 @@ namespace Stas.Monitor.Views;
 
 public partial class MainWindow : Window
 {
-    public MainWindow()
+  private MainPresenter _presenter;
+    public MainWindow(MainPresenter presenter)
     {
+      _presenter = presenter;
       InitializeComponent();
+      
     }
 }

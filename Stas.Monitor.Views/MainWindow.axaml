@@ -5,5 +5,7 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="Stas.Monitor.Views.MainWindow"
         Title="Stas.Monitor.Views">
-    Welcome to Avalonia!
+    <ComboBox Name="listName" SelectedIndex="0">
+        
+    </ComboBox>
 </Window>

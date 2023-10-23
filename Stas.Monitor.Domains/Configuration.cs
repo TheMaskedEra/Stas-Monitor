@@ -2,19 +2,26 @@
 
 public class Configuration
 {
-  public Configuration(IDictionary<string, string> thermometers)
+  public Configuration(ISet<Thermometer> thermometers)
   {
     Thermometers = thermometers;
   }
-
-  public Thermometer CurrentThermometer
+  public ISet<Thermometer> Thermometers
   {
     get;
-    set;
   }
 
-  public IDictionary<string, string> Thermometers
+  public ISet<string> Names
   {
-    get;
+    get
+    {
+      ISet<string> names = new HashSet<string>();
+      foreach ( var thermometer in Thermometers )
+      {
+        names.Add(thermometer.Name);
+      }
+
+      return names;
+    }
   }
 }
