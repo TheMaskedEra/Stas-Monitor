@@ -1,4 +1,4 @@
-﻿using System.Security.Principal;
+﻿using System.Text.RegularExpressions;
 using Stas.Monitor.Domains;
 using Stas.Monitor.Domains.exceptions;
 
@@ -18,29 +18,24 @@ public class IniConfigurationReader : IConfigurationReader
     _pathFile = path;
   }
   
-  public Configuration ConfigureThermometers()
+  public Configuration GetData()
   {
     ISet<Thermometer> thermometers = new HashSet<Thermometer>();
+    string measures, alerts;
     try
     {
-      using (var reader = new StreamReader(_pathFile) )
+      using var reader = new StreamReader(_pathFile);
+      
+      ParseThermometersNames(reader, thermometers);
+      
+      while ( reader.ReadLine() is { } line )
       {
-        string? line;
-        while((line = reader.ReadLine()) != null)
-        {
-          if ( !line.StartsWith("[Thermometer") )
-          {
-            throw new UnableToExtractDataException("monitor: missing required section thermometers");
-          }
-          var supposedName = reader.ReadLine();
-          var name = ParseName(supposedName);
-          var supposedCsv = reader.ReadLine();
-          var csv = ParseCsv(supposedCsv);
-
-          var thermometer = new Thermometer(name);
-          thermometers.Add(thermometer);
-        }
+        if ( Regex.IsMatch(line, ReaderFormat.MeasureFormat) )
+          measures = line[(line.IndexOf('=')+1)..];
+        if ( Regex.IsMatch(line, ReaderFormat.AlertFormat) )
+          alerts = line[(line.IndexOf('=')+1)..];
       }
+      
     }
     catch (IOException e)
     {
@@ -48,34 +43,21 @@ public class IniConfigurationReader : IConfigurationReader
     }
     return new Configuration(thermometers);
   }
-  private string ParseName(string? supposedName)
+
+  private void ParseThermometersNames(TextReader reader, ISet<Thermometer> thermometers)
   {
-    if ( supposedName == null || !supposedName.StartsWith("name=") )
-    {
+    var line = reader.ReadLine();
+    if (line is null || !line.Equals("[thermometers]"))
       throw new UnableToExtractDataException("monitor: missing required section thermometers");
-    }
-
-    var name = supposedName.Substring(supposedName.IndexOf('='));
-    if ( string.IsNullOrEmpty(name) )
+    
+    while ( (line = reader.ReadLine()) is not null)
     {
-      throw new UnableToExtractDataException("monitor: missing required section thermometers");
-    }
+      if ( line.Equals("[paths]") ) break;
 
-    return name;
-  }
-  private string ParseCsv(string? supposedCsv)
-  {
-    if ( supposedCsv == null || !supposedCsv.StartsWith("name=") )
-    {
-      throw new UnableToExtractDataException("monitor: missing required section thermometers");
+      if ( !Regex.IsMatch(line, ReaderFormat.NameFormat) ) continue;
+      
+      var name = line[(line.IndexOf('=')+1)..];
+      thermometers.Add(new Thermometer(name));
     }
-
-    var csv = supposedCsv.Substring(supposedCsv.IndexOf('='));
-    if ( string.IsNullOrEmpty(csv) )
-    {
-      throw new UnableToExtractDataException("monitor: missing required section thermometers");
-    }
-
-    return csv;
   }
 }

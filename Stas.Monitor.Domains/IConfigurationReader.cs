@@ -2,5 +2,5 @@
 
 public interface IConfigurationReader
 {
-  Configuration ConfigureThermometers();
+  Configuration GetData();
 }

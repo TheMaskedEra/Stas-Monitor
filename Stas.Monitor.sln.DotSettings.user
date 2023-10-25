@@ -4,4 +4,5 @@
     &lt;TestId&gt;NUnit3x::078431ED-C1C9-49DF-B26C-81073B54BB5D::net6.0::Stas.Monitor.App.Tests.ArchTests&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::FA07206B-D5CC-432E-A6BB-92D353F9C623::net6.0::Stas.Monitor.Infrastructures.Tests.Tests&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
-&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
+&lt;/SessionState&gt;</s:String>
+	<s:Boolean x:Key="/Default/UserDictionary/Words/=Stas/@EntryIndexedValue">True</s:Boolean></wpf:ResourceDictionary>

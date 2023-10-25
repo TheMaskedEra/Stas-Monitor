@@ -5,20 +5,23 @@ namespace Stas.Monitor.Presentations;
 public class MainPresenter
 {
   private readonly Configuration _config;
+  private IMainView _view;
+  
   private Thermometer _currentThermometer;
-  public MainPresenter(Configuration configuration )
+  public MainPresenter(Configuration configuration)
   {
     _config = configuration;
   }
 
-  public IMainView View
+  public void SetView(IMainView view)
   {
-    get;
-    set;
+    _view = view;
+    _view.SetNames(_config.Names);
   }
 
-  public ISet<string> Names
+  public void SelectThermometer(string name)
   {
-    get { return _config.Names; }
+    var info = name + " sélectionné";
+    _view.ShowCurrentThermometer(info);
   }
 }

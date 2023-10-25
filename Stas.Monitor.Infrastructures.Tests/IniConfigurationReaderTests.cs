@@ -18,7 +18,7 @@ public class Tests
       IConfigurationReader reader = new IniConfigurationReader(fileName);
       try
       {
-        var config = reader.ConfigureThermometers();
+        var config = reader.GetData();
         Assert.That(config, Is.Not.Null);
       }
       catch ( UnableToExtractDataException e )
@@ -34,7 +34,7 @@ public class Tests
       try
       {
         IConfigurationReader reader = new IniConfigurationReader(fileName);
-        var config = reader.ConfigureThermometers();
+        var config = reader.GetData();
         Assert.Fail("Expected exception: UnableToExtractData (missing element)");
       }
       catch (UnableToExtractDataException e)

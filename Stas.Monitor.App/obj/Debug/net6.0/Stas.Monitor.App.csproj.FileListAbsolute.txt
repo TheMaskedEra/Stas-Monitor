@@ -287,7 +287,6 @@ D:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.App\obj\Debug\net6.0\Stas.Monitor.App
 D:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.App\obj\Debug\net6.0\Stas.Monitor.App.csproj.CopyComplete
 D:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.App\obj\Debug\net6.0\Stas.Monitor.App.genruntimeconfig.cache
 D:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.App\obj\Debug\net6.0\ref\Stas.Monitor.App.dll
-D:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.App\bin\Debug\net6.0\config\config.ini
 C:\Users\alexi\OneDrive\Bureau\Stas.Monitor\Stas.Monitor.App\bin\Debug\net6.0\Stas.Monitor.App.exe
 C:\Users\alexi\OneDrive\Bureau\Stas.Monitor\Stas.Monitor.App\bin\Debug\net6.0\Stas.Monitor.App.dll
 C:\Users\alexi\OneDrive\Bureau\Stas.Monitor\Stas.Monitor.App\bin\Debug\net6.0\Avalonia.Base.dll
@@ -436,3 +435,4 @@ C:\Users\alexi\OneDrive\Bureau\Stas.Monitor\Stas.Monitor.App\obj\Debug\net6.0\re
 C:\Users\alexi\OneDrive\Bureau\Stas.Monitor\Stas.Monitor.App\bin\Debug\net6.0\configs\config.ini
 F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.App\bin\Debug\net6.0\configs\config.ini
 F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.App\bin\Debug\net6.0\CommandLineParser.Net.dll
+D:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.App\bin\Debug\net6.0\configs\config.ini

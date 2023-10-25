@@ -15,7 +15,7 @@ public class Configuration
   {
     get
     {
-      ISet<string> names = new HashSet<string>();
+      ISet<string> names = new SortedSet<string>();
       foreach ( var thermometer in Thermometers )
       {
         names.Add(thermometer.Name);

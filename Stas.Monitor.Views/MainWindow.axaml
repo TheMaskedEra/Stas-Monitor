@@ -5,7 +5,11 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="Stas.Monitor.Views.MainWindow"
         Title="Stas.Monitor.Views">
-    <ComboBox Name="listName" SelectedIndex="0">
+    <StackPanel>
+        <ComboBox x:Name="ListName">
+            
+        </ComboBox>
         
-    </ComboBox>
+        <TextBlock x:Name="ThermometerName"/>
+    </StackPanel>
 </Window>

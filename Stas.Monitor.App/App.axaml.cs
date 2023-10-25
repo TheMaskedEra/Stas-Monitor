@@ -13,10 +13,11 @@ using Stas.Monitor.Presentations;
 
 namespace Stas.Monitor.App;
 
-public partial class App : Application
+public class App : Application
 {
     private MainWindow? _mainWindow;
 
+    //TODO commit les fichiers debug ?
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);
@@ -32,8 +33,9 @@ public partial class App : Application
     {
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            _mainWindow = new MainWindow();
-            SetupApp(desktop?.Args ?? Array.Empty<string>());
+
+            var mainPresenter = SetupApp(desktop.Args ?? Array.Empty<string>());
+            _mainWindow = new MainWindow(mainPresenter);
 
             desktop.MainWindow = _mainWindow;
             
@@ -47,16 +49,16 @@ public partial class App : Application
         base.OnFrameworkInitializationCompleted();
     }
 
-    private void SetupApp(string[] args)
+    private MainPresenter SetupApp(string[] args)
     {
-      CommandLineParser cmdParser = new CommandLineParser(args);
+      var cmdParser = new CommandLineParser(args);
       if ( !cmdParser.HasParameter("config-file") || string.IsNullOrEmpty(cmdParser.GetParameterValue("config-file")))
       {
         throw new ArgumentException("monitor: missing configuration file argument");
       }
 
       IConfigurationReader reader = new IniConfigurationReader(cmdParser.GetParameterValue("config-file"));
-      Configuration configuration = reader.ConfigureThermometers();
-      MainPresenter mainPresenter = new MainPresenter(configuration);
+      var configuration = reader.GetData();
+      return new MainPresenter(configuration);
     }
 }
