@@ -4,11 +4,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="Stas.Monitor.Views.MainWindow"
-        Title="Stas.Monitor.Views">
-    <StackPanel>
-        <ComboBox x:Name="ListName">
-            
-        </ComboBox>
+        Title="UE36 - Stas Monitor - Alexis Vanden Broeck"
+        Width="550" Height="700"
+        >
+    <StackPanel Margin="10">
+        <TextBlock Text="Thermomètres disponibles :" Margin="0 0 5 5"/>
+        <ComboBox x:Name="ListName"/>
         
         <TextBlock x:Name="ThermometerName"/>
     </StackPanel>

@@ -18,46 +18,36 @@ public class IniConfigurationReader : IConfigurationReader
     _pathFile = path;
   }
   
+  //TODO faire ReadToEnd ?
   public Configuration GetData()
   {
-    ISet<Thermometer> thermometers = new HashSet<Thermometer>();
-    string measures, alerts;
     try
     {
       using var reader = new StreamReader(_pathFile);
-      
-      ParseThermometersNames(reader, thermometers);
-      
-      while ( reader.ReadLine() is { } line )
+      var fileToString = reader.ReadToEnd();
+
+      if ( !Regex.IsMatch(fileToString, ReaderFormat.IniFormatRegex) )
+        throw new UnableToExtractDataException("monitor: missing configuration file argument");
+
+      IDictionary<string, string> iniValues = new Dictionary<string, string>();
+      var lines = fileToString.Split('\n');
+
+      foreach (var line in lines)
       {
-        if ( Regex.IsMatch(line, ReaderFormat.MeasureFormat) )
-          measures = line[(line.IndexOf('=')+1)..];
-        if ( Regex.IsMatch(line, ReaderFormat.AlertFormat) )
-          alerts = line[(line.IndexOf('=')+1)..];
+        var parts = line.Split('=');
+        if (parts.Length == 1)
+          continue;
+        
+        iniValues.Add(parts[0], parts[1]);
       }
       
+      //TODO utile ?
+      reader.Close();
     }
     catch (IOException e)
     {
       throw new UnableToExtractDataException("monitor: something went wrong when extracting data.");
     }
-    return new Configuration(thermometers);
-  }
-
-  private void ParseThermometersNames(TextReader reader, ISet<Thermometer> thermometers)
-  {
-    var line = reader.ReadLine();
-    if (line is null || !line.Equals("[thermometers]"))
-      throw new UnableToExtractDataException("monitor: missing required section thermometers");
-    
-    while ( (line = reader.ReadLine()) is not null)
-    {
-      if ( line.Equals("[paths]") ) break;
-
-      if ( !Regex.IsMatch(line, ReaderFormat.NameFormat) ) continue;
-      
-      var name = line[(line.IndexOf('=')+1)..];
-      thermometers.Add(new Thermometer(name));
-    }
+    return new Configuration();
   }
 }

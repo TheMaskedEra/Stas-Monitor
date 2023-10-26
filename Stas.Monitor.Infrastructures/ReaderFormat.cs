@@ -2,7 +2,10 @@
 
 public class ReaderFormat
 {
-  public const string NameFormat = @"^t\d\d=";
-  public const string MeasureFormat = "^measures=";
-  public const string AlertFormat = "^alerts=";
+  public const string IniFormatRegex = "^\\[thermometers\\]\r\n" + 
+                                       @"(t\d\d=(\S| )+\r\n)+"+
+                                       "\\[paths\\]\r\n"+
+                                       "measures=.+\r\n"+
+                                       "alerts=.+$";
+  
 }

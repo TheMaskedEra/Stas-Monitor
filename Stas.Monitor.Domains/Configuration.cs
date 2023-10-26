@@ -2,9 +2,9 @@
 
 public class Configuration
 {
-  public Configuration(ISet<Thermometer> thermometers)
+  public Configuration()
   {
-    Thermometers = thermometers;
+    Thermometers = new HashSet<Thermometer>();
   }
   public ISet<Thermometer> Thermometers
   {

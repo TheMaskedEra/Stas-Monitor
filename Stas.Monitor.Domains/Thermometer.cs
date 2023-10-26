@@ -2,6 +2,7 @@
 
 public class Thermometer
 {
+  //TODO Quand faut il faire des propriétés des attributs privés ?
   public Thermometer(string name)
   {
     Name = name;

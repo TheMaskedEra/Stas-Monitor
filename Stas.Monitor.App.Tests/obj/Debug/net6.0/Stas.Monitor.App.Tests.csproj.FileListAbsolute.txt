@@ -703,3 +703,5 @@ D:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.App.Tests\obj\Debug\net6.0\refint\Sta
 D:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.App.Tests\obj\Debug\net6.0\Stas.Monitor.App.Tests.pdb
 D:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.App.Tests\obj\Debug\net6.0\Stas.Monitor.App.Tests.genruntimeconfig.cache
 D:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.App.Tests\obj\Debug\net6.0\ref\Stas.Monitor.App.Tests.dll
+F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.App.Tests\bin\Debug\net6.0\configs\alerts.csv
+F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.App.Tests\bin\Debug\net6.0\configs\measurements.csv
