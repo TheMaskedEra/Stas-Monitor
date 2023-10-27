@@ -1,10 +1,12 @@
-﻿namespace Stas.Monitor.Domains;
+﻿using Stas.Monitor.Domains.repository;
+
+namespace Stas.Monitor.Domains;
 
 public class Configuration
 {
-  public Configuration()
+  public Configuration(ISet<Thermometer> thermometers, IMeasurementExtractor measurementExtractor)
   {
-    Thermometers = new HashSet<Thermometer>();
+    Thermometers = thermometers;
   }
   public ISet<Thermometer> Thermometers
   {

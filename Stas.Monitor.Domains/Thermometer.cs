@@ -1,6 +1,6 @@
 ﻿namespace Stas.Monitor.Domains;
 
-public class Thermometer
+public class Thermometer : IComparable
 {
   //TODO Quand faut il faire des propriétés des attributs privés ?
   public Thermometer(string name)
@@ -22,5 +22,14 @@ public class Thermometer
   public override int GetHashCode()
   {
     return Name.GetHashCode();
+  }
+
+  public int CompareTo(object? obj)
+  {
+    if (obj is Thermometer thermometer)
+    {
+      return string.CompareOrdinal(this.Name, thermometer.Name);
+    }
+    throw new ArgumentException("Object must be of type Thermometer", nameof(obj));
   }
 }

@@ -8,6 +8,7 @@ using Stas.Monitor.Views;
 using ClpNet;
 using ClpNet.Extensions;
 using Stas.Monitor.Domains;
+using Stas.Monitor.Domains.repository;
 using Stas.Monitor.Infrastructures;
 using Stas.Monitor.Presentations;
 
@@ -58,7 +59,7 @@ public class App : Application
       }
 
       IConfigurationReader reader = new IniConfigurationReader(cmdParser.GetParameterValue("config-file"));
-      var configuration = reader.GetData();
+      var configuration = reader.GetConfiguration();
       return new MainPresenter(configuration);
     }
 }
