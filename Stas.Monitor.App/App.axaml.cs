@@ -7,10 +7,10 @@ using Serilog;
 using Stas.Monitor.Views;
 using ClpNet;
 using ClpNet.Extensions;
-using Stas.Monitor.Domains;
 using Stas.Monitor.Domains.repository;
 using Stas.Monitor.Infrastructures;
 using Stas.Monitor.Presentations;
+using Stas.Monitor.Presentations.IViews;
 
 namespace Stas.Monitor.App;
 
@@ -34,8 +34,8 @@ public class App : Application
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
 
-            var mainPresenter = SetupApp(desktop.Args ?? Array.Empty<string>());
-            _mainWindow = new MainWindow(mainPresenter);
+            _mainWindow = new MainWindow();
+            SetupApp(desktop.Args ?? Array.Empty<string>(), _mainWindow);
 
             desktop.MainWindow = _mainWindow;
             
@@ -49,7 +49,7 @@ public class App : Application
         base.OnFrameworkInitializationCompleted();
     }
 
-    private MainPresenter SetupApp(string[] args)
+    private void SetupApp(string[] args, IMainView view)
     {
       var cmdParser = new CommandLineParser(args);
       if ( !cmdParser.HasParameter("config-file") || string.IsNullOrEmpty(cmdParser.GetParameterValue("config-file")))
@@ -59,6 +59,6 @@ public class App : Application
 
       IConfigurationReader reader = new IniConfigurationReader(cmdParser.GetParameterValue("config-file"));
       var configuration = reader.GetConfiguration();
-      return new MainPresenter(configuration);
+      var mainPresenter = new MainPresenter(configuration, view);
     }
 }

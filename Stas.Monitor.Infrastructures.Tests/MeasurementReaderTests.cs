@@ -2,14 +2,14 @@
 
 namespace Stas.Monitor.Infrastructures.Tests;
 
-public class MeasurementExtractorTests
+public class MeasurementReaderTests
 {
   [Test]
   public void Throw_Error_On_Missing_File()
   {
     try
     {
-      IMeasurementExtractor extractor = new MeasurementExtractor("");
+      IStatementReader reader = new MeasurementReader("");
       Assert.Fail();
     }
     catch (FileNotFoundException)

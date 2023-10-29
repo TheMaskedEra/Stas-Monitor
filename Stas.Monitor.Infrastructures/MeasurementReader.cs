@@ -5,10 +5,10 @@ using Stas.Monitor.Domains.repository.exceptions;
 
 namespace Stas.Monitor.Infrastructures;
 
-public class MeasurementExtractor : IMeasurementExtractor
+public class MeasurementReader : IStatementReader
 {
   private readonly string _filePath;
-  public MeasurementExtractor(string filePath)
+  public MeasurementReader(string filePath)
   {
     filePath = Directory.GetCurrentDirectory() + "/" + filePath;
     if (!File.Exists(filePath))
@@ -22,10 +22,10 @@ public class MeasurementExtractor : IMeasurementExtractor
   /*
    * Find every measurement from a given thermometer
    */
-  public List<Measurement> GetMeasurements(Thermometer thermometer)
+  public List<IStatement> GetStatements(Thermometer thermometer)
   {
     var name = thermometer.Name;
-    var measurements = new List<Measurement>();
+    var measurements = new List<IStatement>();
     
     try
     {
@@ -40,18 +40,16 @@ public class MeasurementExtractor : IMeasurementExtractor
           var measurement = line.Split(',');
           if (!measurement[0].Equals(name) || measurement.Length != 4 || !measurement[2].Equals("temp"))
             continue;
-
-          DateTime moment;
+          
           try
           {
-            moment = DateTime.Parse(measurement[1]);
+            var moment = DateTime.Parse(measurement[1]);
+            measurements.Add(new Measurement(measurement[0], moment, measurement[2], measurement[3]));
           }
           catch (FormatException)
           {
             throw new UnableToExtractDataException("monitor: the DateTime data in the csv file isn't correctly formatted");
           }
-          
-          measurements.Add(new Measurement(measurement[0], moment, measurement[2], measurement[3]));
         }
       }
 

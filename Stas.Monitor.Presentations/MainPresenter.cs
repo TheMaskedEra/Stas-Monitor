@@ -6,21 +6,22 @@ namespace Stas.Monitor.Presentations;
 public class MainPresenter
 {
   private readonly Configuration _config;
-  private IMainView _view;
+  private readonly IMainView _view;
+  private EventHandler<string> selectedThermometer;
   
   private Thermometer _currentThermometer;
-  public MainPresenter(Configuration configuration)
+  public MainPresenter(Configuration configuration, IMainView view)
   {
     _config = configuration;
-  }
-
-  public void SetView(IMainView view)
-  {
+    
     _view = view;
+    selectedThermometer = OnSelectThermometer;
+    _view.SelectedThermometer += selectedThermometer;
+    
     _view.SetNames(_config.Names);
   }
 
-  public void SelectThermometer(string name)
+  private void OnSelectThermometer(object sender, string name)
   {
     _currentThermometer = _config.FindThermometer(name)!;
     var measurements = _config.GetMeasurement(_currentThermometer);
@@ -28,7 +29,7 @@ public class MainPresenter
     _view.ShowMeasurements(measureViewModels);
   }
 
-  private List<MeasurementViewModel> TranslateToDto(IEnumerable<Measurement> measurements)
+  private List<MeasurementViewModel> TranslateToDto(IEnumerable<IStatement> measurements)
   {
     return measurements.Select(measurement => new MeasurementViewModel(measurement)).ToList();
   }

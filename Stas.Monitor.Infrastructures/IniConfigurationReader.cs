@@ -50,7 +50,7 @@ public class IniConfigurationReader : IConfigurationReader
 
   public Configuration GetConfiguration()
   {
-    var measurementsExtractor = new MeasurementExtractor(_data["measures"]);
+    var measurementReader = new MeasurementReader(_data["measures"]);
     _data.Remove("measures");
     var alertsExtractor = _data["alerts"];
     _data.Remove("alerts");
@@ -61,6 +61,6 @@ public class IniConfigurationReader : IConfigurationReader
       thermometers.Add(new Thermometer(name));
     }
     
-    return new Configuration(thermometers, measurementsExtractor);
+    return new Configuration(thermometers, measurementReader);
   }
 }

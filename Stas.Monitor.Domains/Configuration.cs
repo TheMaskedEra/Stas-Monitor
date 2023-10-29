@@ -4,15 +4,12 @@ namespace Stas.Monitor.Domains;
 
 public class Configuration
 {
-  private readonly IMeasurementExtractor _measurementExtractor;
-  public Configuration(ISet<Thermometer> thermometers, IMeasurementExtractor measurementExtractor)
+  private readonly IStatementReader _measurementReader;
+  private readonly ISet<Thermometer> _thermometers;
+  public Configuration(ISet<Thermometer> thermometers, IStatementReader measurementReader)
   {
-    Thermometers = thermometers;
-    _measurementExtractor = measurementExtractor;
-  }
-  public ISet<Thermometer> Thermometers
-  {
-    get;
+    _thermometers = thermometers;
+    _measurementReader = measurementReader;
   }
 
   public ISet<string> Names
@@ -20,7 +17,7 @@ public class Configuration
     get
     {
       ISet<string> names = new SortedSet<string>();
-      foreach ( var thermometer in Thermometers )
+      foreach ( var thermometer in _thermometers )
       {
         names.Add(thermometer.Name);
       }
@@ -30,11 +27,11 @@ public class Configuration
   }
   public Thermometer? FindThermometer(string name)
   {
-    return Thermometers.FirstOrDefault(thermometer => thermometer.Name.Equals(name));
+    return _thermometers.FirstOrDefault(thermometer => thermometer.Name.Equals(name));
   }
 
-  public IEnumerable<Measurement> GetMeasurement(Thermometer thermometer)
+  public IEnumerable<IStatement> GetMeasurement(Thermometer thermometer)
   {
-    return _measurementExtractor.GetMeasurements(thermometer);
+    return _measurementReader.GetStatements(thermometer);
   }
 }

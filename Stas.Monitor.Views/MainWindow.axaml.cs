@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Avalonia.Controls;
 using Stas.Monitor.Presentations;
@@ -7,28 +8,30 @@ namespace Stas.Monitor.Views;
 
 public partial class MainWindow : Window, IMainView
 {
-  private readonly MainPresenter _presenter;
-    public MainWindow(MainPresenter presenter)
-    {
-      _presenter = presenter;
-      InitializeComponent();
-      _presenter.SetView(this);
+  public event EventHandler<string> SelectedThermometer;
+  public MainWindow()
+  {
+    InitializeComponent();
 
-      ListName.SelectionChanged += (sender, args) =>
-      {
-        presenter.SelectThermometer((string) ListName.SelectedItem!);
-      };
-    }
-
-    public void SetNames(ISet<string> names)
+    ListName.SelectionChanged += (sender, args) =>
     {
-      ListName.ItemsSource = names;
-      ListName.SelectedIndex = 0;
-      _presenter.SelectThermometer((string) ListName.SelectedItem!);
-    }
+      OnSelectedThermometer((string) ListName.SelectedItem!);
+    };
+  }
 
-    public void ShowMeasurements(IEnumerable<MeasurementViewModel> measures)
-    {
-      Measurements.ItemsSource = measures;
-    }
+  public void SetNames(ISet<string> names)
+  {
+    ListName.ItemsSource = names;
+    ListName.SelectedIndex = 0;
+    OnSelectedThermometer((string) ListName.SelectedItem!);
+  }
+
+  public void ShowMeasurements(IEnumerable<MeasurementViewModel> measures)
+  {
+    Measurements.ItemsSource = measures;
+  }
+  private void OnSelectedThermometer(string e)
+  {
+    SelectedThermometer.Invoke(this, e);
+  }
 }
