@@ -8,7 +8,7 @@ namespace Stas.Monitor.Views;
 
 public partial class MainWindow : Window, IMainView
 {
-  public event EventHandler<string> SelectedThermometer;
+  public event EventHandler<string>? SelectedThermometer;
   public MainWindow()
   {
     InitializeComponent();
@@ -32,6 +32,6 @@ public partial class MainWindow : Window, IMainView
   }
   private void OnSelectedThermometer(string e)
   {
-    SelectedThermometer.Invoke(this, e);
+    SelectedThermometer?.Invoke(this, e);
   }
 }
