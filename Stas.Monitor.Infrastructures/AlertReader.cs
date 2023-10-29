@@ -20,7 +20,7 @@ public class AlertReader : IStatementReader
     _filePath = filePath;
   }
 
-  public List<IStatement> GetStatements(Thermometer thermometer)
+  public IEnumerable<IStatement> GetStatements(Thermometer thermometer)
   {
     var name = thermometer.Name;
     var alerts = new List<IStatement>();

@@ -2,5 +2,5 @@
 
 public interface IStatementReader
 {
-  List<IStatement> GetStatements(Thermometer thermometer);
+  IEnumerable<IStatement> GetStatements(Thermometer thermometer);
 }

@@ -26,7 +26,7 @@ public partial class MainWindow : Window, IMainView
     OnSelectedThermometer((string) ListName.SelectedItem!);
   }
 
-  public void ShowMeasurements(IEnumerable<MeasurementViewModel> measures)
+  public void ShowMeasurements(IEnumerable<StatementViewModel> measures)
   {
     Measurements.ItemsSource = measures;
   }

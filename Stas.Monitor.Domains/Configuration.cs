@@ -5,11 +5,13 @@ namespace Stas.Monitor.Domains;
 public class Configuration
 {
   private readonly IStatementReader _measurementReader;
+  private readonly IStatementReader _alertReader;
   private readonly ISet<Thermometer> _thermometers;
-  public Configuration(ISet<Thermometer> thermometers, IStatementReader measurementReader)
+  public Configuration(ISet<Thermometer> thermometers, IStatementReader measurementReader, IStatementReader alertReader)
   {
     _thermometers = thermometers;
     _measurementReader = measurementReader;
+    _alertReader = alertReader;
   }
 
   public ISet<string> Names
@@ -33,5 +35,10 @@ public class Configuration
   public IEnumerable<IStatement> GetMeasurement(Thermometer thermometer)
   {
     return _measurementReader.GetStatements(thermometer);
+  }
+
+  public IEnumerable<IStatement> GetAlerts(Thermometer thermometer)
+  {
+    return _alertReader.GetStatements(thermometer);
   }
 }

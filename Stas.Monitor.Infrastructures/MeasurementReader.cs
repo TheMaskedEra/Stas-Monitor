@@ -22,7 +22,7 @@ public class MeasurementReader : IStatementReader
   /*
    * Find every measurement from a given thermometer
    */
-  public List<IStatement> GetStatements(Thermometer thermometer)
+  public IEnumerable<IStatement> GetStatements(Thermometer thermometer)
   {
     var name = thermometer.Name;
     var measurements = new List<IStatement>();

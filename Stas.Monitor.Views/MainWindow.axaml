@@ -2,7 +2,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:views="clr-namespace:Stas.Monitor.Views"
         xmlns:presentations="clr-namespace:Stas.Monitor.Presentations;assembly=Stas.Monitor.Presentations"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="Stas.Monitor.Views.MainWindow"
@@ -16,11 +15,12 @@
             
             <ListBox x:Name="Measurements">
                 <ListBox.ItemTemplate>
-                    <DataTemplate DataType="{x:Type presentations:MeasurementViewModel}">
-                        <StackPanel Orientation="Horizontal">
+                    <DataTemplate DataType="{x:Type presentations:StatementViewModel}">
+                        <StackPanel Orientation="Horizontal" Background="{Binding Background}">
                             <TextBlock FontSize="40" Text="{Binding Value}"/>
                             <StackPanel>
                                 <TextBlock Text="{Binding Moment}"/>
+                                <TextBlock Text="{Binding ExpectedValue}"></TextBlock>
                             </StackPanel>
                         </StackPanel>
                     </DataTemplate>
