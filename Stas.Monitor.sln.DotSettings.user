@@ -1,9 +1,12 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=3835563f_002D5eeb_002D430f_002Db898_002D97ffa7e7367c/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="ArchTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::078431ED-C1C9-49DF-B26C-81073B54BB5D::net6.0::Stas.Monitor.App.Tests.ArchTests&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::FA07206B-D5CC-432E-A6BB-92D353F9C623::net6.0::Stas.Monitor.Infrastructures.Tests.Tests&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::FA07206B-D5CC-432E-A6BB-92D353F9C623::net6.0::Stas.Monitor.Infrastructures.Tests.MeasurementExtractorTests.Throw_Error_On_Missing_File&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
+  &lt;Or&gt;&#xD;
+    &lt;TestAncestor&gt;&#xD;
+      &lt;TestId&gt;NUnit3x::078431ED-C1C9-49DF-B26C-81073B54BB5D::net6.0::Stas.Monitor.App.Tests.ArchTests&lt;/TestId&gt;&#xD;
+      &lt;TestId&gt;NUnit3x::FA07206B-D5CC-432E-A6BB-92D353F9C623::net6.0::Stas.Monitor.Infrastructures.Tests.Tests&lt;/TestId&gt;&#xD;
+      &lt;TestId&gt;NUnit3x::FA07206B-D5CC-432E-A6BB-92D353F9C623::net6.0::Stas.Monitor.Infrastructures.Tests.MeasurementExtractorTests.Throw_Error_On_Missing_File&lt;/TestId&gt;&#xD;
+    &lt;/TestAncestor&gt;&#xD;
+    &lt;Project Location="F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.Infrastructures.Tests" Presentation="&amp;lt;test&amp;gt;\&amp;lt;Stas.Monitor.Infrastructures.Tests&amp;gt;" /&gt;&#xD;
+  &lt;/Or&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	<s:Boolean x:Key="/Default/UserDictionary/Words/=Stas/@EntryIndexedValue">True</s:Boolean></wpf:ResourceDictionary>

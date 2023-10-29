@@ -1,6 +1,5 @@
 using NUnit.Framework.Constraints;
 using Stas.Monitor.Domains;
-using Stas.Monitor.Domains.exceptions;
 
 namespace Stas.Monitor.Infrastructures.Tests;
 

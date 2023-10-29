@@ -9,4 +9,5 @@ public static class ReaderFormat
                                        "alerts=.*$";
 
   public const string MeasurementCsvFormat = "Name,DateTime,Type,Value";
+  public const string AlertCsvFormat = "Name,DateTime,ExpectedTemperature,Value";
 }

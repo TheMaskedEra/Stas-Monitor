@@ -1,4 +1,4 @@
-﻿namespace Stas.Monitor.Domains.exceptions;
+﻿namespace Stas.Monitor.Domains.repository.exceptions;
 
 public class UnableToExtractDataException : Exception
 {

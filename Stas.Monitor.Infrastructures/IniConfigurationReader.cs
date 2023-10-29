@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 using Stas.Monitor.Domains;
-using Stas.Monitor.Domains.exceptions;
 using Stas.Monitor.Domains.repository;
+using Stas.Monitor.Domains.repository.exceptions;
 
 namespace Stas.Monitor.Infrastructures;
 
@@ -24,13 +23,12 @@ public class IniConfigurationReader : IConfigurationReader
   {
     try
     {
-      //TODO With or without braces ?
       using ( var reader = new StreamReader(path) )
       {
         var fileToString = reader.ReadToEnd();
 
         if ( !Regex.IsMatch(fileToString, ReaderFormat.IniFormatRegex) )
-          throw new UnableToExtractDataException("monitor: missing configuration file argument");
+          throw new UnableToExtractDataException("monitor: the file doesn't have the right format or is empty.");
       
         var lines = fileToString.Split('\n');
 
@@ -44,9 +42,9 @@ public class IniConfigurationReader : IConfigurationReader
         }
       }
     }
-    catch (IOException)
+    catch (IOException e)
     {
-      throw new UnableToExtractDataException("monitor: something went wrong when extracting data.");
+      throw new UnableToExtractDataException("monitor: something went wrong when parsing the data. " + e.Message);
     }
   }
 

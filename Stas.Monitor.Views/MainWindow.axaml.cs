@@ -1,8 +1,7 @@
 using System.Collections.Generic;
-using System.Drawing;
 using Avalonia.Controls;
-using Microsoft.VisualBasic;
 using Stas.Monitor.Presentations;
+using Stas.Monitor.Presentations.IViews;
 
 namespace Stas.Monitor.Views;
 
@@ -21,15 +20,15 @@ public partial class MainWindow : Window, IMainView
       };
     }
 
-    public void SetNames(IEnumerable<string> names)
+    public void SetNames(ISet<string> names)
     {
       ListName.ItemsSource = names;
       ListName.SelectedIndex = 0;
       _presenter.SelectThermometer((string) ListName.SelectedItem!);
     }
 
-    public void ShowCurrentThermometer(string message)
+    public void ShowMeasurements(IEnumerable<MeasurementViewModel> measures)
     {
-      ThermometerName.Text = message;
+      Measurements.ItemsSource = measures;
     }
 }

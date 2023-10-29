@@ -8,10 +8,7 @@ public class Thermometer : IComparable
     Name = name;
   }
 
-  public string Name
-  {
-    get;
-  }
+  public string Name { get; }
 
   public override bool Equals(object? obj)
   {

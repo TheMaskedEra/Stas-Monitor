@@ -1,7 +1,7 @@
 ﻿using System.Text.RegularExpressions;
 using Stas.Monitor.Domains;
-using Stas.Monitor.Domains.exceptions;
 using Stas.Monitor.Domains.repository;
+using Stas.Monitor.Domains.repository.exceptions;
 
 namespace Stas.Monitor.Infrastructures;
 
@@ -19,6 +19,9 @@ public class MeasurementExtractor : IMeasurementExtractor
     _filePath = filePath;
   }
 
+  /*
+   * Find every measurement from a given thermometer
+   */
   public List<Measurement> GetMeasurements(Thermometer thermometer)
   {
     var name = thermometer.Name;
@@ -30,15 +33,25 @@ public class MeasurementExtractor : IMeasurementExtractor
       {
         var format = reader.ReadLine();
         if ( format is null || !Regex.IsMatch(format, ReaderFormat.MeasurementCsvFormat) )
-          throw new UnableToExtractDataException("monitor: impossible to read measurements file because it is not correctly formatted.");
+          throw new UnableToExtractDataException("monitor: unable to read measurements file because it is not correctly formatted or empty.");
 
         while (reader.ReadLine() is { } line)
         {
           var measurement = line.Split(',');
-          if (!measurement[0].Equals(name))
+          if (!measurement[0].Equals(name) || measurement.Length != 4 || !measurement[2].Equals("temp"))
             continue;
+
+          DateTime moment;
+          try
+          {
+            moment = DateTime.Parse(measurement[1]);
+          }
+          catch (FormatException)
+          {
+            throw new UnableToExtractDataException("monitor: the DateTime data in the csv file isn't correctly formatted");
+          }
           
-          measurements.Add(new Measurement(measurement[0], measurement[1], measurement[2], measurement[4]));
+          measurements.Add(new Measurement(measurement[0], moment, measurement[2], measurement[3]));
         }
       }
 
@@ -46,7 +59,7 @@ public class MeasurementExtractor : IMeasurementExtractor
     }
     catch (IOException e)
     {
-      throw new UnableToExtractDataException("monitor something went wrong while parsing measurements : " + e.Message);
+      throw new UnableToExtractDataException("monitor: something went wrong while parsing measurements : " + e.Message);
     }
   }
 }

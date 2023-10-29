@@ -17,8 +17,7 @@ namespace Stas.Monitor.App;
 public class App : Application
 {
     private MainWindow? _mainWindow;
-
-    //TODO commit les fichiers debug ?
+    
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);

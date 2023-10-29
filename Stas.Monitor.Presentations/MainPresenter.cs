@@ -1,4 +1,5 @@
 ﻿using Stas.Monitor.Domains;
+using Stas.Monitor.Presentations.IViews;
 
 namespace Stas.Monitor.Presentations;
 
@@ -21,7 +22,14 @@ public class MainPresenter
 
   public void SelectThermometer(string name)
   {
-    var info = name + " sélectionné";
-    _view.ShowCurrentThermometer(info);
+    _currentThermometer = _config.FindThermometer(name)!;
+    var measurements = _config.GetMeasurement(_currentThermometer);
+    var measureViewModels = TranslateToDto(measurements);
+    _view.ShowMeasurements(measureViewModels);
+  }
+
+  private List<MeasurementViewModel> TranslateToDto(IEnumerable<Measurement> measurements)
+  {
+    return measurements.Select(measurement => new MeasurementViewModel(measurement)).ToList();
   }
 }
