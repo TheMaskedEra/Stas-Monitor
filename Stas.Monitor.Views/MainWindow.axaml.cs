@@ -12,13 +12,12 @@ public partial class MainWindow : Window, IMainView
   public MainWindow()
   {
     InitializeComponent();
-
     ListName.SelectionChanged += (sender, args) =>
     {
       OnSelectedThermometer((string) ListName.SelectedItem!);
     };
-  }
 
+  }
   public void SetNames(ISet<string> names)
   {
     ListName.ItemsSource = names;
@@ -26,10 +25,8 @@ public partial class MainWindow : Window, IMainView
     OnSelectedThermometer((string) ListName.SelectedItem!);
   }
 
-  public void ShowMeasurements(IEnumerable<StatementViewModel> measures)
-  {
-    Measurements.ItemsSource = measures;
-  }
+  public void ShowMeasurements(IEnumerable<StatementViewModel> measures) => Measurements.ItemsSource = measures;
+
   private void OnSelectedThermometer(string e)
   {
     SelectedThermometer?.Invoke(this, e);

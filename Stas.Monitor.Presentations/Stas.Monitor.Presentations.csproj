@@ -11,7 +11,15 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Be.HenNi.Analyzers" Version="1.0.2" />
+      <PackageReference Include="Be.HenNi.Analyzers" Version="1.0.3" />
+      <PackageReference Include="IDisposableAnalyzers" Version="4.0.7">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.507">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
     </ItemGroup>
 
     <ItemGroup>

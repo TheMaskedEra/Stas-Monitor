@@ -14,9 +14,11 @@ public class StatementViewModel
   {
     get
     {
-      if ( _statement is Measurement measurement )
-        return measurement.Value + "°";
-      
+        if (_statement is Measurement measurement)
+        {
+         return measurement.Value + "°";
+        }
+
       return (( Alert ) _statement ).ObservedValue + "°";
     }
   }
@@ -25,10 +27,12 @@ public class StatementViewModel
   {
     get
     {
-      if ( _statement is Measurement measurement )
-        return measurement.Moment.ToString("dddd d MMMM yyyy hh:mm:ss");
+        if (_statement is Measurement measurement)
+        {
+            return measurement.Moment.ToString("dddd d MMMM yyyy hh:mm:ss");
+        }
 
-      return ( ( Alert )_statement ).Moment.ToString("dddd d MMMM yyyy hh:mm:ss");
+        return ( ( Alert )_statement ).Moment.ToString("dddd d MMMM yyyy hh:mm:ss");
     }
   }
 
@@ -37,8 +41,11 @@ public class StatementViewModel
     get
     {
       if ( _statement is Alert alert )
+      {
         return "Expected : " + alert.ExpectedValue;
-      return "";
+      }
+
+      return string.Empty;
     }
   }
 
@@ -47,7 +54,10 @@ public class StatementViewModel
     get
     {
       if ( _statement is Alert alert )
+      {
         return "CadetBlue";
+      }
+
       return "Black";
     }
   }

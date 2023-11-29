@@ -42,7 +42,19 @@
           "dependencies": {
             "Be.HenNi.Analyzers": {
               "target": "Package",
-              "version": "[1.0.2, )"
+              "version": "[1.0.3, )"
+            },
+            "IDisposableAnalyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[4.0.7, )"
+            },
+            "StyleCop.Analyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.2.0-beta.507, )"
             }
           },
           "imports": [
@@ -107,7 +119,13 @@
           "dependencies": {
             "Be.HenNi.Analyzers": {
               "target": "Package",
-              "version": "[1.0.2, )"
+              "version": "[1.0.3, )"
+            },
+            "IDisposableAnalyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[4.0.7, )"
             },
             "Serilog": {
               "target": "Package",
@@ -116,6 +134,12 @@
             "Serilog.Sinks.Console": {
               "target": "Package",
               "version": "[5.0.0-dev-00923, )"
+            },
+            "StyleCop.Analyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.2.0-beta.507, )"
             }
           },
           "imports": [

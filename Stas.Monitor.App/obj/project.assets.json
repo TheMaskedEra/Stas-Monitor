@@ -336,10 +336,10 @@
           }
         }
       },
-      "Be.HenNi.Analyzers/1.0.2": {
+      "Be.HenNi.Analyzers/1.0.3": {
         "type": "package",
         "dependencies": {
-          "Microsoft.CodeAnalysis.CSharp": "4.7.0"
+          "Microsoft.CodeAnalysis.CSharp": "4.3.1"
         },
         "compile": {
           "lib/netstandard2.0/Be.HenNi.Analyzers.dll": {}
@@ -996,7 +996,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-          "Be.HenNi.Analyzers": "1.0.2"
+          "Be.HenNi.Analyzers": "1.0.3"
         },
         "compile": {
           "bin/placeholder/Stas.Monitor.Domains.dll": {}
@@ -1009,7 +1009,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-          "Be.HenNi.Analyzers": "1.0.2",
+          "Be.HenNi.Analyzers": "1.0.3",
           "Serilog": "3.1.0-dev-02078",
           "Serilog.Sinks.Console": "5.0.0-dev-00923",
           "Stas.Monitor.Domains": "1.0.0"
@@ -1025,7 +1025,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-          "Be.HenNi.Analyzers": "1.0.2",
+          "Be.HenNi.Analyzers": "1.0.3",
           "Stas.Monitor.Domains": "1.0.0"
         },
         "compile": {
@@ -1494,17 +1494,18 @@
         "lib/netstandard2.0/Avalonia.X11.xml"
       ]
     },
-    "Be.HenNi.Analyzers/1.0.2": {
-      "sha512": "ZIH9AY+ZhI1+j93rWrul5AYibv9OxhnGDbWFa1mxDoQTqfihKdIy0lCjY9KWC2IubMAITOID3G5GnL2SQ1BDJA==",
+    "Be.HenNi.Analyzers/1.0.3": {
+      "sha512": "ZRYxXUWuc959AWcBKyGINb7umLINr9pir81Kbfk5Y+BcxMqIEv7h4WNZ5WbxOEDezYjbwCIRidVB0JIvrj4+EQ==",
       "type": "package",
-      "path": "be.henni.analyzers/1.0.2",
+      "path": "be.henni.analyzers/1.0.3",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "LICENCE.txt",
         "README.md",
         "analyzers/dotnet/cs/Be.HenNi.Analyzers.dll",
-        "be.henni.analyzers.1.0.2.nupkg.sha512",
+        "be.henni.analyzers.1.0.3.nupkg.sha512",
         "be.henni.analyzers.nuspec",
         "lib/netstandard2.0/Be.HenNi.Analyzers.dll",
         "tools/tools/install.ps1",

@@ -2,31 +2,30 @@
 
 public class Thermometer : IComparable
 {
-  //TODO Quand faut il faire des propriétés des attributs privés ?
-  public Thermometer(string name)
-  {
-    Name = name;
-  }
+    private readonly string _name;
 
-  public string Name { get; }
-
-  public override bool Equals(object? obj)
-  {
-    var thermometer = obj as Thermometer;
-    return thermometer != null && Name.Equals(thermometer.Name);
-  }
-
-  public override int GetHashCode()
-  {
-    return Name.GetHashCode();
-  }
-
-  public int CompareTo(object? obj)
-  {
-    if (obj is Thermometer thermometer)
+    public Thermometer(string name)
     {
-      return string.CompareOrdinal(this.Name, thermometer.Name);
+        _name = name;
     }
-    throw new ArgumentException("Object must be of type Thermometer", nameof(obj));
+
+    public string Name => _name;
+
+    public override bool Equals(object? obj)
+    {
+        var thermometer = obj as Thermometer;
+        return thermometer != null && Name.Equals(thermometer.Name);
+    }
+
+    public override int GetHashCode() => Name.GetHashCode();
+
+    public int CompareTo(object? obj)
+    {
+        if (obj is Thermometer thermometer)
+        {
+         return string.CompareOrdinal(this.Name, thermometer.Name);
+        }
+
+        throw new ArgumentException("Object must be of type Thermometer", nameof(obj));
   }
 }

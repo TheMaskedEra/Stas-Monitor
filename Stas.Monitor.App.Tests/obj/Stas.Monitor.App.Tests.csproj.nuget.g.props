@@ -25,7 +25,7 @@
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <PkgMicrosoft_CodeAnalysis_Analyzers Condition=" '$(PkgMicrosoft_CodeAnalysis_Analyzers)' == '' ">C:\Users\alexi\.nuget\packages\microsoft.codeanalysis.analyzers\3.3.4</PkgMicrosoft_CodeAnalysis_Analyzers>
-    <PkgBe_HenNi_Analyzers Condition=" '$(PkgBe_HenNi_Analyzers)' == '' ">C:\Users\alexi\.nuget\packages\be.henni.analyzers\1.0.2</PkgBe_HenNi_Analyzers>
+    <PkgBe_HenNi_Analyzers Condition=" '$(PkgBe_HenNi_Analyzers)' == '' ">C:\Users\alexi\.nuget\packages\be.henni.analyzers\1.0.3</PkgBe_HenNi_Analyzers>
     <PkgAvalonia_BuildServices Condition=" '$(PkgAvalonia_BuildServices)' == '' ">C:\Users\alexi\.nuget\packages\avalonia.buildservices\0.0.28</PkgAvalonia_BuildServices>
     <PkgAvalonia Condition=" '$(PkgAvalonia)' == '' ">C:\Users\alexi\.nuget\packages\avalonia\11.0.2</PkgAvalonia>
     <PkgNUnit_Analyzers Condition=" '$(PkgNUnit_Analyzers)' == '' ">C:\Users\alexi\.nuget\packages\nunit.analyzers\3.3.0</PkgNUnit_Analyzers>

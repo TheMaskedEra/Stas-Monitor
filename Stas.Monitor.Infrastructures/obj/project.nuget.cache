@@ -1,18 +1,24 @@
 {
   "version": 2,
-  "dgSpecHash": "L7whT0mW/yJ1ypMs2RV19up6+U2lXUM17Kd7092nVbQUZvGRL/d/tJ2Mmgnj8DC52X3o602Z9GJ5qapLmIW5WA==",
+  "dgSpecHash": "jhsV3lDA0YTph9ailvps6Fvy+G6DC7IUyx4lQXopFhsKz9wFOyCOsRyX3jBw8KS5ziIV70d8IO7wVLG8NbbFkw==",
   "success": true,
   "projectFilePath": "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Infrastructures\\Stas.Monitor.Infrastructures.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\alexi\\.nuget\\packages\\be.henni.analyzers\\1.0.2\\be.henni.analyzers.1.0.2.nupkg.sha512",
-    "C:\\Users\\alexi\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\3.3.4\\microsoft.codeanalysis.analyzers.3.3.4.nupkg.sha512",
-    "C:\\Users\\alexi\\.nuget\\packages\\microsoft.codeanalysis.common\\4.7.0\\microsoft.codeanalysis.common.4.7.0.nupkg.sha512",
-    "C:\\Users\\alexi\\.nuget\\packages\\microsoft.codeanalysis.csharp\\4.7.0\\microsoft.codeanalysis.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\alexi\\.nuget\\packages\\be.henni.analyzers\\1.0.3\\be.henni.analyzers.1.0.3.nupkg.sha512",
+    "C:\\Users\\alexi\\.nuget\\packages\\idisposableanalyzers\\4.0.7\\idisposableanalyzers.4.0.7.nupkg.sha512",
+    "C:\\Users\\alexi\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\3.3.3\\microsoft.codeanalysis.analyzers.3.3.3.nupkg.sha512",
+    "C:\\Users\\alexi\\.nuget\\packages\\microsoft.codeanalysis.common\\4.3.1\\microsoft.codeanalysis.common.4.3.1.nupkg.sha512",
+    "C:\\Users\\alexi\\.nuget\\packages\\microsoft.codeanalysis.csharp\\4.3.1\\microsoft.codeanalysis.csharp.4.3.1.nupkg.sha512",
     "C:\\Users\\alexi\\.nuget\\packages\\serilog\\3.1.0-dev-02078\\serilog.3.1.0-dev-02078.nupkg.sha512",
     "C:\\Users\\alexi\\.nuget\\packages\\serilog.sinks.console\\5.0.0-dev-00923\\serilog.sinks.console.5.0.0-dev-00923.nupkg.sha512",
-    "C:\\Users\\alexi\\.nuget\\packages\\system.collections.immutable\\7.0.0\\system.collections.immutable.7.0.0.nupkg.sha512",
-    "C:\\Users\\alexi\\.nuget\\packages\\system.reflection.metadata\\7.0.0\\system.reflection.metadata.7.0.0.nupkg.sha512",
-    "C:\\Users\\alexi\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+    "C:\\Users\\alexi\\.nuget\\packages\\stylecop.analyzers\\1.2.0-beta.507\\stylecop.analyzers.1.2.0-beta.507.nupkg.sha512",
+    "C:\\Users\\alexi\\.nuget\\packages\\stylecop.analyzers.unstable\\1.2.0.507\\stylecop.analyzers.unstable.1.2.0.507.nupkg.sha512",
+    "C:\\Users\\alexi\\.nuget\\packages\\system.collections.immutable\\6.0.0\\system.collections.immutable.6.0.0.nupkg.sha512",
+    "C:\\Users\\alexi\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
+    "C:\\Users\\alexi\\.nuget\\packages\\system.reflection.metadata\\5.0.0\\system.reflection.metadata.5.0.0.nupkg.sha512",
+    "C:\\Users\\alexi\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\alexi\\.nuget\\packages\\system.text.encoding.codepages\\6.0.0\\system.text.encoding.codepages.6.0.0.nupkg.sha512",
+    "C:\\Users\\alexi\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512"
   ],
   "logs": []
 }

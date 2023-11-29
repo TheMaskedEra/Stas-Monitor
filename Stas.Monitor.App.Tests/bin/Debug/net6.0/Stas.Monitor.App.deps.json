@@ -265,14 +265,14 @@
           }
         }
       },
-      "Be.HenNi.Analyzers/1.0.2": {
+      "Be.HenNi.Analyzers/1.0.3": {
         "dependencies": {
           "Microsoft.CodeAnalysis.CSharp": "4.7.0"
         },
         "runtime": {
           "lib/netstandard2.0/Be.HenNi.Analyzers.dll": {
-            "assemblyVersion": "1.0.2.0",
-            "fileVersion": "1.0.2.0"
+            "assemblyVersion": "1.0.3.0",
+            "fileVersion": "1.0.3.0"
           }
         }
       },
@@ -750,7 +750,7 @@
       },
       "Stas.Monitor.Domains/1.0.0": {
         "dependencies": {
-          "Be.HenNi.Analyzers": "1.0.2"
+          "Be.HenNi.Analyzers": "1.0.3"
         },
         "runtime": {
           "Stas.Monitor.Domains.dll": {}
@@ -758,7 +758,7 @@
       },
       "Stas.Monitor.Infrastructures/1.0.0": {
         "dependencies": {
-          "Be.HenNi.Analyzers": "1.0.2",
+          "Be.HenNi.Analyzers": "1.0.3",
           "Serilog": "3.1.0-dev-02078",
           "Serilog.Sinks.Console": "5.0.0-dev-00923",
           "Stas.Monitor.Domains": "1.0.0"
@@ -769,7 +769,7 @@
       },
       "Stas.Monitor.Presentations/1.0.0": {
         "dependencies": {
-          "Be.HenNi.Analyzers": "1.0.2",
+          "Be.HenNi.Analyzers": "1.0.3",
           "Stas.Monitor.Domains": "1.0.0"
         },
         "runtime": {
@@ -912,12 +912,12 @@
       "path": "avalonia.x11/11.0.2",
       "hashPath": "avalonia.x11.11.0.2.nupkg.sha512"
     },
-    "Be.HenNi.Analyzers/1.0.2": {
+    "Be.HenNi.Analyzers/1.0.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-ZIH9AY+ZhI1+j93rWrul5AYibv9OxhnGDbWFa1mxDoQTqfihKdIy0lCjY9KWC2IubMAITOID3G5GnL2SQ1BDJA==",
-      "path": "be.henni.analyzers/1.0.2",
-      "hashPath": "be.henni.analyzers.1.0.2.nupkg.sha512"
+      "sha512": "sha512-ZRYxXUWuc959AWcBKyGINb7umLINr9pir81Kbfk5Y+BcxMqIEv7h4WNZ5WbxOEDezYjbwCIRidVB0JIvrj4+EQ==",
+      "path": "be.henni.analyzers/1.0.3",
+      "hashPath": "be.henni.analyzers.1.0.3.nupkg.sha512"
     },
     "CommandLineParser.Net/3.2.0.601": {
       "type": "package",

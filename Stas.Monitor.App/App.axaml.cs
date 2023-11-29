@@ -17,7 +17,7 @@ namespace Stas.Monitor.App;
 public class App : Application
 {
     private MainWindow? _mainWindow;
-    
+
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);
@@ -26,7 +26,7 @@ public class App : Application
             .WriteTo.Console()
             .CreateLogger();
 
-        Log.Logger = log; // Définit le log dans un singleton (Beurk)
+        Log.Logger = log; // Définit le log dans un singleton (Beurk) TODO
     }
 
     public override void OnFrameworkInitializationCompleted()
@@ -38,7 +38,7 @@ public class App : Application
             SetupApp(desktop.Args ?? Array.Empty<string>(), _mainWindow);
 
             desktop.MainWindow = _mainWindow;
-            
+
             DispatcherTimer.Run(() =>
             {
                 Log.Logger.Information("You should starts checking for file updates here");

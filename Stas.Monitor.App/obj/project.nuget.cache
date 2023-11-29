@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "turh7iLb+UYzQFU6pZ4pAshoBgzuxPAXoqLh28miZ0C8lCq3IpPR86fzMyuz1k7hJu7aJ3NaSCsE8rW5CXAVYA==",
+  "dgSpecHash": "FE7jZdhv+aJf4utCixqSBFXkQzyQX9bWBJfe2BqKW1TahVO7oQCWXpoyPkiNpyac4vxfrJSq6KCQenCm2ORqYw==",
   "success": true,
   "projectFilePath": "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.App\\Stas.Monitor.App.csproj",
   "expectedPackageFiles": [
@@ -20,7 +20,7 @@
     "C:\\Users\\alexi\\.nuget\\packages\\avalonia.themes.simple\\11.0.2\\avalonia.themes.simple.11.0.2.nupkg.sha512",
     "C:\\Users\\alexi\\.nuget\\packages\\avalonia.win32\\11.0.2\\avalonia.win32.11.0.2.nupkg.sha512",
     "C:\\Users\\alexi\\.nuget\\packages\\avalonia.x11\\11.0.2\\avalonia.x11.11.0.2.nupkg.sha512",
-    "C:\\Users\\alexi\\.nuget\\packages\\be.henni.analyzers\\1.0.2\\be.henni.analyzers.1.0.2.nupkg.sha512",
+    "C:\\Users\\alexi\\.nuget\\packages\\be.henni.analyzers\\1.0.3\\be.henni.analyzers.1.0.3.nupkg.sha512",
     "C:\\Users\\alexi\\.nuget\\packages\\commandlineparser.net\\3.2.0.601\\commandlineparser.net.3.2.0.601.nupkg.sha512",
     "C:\\Users\\alexi\\.nuget\\packages\\harfbuzzsharp\\2.8.2.3\\harfbuzzsharp.2.8.2.3.nupkg.sha512",
     "C:\\Users\\alexi\\.nuget\\packages\\harfbuzzsharp.nativeassets.linux\\2.8.2.3\\harfbuzzsharp.nativeassets.linux.2.8.2.3.nupkg.sha512",

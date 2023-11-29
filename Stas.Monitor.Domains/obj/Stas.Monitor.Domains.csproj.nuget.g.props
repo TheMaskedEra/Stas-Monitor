@@ -12,11 +12,10 @@
   <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <SourceRoot Include="C:\Users\alexi\.nuget\packages\" />
   </ItemGroup>
-  <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <Import Project="$(NuGetPackageRoot)microsoft.codeanalysis.analyzers\3.3.4\buildTransitive\Microsoft.CodeAnalysis.Analyzers.props" Condition="Exists('$(NuGetPackageRoot)microsoft.codeanalysis.analyzers\3.3.4\buildTransitive\Microsoft.CodeAnalysis.Analyzers.props')" />
-  </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <PkgMicrosoft_CodeAnalysis_Analyzers Condition=" '$(PkgMicrosoft_CodeAnalysis_Analyzers)' == '' ">C:\Users\alexi\.nuget\packages\microsoft.codeanalysis.analyzers\3.3.4</PkgMicrosoft_CodeAnalysis_Analyzers>
-    <PkgBe_HenNi_Analyzers Condition=" '$(PkgBe_HenNi_Analyzers)' == '' ">C:\Users\alexi\.nuget\packages\be.henni.analyzers\1.0.2</PkgBe_HenNi_Analyzers>
+    <PkgStyleCop_Analyzers_Unstable Condition=" '$(PkgStyleCop_Analyzers_Unstable)' == '' ">C:\Users\alexi\.nuget\packages\stylecop.analyzers.unstable\1.2.0.507</PkgStyleCop_Analyzers_Unstable>
+    <PkgMicrosoft_CodeAnalysis_Analyzers Condition=" '$(PkgMicrosoft_CodeAnalysis_Analyzers)' == '' ">C:\Users\alexi\.nuget\packages\microsoft.codeanalysis.analyzers\3.3.3</PkgMicrosoft_CodeAnalysis_Analyzers>
+    <PkgIDisposableAnalyzers Condition=" '$(PkgIDisposableAnalyzers)' == '' ">C:\Users\alexi\.nuget\packages\idisposableanalyzers\4.0.7</PkgIDisposableAnalyzers>
+    <PkgBe_HenNi_Analyzers Condition=" '$(PkgBe_HenNi_Analyzers)' == '' ">C:\Users\alexi\.nuget\packages\be.henni.analyzers\1.0.3</PkgBe_HenNi_Analyzers>
   </PropertyGroup>
 </Project>

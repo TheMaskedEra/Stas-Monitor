@@ -3,15 +3,40 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:presentations="clr-namespace:Stas.Monitor.Presentations;assembly=Stas.Monitor.Presentations"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="550" d:DesignHeight="700"
         x:Class="Stas.Monitor.Views.MainWindow"
         Title="UE36 - Stas Monitor - Alexis Vanden Broeck"
-        Width="550" Height="700" CanResize="False"
+        Width="550" Height="700" CanResize="True"
         >
-    <ScrollViewer Margin="10">
+    <ScrollViewer>
         <StackPanel>
-            <TextBlock Text="Thermomètres disponibles :" Margin="0 0 5 5"/>
-            <ComboBox x:Name="ListName"/>
+            <Expander Width="550" IsExpanded="true">
+                <Expander.Header>
+                    Display Settings
+                </Expander.Header>
+                <StackPanel Orientation="Horizontal">
+                    
+                    <StackPanel Orientation="Vertical" Margin="0 0 10 0">
+                        <TextBlock Margin="3">Available Thermometers:</TextBlock>
+                        <ComboBox x:Name="ListName" VerticalAlignment="Center"></ComboBox>
+                    </StackPanel>
+                    
+                    <StackPanel Orientation="Vertical" Margin="0 0 10 0">
+                        <TextBlock Margin="3">Available series:</TextBlock>
+                        <CheckBox IsChecked="True">Temperature</CheckBox>
+                        <CheckBox IsChecked="True">Humidity</CheckBox>
+                    </StackPanel>
+                    
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Margin="3">Duration:</TextBlock>
+                        <ComboBox SelectedIndex="1" VerticalAlignment="Center">
+                            <ComboBoxItem>30 seconds</ComboBoxItem>
+                            <ComboBoxItem>1 minute</ComboBoxItem>
+                            <ComboBoxItem>5 minutes</ComboBoxItem>
+                        </ComboBox>
+                    </StackPanel>
+                </StackPanel>
+            </Expander>
             
             <ListBox x:Name="Measurements">
                 <ListBox.ItemTemplate>
@@ -20,7 +45,7 @@
                             <TextBlock FontSize="40" Text="{Binding Value}"/>
                             <StackPanel>
                                 <TextBlock Text="{Binding Moment}"/>
-                                <TextBlock Text="{Binding ExpectedValue}"></TextBlock>
+                                <TextBlock Text="{Binding ExpectedValue}"/>
                             </StackPanel>
                         </StackPanel>
                     </DataTemplate>
