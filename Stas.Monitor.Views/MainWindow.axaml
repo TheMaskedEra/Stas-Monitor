@@ -40,7 +40,7 @@
             
             <ListBox x:Name="Measurements">
                 <ListBox.ItemTemplate>
-                    <DataTemplate DataType="{x:Type presentations:StatementViewModel}">
+                    <DataTemplate DataType="{x:Type presentations:MeasurementViewModel}">
                         <StackPanel Orientation="Horizontal" Background="{Binding Background}">
                             <TextBlock FontSize="40" Text="{Binding Value}"/>
                             <StackPanel>

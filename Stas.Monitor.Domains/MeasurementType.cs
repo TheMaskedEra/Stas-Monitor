@@ -2,6 +2,6 @@
 
 public enum MeasurementType
 {
-    TEMPERATURE,
-    HUMIDITY
+    Temperature,
+    Humidity,
 }

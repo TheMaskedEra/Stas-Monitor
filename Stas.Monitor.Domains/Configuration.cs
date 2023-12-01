@@ -1,17 +1,16 @@
-﻿using Stas.Monitor.Domains.repository;
+﻿using Stas.Monitor.Domains.Repository;
 
 namespace Stas.Monitor.Domains;
 
-public class Configuration
+public record Configuration
 {
-  private readonly IStatementReader _measurementReader;
-  private readonly IStatementReader _alertReader;
   private readonly ISet<Thermometer> _thermometers;
-  public Configuration(ISet<Thermometer> thermometers, IStatementReader measurementReader, IStatementReader alertReader)
+  private readonly IDictionary<string, string> _connectionData;
+
+  public Configuration(ISet<Thermometer> thermometers, IDictionary<string, string> connectionData)
   {
     _thermometers = thermometers;
-    _measurementReader = measurementReader;
-    _alertReader = alertReader;
+    _connectionData = connectionData;
   }
 
   public ISet<string> Names
@@ -27,18 +26,8 @@ public class Configuration
       return names;
     }
   }
-  public Thermometer? FindThermometer(string name)
-  {
-    return _thermometers.FirstOrDefault(thermometer => thermometer.Name.Equals(name));
-  }
 
-  public IEnumerable<IStatement> GetMeasurement(Thermometer thermometer)
-  {
-    return _measurementReader.GetStatements(thermometer);
-  }
+  public IDictionary<string, string> ConnectionData => _connectionData;
 
-  public IEnumerable<IStatement> GetAlerts(Thermometer thermometer)
-  {
-    return _alertReader.GetStatements(thermometer);
-  }
+  public Thermometer? FindThermometer(string name) => _thermometers.FirstOrDefault(thermometer => thermometer.Name.Equals(name));
 }

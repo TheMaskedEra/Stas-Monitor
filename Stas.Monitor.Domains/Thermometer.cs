@@ -1,22 +1,7 @@
 ﻿namespace Stas.Monitor.Domains;
 
-public class Thermometer : IComparable
+public record Thermometer(string Name) : IComparable
 {
-    private readonly string _name;
-
-    public Thermometer(string name)
-    {
-        _name = name;
-    }
-
-    public string Name => _name;
-
-    public override bool Equals(object? obj)
-    {
-        var thermometer = obj as Thermometer;
-        return thermometer != null && Name.Equals(thermometer.Name);
-    }
-
     public override int GetHashCode() => Name.GetHashCode();
 
     public int CompareTo(object? obj)

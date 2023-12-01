@@ -13,7 +13,7 @@ public class ArchTests
   {
     typeof(App).Assembly,
     typeof(Configuration).Assembly, 
-    typeof(IniConfigurationReader).Assembly,
+    typeof(IniConfigurationRepository).Assembly,
     typeof(MainPresenter).Assembly,
     typeof(MainWindow).Assembly
   };

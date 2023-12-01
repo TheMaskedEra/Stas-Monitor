@@ -1,6 +1,5 @@
 ﻿namespace Stas.Monitor.Domains;
 
-public record Alert(string ThermometerName, DateTime Moment, string ExpectedValue, string ObservedValue) : IStatement
+public record Alert(DateTime Moment, string ExpectedValue) : IStatement
 {
-  
 }

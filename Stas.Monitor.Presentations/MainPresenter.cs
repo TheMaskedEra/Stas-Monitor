@@ -1,24 +1,22 @@
 ﻿using Stas.Monitor.Domains;
+using Stas.Monitor.Domains.Repository;
 using Stas.Monitor.Presentations.IViews;
 
 namespace Stas.Monitor.Presentations;
 
 public class MainPresenter
 {
-  private readonly Configuration _config;
   private readonly IMainView _view;
-  private EventHandler<string> selectedThermometer;
-  
+
   private Thermometer? _currentThermometer;
-  public MainPresenter(Configuration configuration, IMainView view)
+
+  public MainPresenter(IMainView view, IMeasurementRepository measurementRepository, ISet<string> thermometersNames)
   {
-    _config = configuration;
-    
-    _view = view;
-    selectedThermometer = OnSelectThermometer!;
-    _view.SelectedThermometer += selectedThermometer;
-    
-    _view.SetNames(_config.Names);
+      _view = view;
+      EventHandler<string> selectedThermometer = OnSelectThermometer!;
+      _view.SelectedThermometer += selectedThermometer;
+
+      _view.SetNames(thermometersNames);
   }
 
   private void OnSelectThermometer(object sender, string name)
@@ -31,12 +29,12 @@ public class MainPresenter
     _view.ShowMeasurements(viewModels);
   }
 
-  private IEnumerable<StatementViewModel> MergeStatements(List<IStatement> measurements, List<IStatement> alerts)
+  private IEnumerable<MeasurementViewModel> MergeStatements(List<IStatement> measurements, List<IStatement> alerts)
   {
     SortStatements(measurements, alerts);
-    var statementViewModels = ( from Measurement? measurement in measurements select new StatementViewModel(measurement) ).ToList();
+    var statementViewModels = ( from Measurement? measurement in measurements select new MeasurementViewModel(measurement) ).ToList();
 
-    statementViewModels.AddRange(from Alert? alert in alerts select new StatementViewModel(alert));
+    statementViewModels.AddRange(from Alert? alert in alerts select new MeasurementViewModel(alert));
 
     return statementViewModels;
   }
@@ -44,7 +42,7 @@ public class MainPresenter
   private void SortStatements(ICollection<IStatement> measurements, List<IStatement> alerts)
   {
     var measurementsCopy = new List<IStatement>(measurements);
-    foreach (var expectedMeasurement in from expectedMeasurement in measurementsCopy let measurement = (Measurement)expectedMeasurement 
+    foreach (var expectedMeasurement in from expectedMeasurement in measurementsCopy let measurement = (Measurement)expectedMeasurement
              let moment = measurement.Moment from alert in alerts.Cast<Alert>().Where(alert => moment == alert.Moment) select expectedMeasurement)
     {
       measurements.Remove(expectedMeasurement);

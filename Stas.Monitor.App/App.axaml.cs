@@ -7,7 +7,7 @@ using Serilog;
 using Stas.Monitor.Views;
 using ClpNet;
 using ClpNet.Extensions;
-using Stas.Monitor.Domains.repository;
+using Stas.Monitor.Domains.Repository;
 using Stas.Monitor.Infrastructures;
 using Stas.Monitor.Presentations;
 using Stas.Monitor.Presentations.IViews;
@@ -57,8 +57,9 @@ public class App : Application
         throw new ArgumentException("monitor: missing configuration file argument");
       }
 
-      IConfigurationReader reader = new IniConfigurationReader(cmdParser.GetParameterValue("config-file"));
-      var configuration = reader.GetConfiguration();
-      var mainPresenter = new MainPresenter(configuration, view);
+      IConfigurationRepository repository = new IniConfigurationRepository(cmdParser.GetParameterValue("config-file"));
+      var configuration = repository.RetrieveConfiguration();
+      var measurementRepository = new MySqlMeasurementRepository(configuration.ConnectionData);
+      var mainPresenter = new MainPresenter(view, measurementRepository, configuration.Names);
     }
 }
