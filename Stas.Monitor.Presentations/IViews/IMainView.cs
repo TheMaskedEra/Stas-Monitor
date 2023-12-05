@@ -3,6 +3,12 @@
 public interface IMainView
 {
   event EventHandler<string> SelectedThermometer;
-  void SetNames(ISet<string> names);
+
+  event EventHandler<bool> TemperatureCheck;
+
+  event EventHandler<bool> HumidityCheck;
+
+  void SetNames(ISet<string> names); //TODO pourquoi enumerable ?
+
   void ShowMeasurements(IEnumerable<MeasurementViewModel> measures);
 }

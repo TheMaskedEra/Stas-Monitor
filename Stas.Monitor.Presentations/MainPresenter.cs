@@ -7,45 +7,40 @@ namespace Stas.Monitor.Presentations;
 public class MainPresenter
 {
   private readonly IMainView _view;
-
-  private Thermometer? _currentThermometer;
+  private readonly IMeasurementRepository _measurementRepository;
 
   public MainPresenter(IMainView view, IMeasurementRepository measurementRepository, ISet<string> thermometersNames)
   {
       _view = view;
+      _measurementRepository = measurementRepository;
+
       EventHandler<string> selectedThermometer = OnSelectThermometer!;
       _view.SelectedThermometer += selectedThermometer;
+
+      EventHandler<bool> temperatureCheck = OnTemperatureChecked!;
+      _view.TemperatureCheck += temperatureCheck;
+
+      EventHandler<bool> humidityCheck = OnHumidityChecked!;
+      _view.HumidityCheck += humidityCheck;
 
       _view.SetNames(thermometersNames);
   }
 
   private void OnSelectThermometer(object sender, string name)
   {
-    _currentThermometer = _config.FindThermometer(name)!;
-    var measurements = _config.GetMeasurement(_currentThermometer);
-    var alerts = _config.GetAlerts(_currentThermometer);
+    var measurements = _measurementRepository.GetMeasurementsByThermometer(name, "temperature");
+    var viewModels = measurements.Select(measurement => new MeasurementViewModel(measurement)).ToList();
 
-    var viewModels = MergeStatements(measurements.ToList(), alerts.ToList());
     _view.ShowMeasurements(viewModels);
   }
 
-  private IEnumerable<MeasurementViewModel> MergeStatements(List<IStatement> measurements, List<IStatement> alerts)
+  private void OnTemperatureChecked(object sender, bool value)
   {
-    SortStatements(measurements, alerts);
-    var statementViewModels = ( from Measurement? measurement in measurements select new MeasurementViewModel(measurement) ).ToList();
-
-    statementViewModels.AddRange(from Alert? alert in alerts select new MeasurementViewModel(alert));
-
-    return statementViewModels;
+      Console.WriteLine(value ? "Temperature checked" : "Temperature Unchecked");
   }
 
-  private void SortStatements(ICollection<IStatement> measurements, List<IStatement> alerts)
+  private void OnHumidityChecked(object sender, bool value)
   {
-    var measurementsCopy = new List<IStatement>(measurements);
-    foreach (var expectedMeasurement in from expectedMeasurement in measurementsCopy let measurement = (Measurement)expectedMeasurement
-             let moment = measurement.Moment from alert in alerts.Cast<Alert>().Where(alert => moment == alert.Moment) select expectedMeasurement)
-    {
-      measurements.Remove(expectedMeasurement);
-    }
+      Console.WriteLine(value ? "Humidity checked" : "Humidity Unchecked");
   }
 }

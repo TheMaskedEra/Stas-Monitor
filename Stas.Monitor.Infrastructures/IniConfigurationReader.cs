@@ -3,11 +3,11 @@ using Stas.Monitor.Domains.Repository;
 
 namespace Stas.Monitor.Infrastructures;
 
-public class IniConfigurationRepository : IConfigurationRepository
+public class IniConfigurationReader : IConfigurationReader
 {
     private readonly string _filePath;
 
-    public IniConfigurationRepository(string filePath)
+    public IniConfigurationReader(string filePath)
     {
         _filePath = filePath;
     }
@@ -17,11 +17,11 @@ public class IniConfigurationRepository : IConfigurationRepository
         var dataExtractor = new IniDataExtractor();
         var data = dataExtractor.ExtractData(_filePath);
 
-        var thermometers = new HashSet<Thermometer>();
+        var thermometers = new HashSet<string>();
         var thermometerValues = data["thermometers"].Values;
         foreach (var thermometer in thermometerValues)
         {
-          thermometers.Add(new Thermometer(thermometer));
+          thermometers.Add(thermometer);
         }
 
         var databaseValues = data["database"];

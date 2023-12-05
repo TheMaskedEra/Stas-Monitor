@@ -1,6 +1,6 @@
 ﻿namespace Stas.Monitor.Domains.Repository;
 
-public interface IConfigurationRepository
+public interface IConfigurationReader
 {
   Configuration RetrieveConfiguration();
 }

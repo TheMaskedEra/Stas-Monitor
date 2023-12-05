@@ -57,9 +57,9 @@ public class App : Application
         throw new ArgumentException("monitor: missing configuration file argument");
       }
 
-      IConfigurationRepository repository = new IniConfigurationRepository(cmdParser.GetParameterValue("config-file"));
+      IConfigurationReader repository = new IniConfigurationReader(cmdParser.GetParameterValue("config-file"));
       var configuration = repository.RetrieveConfiguration();
       var measurementRepository = new MySqlMeasurementRepository(configuration.ConnectionData);
-      var mainPresenter = new MainPresenter(view, measurementRepository, configuration.Names);
+      var mainPresenter = new MainPresenter(view, measurementRepository, configuration.ThermometerNames);
     }
 }

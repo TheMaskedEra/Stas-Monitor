@@ -9,6 +9,9 @@ namespace Stas.Monitor.Views;
 public partial class MainWindow : Window, IMainView
 {
   public event EventHandler<string>? SelectedThermometer;
+  public event EventHandler<bool>? TemperatureCheck;
+  public event EventHandler<bool>? HumidityCheck;
+  //TODO Delegate for events
   public MainWindow()
   {
     InitializeComponent();
@@ -17,6 +20,14 @@ public partial class MainWindow : Window, IMainView
       OnSelectedThermometer((string) ListName.SelectedItem!);
     };
 
+    Temperature.IsCheckedChanged += (sender, args) =>
+    {
+        OnTemperatureCheckedChanged((bool)Temperature.IsChecked!);
+    };
+    Humidity.IsCheckedChanged += (sender, args) =>
+    {
+        OnHumidityCheckedChanged((bool) Humidity.IsChecked!);
+    };
   }
   public void SetNames(ISet<string> names)
   {
@@ -27,8 +38,8 @@ public partial class MainWindow : Window, IMainView
 
   public void ShowMeasurements(IEnumerable<MeasurementViewModel> measures) => Measurements.ItemsSource = measures;
 
-  private void OnSelectedThermometer(string e)
-  {
-    SelectedThermometer?.Invoke(this, e);
-  }
+  private void OnSelectedThermometer(string e) => SelectedThermometer?.Invoke(this, e);
+
+  private void OnTemperatureCheckedChanged(bool value) => TemperatureCheck?.Invoke(this, value);
+  private void OnHumidityCheckedChanged(bool value) => HumidityCheck?.Invoke(this, value);
 }

@@ -23,8 +23,8 @@
                     
                     <StackPanel Orientation="Vertical" Margin="0 0 10 0">
                         <TextBlock Margin="3">Available series:</TextBlock>
-                        <CheckBox IsChecked="True">Temperature</CheckBox>
-                        <CheckBox IsChecked="True">Humidity</CheckBox>
+                        <CheckBox IsChecked="True" x:Name="Temperature">Temperature</CheckBox>
+                        <CheckBox IsChecked="True" x:Name="Humidity">Humidity</CheckBox>
                     </StackPanel>
                     
                     <StackPanel Orientation="Vertical">
