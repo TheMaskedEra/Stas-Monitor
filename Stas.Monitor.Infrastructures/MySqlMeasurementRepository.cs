@@ -8,8 +8,9 @@ namespace Stas.Monitor.Infrastructures;
 public class MySqlMeasurementRepository : IMeasurementRepository
 {
     private readonly string _connectionString;
+    private readonly IAlertRepository _alertRepository;
 
-    public MySqlMeasurementRepository(IDictionary<string, string> connectionData)
+    public MySqlMeasurementRepository(IDictionary<string, string> connectionData, IAlertRepository alertRepository)
     {
         var host = connectionData["host"];
         var port = connectionData["port"];
@@ -17,6 +18,39 @@ public class MySqlMeasurementRepository : IMeasurementRepository
         var user = connectionData["user"];
         var password = connectionData["password"];
         _connectionString = $"Server={host};Database={database};User={user};Password={password};Port={port};";
+        _alertRepository = alertRepository;
+    }
+
+    public IEnumerable<string> GetMeasurementTypesFromThermometer(string thermometer)
+    {
+        using (var connection = new MySqlConnection(_connectionString))
+        {
+            try
+            {
+                const string query = "SELECT DISTINCT type " +
+                                     "FROM Measurements " +
+                                     "WHERE room = @thermometer";
+                var types = new List<string>();
+                connection.Open();
+                using (var command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("thermometer", thermometer);
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            //TODO
+                        }
+
+                        return types;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw new CannotRetrieveMeasurementTypesException("Stas : Something went wrong while trying to retrieve measurement types : " + e.Message);
+            }
+        }
     }
 
     public IEnumerable<Measurement> GetMeasurementsByThermometer(string thermometer, string type)
@@ -38,7 +72,7 @@ public class MySqlMeasurementRepository : IMeasurementRepository
                     {
                         while (reader.Read())
                         {
-
+                            //TODO
                         }
 
                         return measurements;

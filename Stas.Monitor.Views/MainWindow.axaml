@@ -21,10 +21,8 @@
                         <ComboBox x:Name="ListName" VerticalAlignment="Center"></ComboBox>
                     </StackPanel>
                     
-                    <StackPanel Orientation="Vertical" Margin="0 0 10 0">
+                    <StackPanel x:Name="CheckBoxTypes" Orientation="Vertical" Margin="0 0 10 0">
                         <TextBlock Margin="3">Available series:</TextBlock>
-                        <CheckBox IsChecked="True" x:Name="Temperature">Temperature</CheckBox>
-                        <CheckBox IsChecked="True" x:Name="Humidity">Humidity</CheckBox>
                     </StackPanel>
                     
                     <StackPanel Orientation="Vertical">
@@ -38,19 +36,22 @@
                 </StackPanel>
             </Expander>
             
-            <ListBox x:Name="Measurements">
-                <ListBox.ItemTemplate>
-                    <DataTemplate DataType="{x:Type presentations:MeasurementViewModel}">
-                        <StackPanel Orientation="Horizontal" Background="{Binding Background}">
-                            <TextBlock FontSize="40" Text="{Binding Value}"/>
-                            <StackPanel>
-                                <TextBlock Text="{Binding Moment}"/>
-                                <TextBlock Text="{Binding ExpectedValue}"/>
+            <StackPanel Orientation="Horizontal" x:Name="Measurements">
+                <!--
+                <ListBox x:Name="Measurements">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate DataType="{x:Type presentations:MeasurementViewModel}">
+                            <StackPanel Orientation="Horizontal" Background="{Binding Background}">
+                                <TextBlock FontSize="40" Text="{Binding Value}"/>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Moment}"/>
+                                    <TextBlock Text="{Binding ExpectedValue}"/>
+                                </StackPanel>
                             </StackPanel>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox> -->
+            </StackPanel>
         </StackPanel>
     </ScrollViewer>
 </Window>

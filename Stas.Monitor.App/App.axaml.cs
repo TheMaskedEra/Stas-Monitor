@@ -59,7 +59,8 @@ public class App : Application
 
       IConfigurationReader repository = new IniConfigurationReader(cmdParser.GetParameterValue("config-file"));
       var configuration = repository.RetrieveConfiguration();
-      var measurementRepository = new MySqlMeasurementRepository(configuration.ConnectionData);
+      var alertRepository = new MySqlAlertRepository(configuration.ConnectionData);
+      var measurementRepository = new MySqlMeasurementRepository(configuration.ConnectionData, alertRepository);
       var mainPresenter = new MainPresenter(view, measurementRepository, configuration.ThermometerNames);
     }
 }

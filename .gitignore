@@ -1,5 +1,3 @@
 .idea
-/bin/
-/obj/
-/packages/
-riderModule.iml
+**/bin
+**/obj

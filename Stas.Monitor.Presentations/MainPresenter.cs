@@ -17,30 +17,23 @@ public class MainPresenter
       EventHandler<string> selectedThermometer = OnSelectThermometer!;
       _view.SelectedThermometer += selectedThermometer;
 
-      EventHandler<bool> temperatureCheck = OnTemperatureChecked!;
-      _view.TemperatureCheck += temperatureCheck;
-
-      EventHandler<bool> humidityCheck = OnHumidityChecked!;
-      _view.HumidityCheck += humidityCheck;
-
       _view.SetNames(thermometersNames);
   }
 
   private void OnSelectThermometer(object sender, string name)
   {
-    var measurements = _measurementRepository.GetMeasurementsByThermometer(name, "temperature");
-    var viewModels = measurements.Select(measurement => new MeasurementViewModel(measurement)).ToList();
+      var types = new List<string> { "Temperature", "Humidity" };//_measurementRepository.GetMeasurementTypesFromThermometer(name);
 
-    _view.ShowMeasurements(viewModels);
-  }
+      //TODO
+      foreach (var type in types)
+      {
+          //var measurements = _measurementRepository.GetMeasurementsByThermometer(name, type);
 
-  private void OnTemperatureChecked(object sender, bool value)
-  {
-      Console.WriteLine(value ? "Temperature checked" : "Temperature Unchecked");
-  }
+          //TODO retrieve les alerts non pas pour les measurements mais pour les viewModels ?
+          //var viewModels = measurements.Select(measurement => new MeasurementViewModel(measurement)).ToList();
+          _view.CreateType(type);
+      }
 
-  private void OnHumidityChecked(object sender, bool value)
-  {
-      Console.WriteLine(value ? "Humidity checked" : "Humidity Unchecked");
+      //_view.ShowMeasurements(viewModels);
   }
 }
