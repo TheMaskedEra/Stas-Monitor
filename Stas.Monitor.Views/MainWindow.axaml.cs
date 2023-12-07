@@ -1,4 +1,4 @@
-using System;
+    using System;
 using System.Collections.Generic;
 using Avalonia.Controls;
 using Microsoft.Win32;
@@ -10,7 +10,7 @@ namespace Stas.Monitor.Views;
 public partial class MainWindow : Window, IMainView
 {
   public event EventHandler<string>? SelectedThermometer;
-  //TODO Delegate for events
+
   public MainWindow()
   {
     InitializeComponent();
@@ -25,37 +25,31 @@ public partial class MainWindow : Window, IMainView
     ListName.SelectedIndex = 0;
   }
 
-  public void ShowMeasurements(IEnumerable<MeasurementViewModel> measures)
+  public void CreateType(string typeName, IEnumerable<MeasurementViewModel> measurements)
   {
 
-  } //Measurements.ItemsSource = measures;
+      var measurementList = new MeasurementList(measurements);
 
-  public void CreateType(string typeName)
-  {
-
-      var textBlockName = new TextBlock { Text = typeName };
-
-      var stackBlock = new StackPanel();
-      stackBlock.Children.Add(textBlockName);
-
-      Measurements.Children.Add(stackBlock);
+      MeasurementLists.Children.Add(measurementList);
 
       var checkBox = new CheckBox
       {
           Content = typeName,
           IsChecked = true
       };
+
       checkBox.IsCheckedChanged += (sender, e) =>
       {
-          stackBlock.IsVisible = (bool)checkBox.IsChecked;
+          measurementList.IsVisible = (bool)checkBox.IsChecked;
       };
+
       CheckBoxTypes.Children.Add(checkBox);
   }
 
   private void OnSelectedThermometer(string e)
   {
       CheckBoxTypes.Children.Clear();
-      Measurements.Children.Clear();
-    SelectedThermometer?.Invoke(this, e);
+      MeasurementLists.Children.Clear();
+      SelectedThermometer?.Invoke(this, e);
   }
 }

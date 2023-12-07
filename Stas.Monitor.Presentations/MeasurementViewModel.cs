@@ -1,4 +1,5 @@
-﻿using Stas.Monitor.Domains;
+﻿using System.Globalization;
+using Stas.Monitor.Domains;
 
 namespace Stas.Monitor.Presentations;
 
@@ -11,7 +12,7 @@ public class MeasurementViewModel
     _measurement = measurement;
   }
 
-  public string Value => _measurement.Value;
+  public string Value => _measurement.Value.ToString(CultureInfo.CurrentCulture);
 
   public string Moment => _measurement.Moment.ToString("dddd d MMMM yyyy hh:mm:ss");
 

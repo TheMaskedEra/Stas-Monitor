@@ -1,5 +1,5 @@
 ﻿namespace Stas.Monitor.Domains;
 
-public record Measurement(string Name, DateTime Moment, string Type, string Value, Alert? Alert) : IStatement
+public record Measurement(DateTime Moment, double Value, Alert? Alert)
 {
 }

@@ -25,3 +25,6 @@ build_property.ProjectDir = F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.Views\
 
 [F:/Code/HELMo/AI/Stas.Monitor/Stas.Monitor.Views/MainWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[F:/Code/HELMo/AI/Stas.Monitor/Stas.Monitor.Views/MeasurementList.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml

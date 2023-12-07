@@ -6,7 +6,5 @@ public interface IMainView
 
   void SetNames(ISet<string> names); //TODO pourquoi enumerable ?
 
-  void CreateType(string typeName);
-
-  void ShowMeasurements(IEnumerable<MeasurementViewModel> measures);
+  void CreateType(string typeName, IEnumerable<MeasurementViewModel> measurements);
 }

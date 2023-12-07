@@ -27,13 +27,18 @@ public class MainPresenter
       //TODO
       foreach (var type in types)
       {
-          //var measurements = _measurementRepository.GetMeasurementsByThermometer(name, type);
+          var measurements = new List<Measurement>
+          {
+              new (new DateTime(2023, 12, 6, 23, 55, 00), 18.2, null),
+              new(new DateTime(2023, 12, 6, 23, 55, 02), 18.2, null),
+              new (new DateTime(2023, 12, 6, 23, 55, 04),18.2, null),
+              new (new DateTime(2023, 12, 6, 23, 55, 06), 18.2, null),
+              new (new DateTime(2023, 12, 6, 23, 55, 08), 18.2, null),
+          }; //_measurementRepository.GetMeasurementsByThermometer(name, type);
 
           //TODO retrieve les alerts non pas pour les measurements mais pour les viewModels ?
-          //var viewModels = measurements.Select(measurement => new MeasurementViewModel(measurement)).ToList();
-          _view.CreateType(type);
+          var viewModels = measurements.Select(measurement => new MeasurementViewModel(measurement)).ToList();
+          _view.CreateType(type, viewModels);
       }
-
-      //_view.ShowMeasurements(viewModels);
   }
 }
