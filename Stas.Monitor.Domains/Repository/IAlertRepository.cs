@@ -3,5 +3,5 @@
 public interface IAlertRepository
 {
     //TODO ne pas utiliser ID mais donc measurement ?
-    Alert? RetrieveAlert();
+    Alert? RetrieveAlert(int measurementId);
 }

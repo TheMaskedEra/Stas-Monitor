@@ -7,6 +7,7 @@ namespace Stas.Monitor.Infrastructures;
 
 public class MySqlMeasurementRepository : IMeasurementRepository
 {
+    //TODO Faire singleton ?
     private readonly string _connectionString;
     private readonly IAlertRepository _alertRepository;
 
@@ -39,7 +40,7 @@ public class MySqlMeasurementRepository : IMeasurementRepository
                     {
                         while (reader.Read())
                         {
-                            //TODO
+                            types.Add(reader.GetString(0));
                         }
 
                         return types;
@@ -72,7 +73,11 @@ public class MySqlMeasurementRepository : IMeasurementRepository
                     {
                         while (reader.Read())
                         {
-                            //TODO
+                            var moment = reader.GetDateTime("datetime");
+                            var value = reader.GetDouble("value");
+
+                            var alert = _alertRepository.RetrieveAlert(reader.GetInt32("id"));
+                            measurements.Add(new Measurement(moment, value, alert));
                         }
 
                         return measurements;
@@ -82,31 +87,6 @@ public class MySqlMeasurementRepository : IMeasurementRepository
             catch (Exception e)
             {
                 throw new CannotRetrieveMeasurementException("Stas: Something went wrong while trying to retrieve a measurement : " + e.Message);
-            }
-        }
-    }
-
-    private Alert? RetrieveAlert(int measurementId)
-    {
-        using (var connection = new MySqlConnection(_connectionString))
-        {
-            try
-            {
-                connection.Open();
-                const string query = "SELECT * FROM Alerts WHERE measurement_id = @measurementID";
-                using (var command = new MySqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("measurementID", measurementId);
-                    using (var reader = command.ExecuteReader())
-                    {
-                        //TODO
-                        return null;
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                throw new CannotRetrieveAlertException("Stas : Something went wrong while trying to retrieve an alert : " + e.Message);
             }
         }
     }
