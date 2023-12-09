@@ -1,7 +1,6 @@
-    using System;
+using System;
 using System.Collections.Generic;
 using Avalonia.Controls;
-using Microsoft.Win32;
 using Stas.Monitor.Presentations;
 using Stas.Monitor.Presentations.IViews;
 
@@ -14,10 +13,6 @@ public partial class MainWindow : Window, IMainView
   public MainWindow()
   {
     InitializeComponent();
-    ListName.SelectionChanged += (sender, args) =>
-    {
-      OnSelectedThermometer((string) ListName.SelectedItem!);
-    };
   }
   public void SetNames(ISet<string> names)
   {
@@ -46,10 +41,16 @@ public partial class MainWindow : Window, IMainView
       CheckBoxTypes.Children.Add(checkBox);
   }
 
-  private void OnSelectedThermometer(string e)
+  private void OnSelectedThermometer(object? sender, SelectionChangedEventArgs selectionChangedEventArgs)
   {
+      var thermometer = ListName.SelectedItem?.ToString();
       CheckBoxTypes.Children.Clear();
       MeasurementLists.Children.Clear();
-      SelectedThermometer?.Invoke(this, e);
+      SelectedThermometer?.Invoke(this, thermometer!);
   }
+
+  /*private void OnSelectedTimer(object? sender, SelectionChangedEventArgs e)
+  {
+      throw new NotImplementedException();
+  }*/
 }

@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using System.Data;
+using MySql.Data.MySqlClient;
 using Stas.Monitor.Domains;
 using Stas.Monitor.Domains.Repository;
 using Stas.Monitor.Domains.Repository.Exceptions;
@@ -7,11 +8,9 @@ namespace Stas.Monitor.Infrastructures;
 
 public class MySqlMeasurementRepository : IMeasurementRepository
 {
-    //TODO Faire singleton ?
     private readonly string _connectionString;
-    private readonly IAlertRepository _alertRepository;
 
-    public MySqlMeasurementRepository(IDictionary<string, string> connectionData, IAlertRepository alertRepository)
+    public MySqlMeasurementRepository(IDictionary<string, string> connectionData)
     {
         var host = connectionData["host"];
         var port = connectionData["port"];
@@ -19,7 +18,6 @@ public class MySqlMeasurementRepository : IMeasurementRepository
         var user = connectionData["user"];
         var password = connectionData["password"];
         _connectionString = $"Server={host};Database={database};User={user};Password={password};Port={port};";
-        _alertRepository = alertRepository;
     }
 
     public IEnumerable<string> GetMeasurementTypesFromThermometer(string thermometer)
@@ -60,9 +58,7 @@ public class MySqlMeasurementRepository : IMeasurementRepository
         {
             try
             {
-                const string query = "SELECT * FROM Measurements " +
-                                     "WHERE room = @thermometer AND type = @type " +
-                                     "ORDER BY datetime DESC";
+                var query = Query;
                 var measurements = new List<Measurement>();
                 connection.Open();
                 using (var command = new MySqlCommand(query, connection))
@@ -73,10 +69,16 @@ public class MySqlMeasurementRepository : IMeasurementRepository
                     {
                         while (reader.Read())
                         {
+                            Alert? alert = null;
+                            if (!reader.IsDBNull("expected_value"))
+                            {
+                                var expectedValue = reader.GetDouble("expected_value");
+                                alert = new Alert(expectedValue);
+                            }
+
                             var moment = reader.GetDateTime("datetime");
                             var value = reader.GetDouble("value");
 
-                            var alert = _alertRepository.RetrieveAlert(reader.GetInt32("id"));
                             measurements.Add(new Measurement(moment, value, alert));
                         }
 
@@ -88,6 +90,19 @@ public class MySqlMeasurementRepository : IMeasurementRepository
             {
                 throw new CannotRetrieveMeasurementException("Stas: Something went wrong while trying to retrieve a measurement : " + e.Message);
             }
+        }
+    }
+
+    private static string Query
+    {
+        get
+        {
+            const string query = "SELECT m.*, a.expected_value " +
+                                 "FROM Measurements m " +
+                                 "LEFT jOIN Alerts a ON m.id = a.measurement_id " +
+                                 "WHERE room = @thermometer AND type = @type " +
+                                 "ORDER BY datetime DESC";
+            return query;
         }
     }
 }

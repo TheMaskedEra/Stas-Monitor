@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "d+8IqWnk6ZyOBZ7QfyTYFrYp1uRa8fDYvmhLwaAYzvyy1hY+Fqmi2d0Sv88yviYiUkR/4qHtbybkF5JFkZ/0bg==",
+  "dgSpecHash": "XZRLZlkYFtjmHyOfN4ch4Q4jR35u2KHjv+weLc5Ls7glYN0tSdfm9UrbTVKWYyO2vWAXaqBFex63uRvgRSwt+g==",
   "success": true,
-  "projectFilePath": "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Domains.Tests\\Stas.Monitor.Domains.Tests.csproj",
+  "projectFilePath": "D:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Domains.Tests\\Stas.Monitor.Domains.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\alexi\\.nuget\\packages\\be.henni.analyzers\\1.0.3\\be.henni.analyzers.1.0.3.nupkg.sha512",
     "C:\\Users\\alexi\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",

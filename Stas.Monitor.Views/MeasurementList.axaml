@@ -4,17 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:presentations="clr-namespace:Stas.Monitor.Presentations;assembly=Stas.Monitor.Presentations"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="Stas.Monitor.Views.MeasurementList">
+             x:Class="Stas.Monitor.Views.MeasurementList"
+             >
+    
     <ListBox x:Name="Measurements">
         <ListBox.ItemTemplate>
-            <DataTemplate DataType="{x:Type presentations:MeasurementViewModel}">
+            <DataTemplate x:DataType="presentations:MeasurementViewModel">
                 <StackPanel Orientation="Horizontal" Background="{Binding Background}">
-                    <TextBlock FontSize="40" Text="{Binding Value}"/>
-                    
-                    <StackPanel>
-                        <TextBlock Text="{Binding Moment}"/>
-                        <TextBlock Text="{Binding ExpectedValue}"/>
-                    </StackPanel>
+                    <TextBlock Text="{Binding Value}"/>
                 </StackPanel>
             </DataTemplate>
         </ListBox.ItemTemplate>

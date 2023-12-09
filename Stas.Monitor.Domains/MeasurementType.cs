@@ -21,9 +21,9 @@ public class MeasurementTypeDetails
         switch (type)
         {
             case MeasurementType.TEMPERATURE:
-                return new MeasurementTypeDetails("temperature");
+                return new MeasurementTypeDetails("Temperature");
             case MeasurementType.HUMIDITY:
-                return new MeasurementTypeDetails("humidity");
+                return new MeasurementTypeDetails("Humidity");
             default:
                 throw new ArgumentException("Invalid MeasurementType");
         }

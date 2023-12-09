@@ -14,11 +14,11 @@
                 <Expander.Header>
                     Display Settings
                 </Expander.Header>
-                <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     
                     <StackPanel Orientation="Vertical" Margin="0 0 10 0">
                         <TextBlock Margin="3">Available Thermometers:</TextBlock>
-                        <ComboBox x:Name="ListName" VerticalAlignment="Center"></ComboBox>
+                        <ComboBox x:Name="ListName" VerticalAlignment="Center" SelectionChanged="OnSelectedThermometer"></ComboBox>
                     </StackPanel>
                     
                     <StackPanel x:Name="CheckBoxTypes" Orientation="Vertical" Margin="0 0 10 0">
