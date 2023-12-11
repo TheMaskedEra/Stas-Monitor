@@ -1,45 +1,47 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.App.Tests\\Stas.Monitor.App.Tests.csproj": {}
+    "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.App.Tests\\Stas.Monitor.App.Tests.csproj": {}
   },
   "projects": {
-    "D:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.App.Tests\\Stas.Monitor.App.Tests.csproj": {
+    "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.App.Tests\\Stas.Monitor.App.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.App.Tests\\Stas.Monitor.App.Tests.csproj",
+        "projectUniqueName": "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.App.Tests\\Stas.Monitor.App.Tests.csproj",
         "projectName": "Stas.Monitor.App.Tests",
-        "projectPath": "D:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.App.Tests\\Stas.Monitor.App.Tests.csproj",
+        "projectPath": "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.App.Tests\\Stas.Monitor.App.Tests.csproj",
         "packagesPath": "C:\\Users\\alexi\\.nuget\\packages\\",
-        "outputPath": "D:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.App.Tests\\obj\\",
+        "outputPath": "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.App.Tests\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\alexi\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\alexi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.App\\Stas.Monitor.App.csproj": {
-                "projectPath": "D:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.App\\Stas.Monitor.App.csproj"
+              "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.App\\Stas.Monitor.App.csproj": {
+                "projectPath": "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.App\\Stas.Monitor.App.csproj"
               },
-              "D:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Domains\\Stas.Monitor.Domains.csproj": {
-                "projectPath": "D:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Domains\\Stas.Monitor.Domains.csproj"
+              "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Domains\\Stas.Monitor.Domains.csproj": {
+                "projectPath": "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Domains\\Stas.Monitor.Domains.csproj"
               },
-              "D:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Infrastructures\\Stas.Monitor.Infrastructures.csproj": {
-                "projectPath": "D:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Infrastructures\\Stas.Monitor.Infrastructures.csproj"
+              "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Infrastructures\\Stas.Monitor.Infrastructures.csproj": {
+                "projectPath": "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Infrastructures\\Stas.Monitor.Infrastructures.csproj"
               },
-              "D:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Presentations\\Stas.Monitor.Presentations.csproj": {
-                "projectPath": "D:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Presentations\\Stas.Monitor.Presentations.csproj"
+              "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Presentations\\Stas.Monitor.Presentations.csproj": {
+                "projectPath": "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Presentations\\Stas.Monitor.Presentations.csproj"
               },
-              "D:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Views\\Stas.Monitor.Views.csproj": {
-                "projectPath": "D:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Views\\Stas.Monitor.Views.csproj"
+              "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Views\\Stas.Monitor.Views.csproj": {
+                "projectPath": "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Views\\Stas.Monitor.Views.csproj"
               }
             }
           }
@@ -99,43 +101,45 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.417\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.App\\Stas.Monitor.App.csproj": {
+    "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.App\\Stas.Monitor.App.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.App\\Stas.Monitor.App.csproj",
+        "projectUniqueName": "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.App\\Stas.Monitor.App.csproj",
         "projectName": "Stas.Monitor.App",
-        "projectPath": "D:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.App\\Stas.Monitor.App.csproj",
+        "projectPath": "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.App\\Stas.Monitor.App.csproj",
         "packagesPath": "C:\\Users\\alexi\\.nuget\\packages\\",
-        "outputPath": "D:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.App\\obj\\",
+        "outputPath": "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.App\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\alexi\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\alexi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Domains\\Stas.Monitor.Domains.csproj": {
-                "projectPath": "D:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Domains\\Stas.Monitor.Domains.csproj"
+              "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Domains\\Stas.Monitor.Domains.csproj": {
+                "projectPath": "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Domains\\Stas.Monitor.Domains.csproj"
               },
-              "D:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Infrastructures\\Stas.Monitor.Infrastructures.csproj": {
-                "projectPath": "D:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Infrastructures\\Stas.Monitor.Infrastructures.csproj"
+              "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Infrastructures\\Stas.Monitor.Infrastructures.csproj": {
+                "projectPath": "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Infrastructures\\Stas.Monitor.Infrastructures.csproj"
               },
-              "D:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Presentations\\Stas.Monitor.Presentations.csproj": {
-                "projectPath": "D:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Presentations\\Stas.Monitor.Presentations.csproj"
+              "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Presentations\\Stas.Monitor.Presentations.csproj": {
+                "projectPath": "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Presentations\\Stas.Monitor.Presentations.csproj"
               },
-              "D:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Views\\Stas.Monitor.Views.csproj": {
-                "projectPath": "D:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Views\\Stas.Monitor.Views.csproj"
+              "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Views\\Stas.Monitor.Views.csproj": {
+                "projectPath": "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Views\\Stas.Monitor.Views.csproj"
               }
             }
           }
@@ -199,26 +203,28 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.417\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Domains\\Stas.Monitor.Domains.csproj": {
+    "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Domains\\Stas.Monitor.Domains.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Domains\\Stas.Monitor.Domains.csproj",
+        "projectUniqueName": "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Domains\\Stas.Monitor.Domains.csproj",
         "projectName": "Stas.Monitor.Domains",
-        "projectPath": "D:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Domains\\Stas.Monitor.Domains.csproj",
+        "projectPath": "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Domains\\Stas.Monitor.Domains.csproj",
         "packagesPath": "C:\\Users\\alexi\\.nuget\\packages\\",
-        "outputPath": "D:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Domains\\obj\\",
+        "outputPath": "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Domains\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\alexi\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\alexi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -270,34 +276,36 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.417\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Infrastructures\\Stas.Monitor.Infrastructures.csproj": {
+    "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Infrastructures\\Stas.Monitor.Infrastructures.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Infrastructures\\Stas.Monitor.Infrastructures.csproj",
+        "projectUniqueName": "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Infrastructures\\Stas.Monitor.Infrastructures.csproj",
         "projectName": "Stas.Monitor.Infrastructures",
-        "projectPath": "D:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Infrastructures\\Stas.Monitor.Infrastructures.csproj",
+        "projectPath": "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Infrastructures\\Stas.Monitor.Infrastructures.csproj",
         "packagesPath": "C:\\Users\\alexi\\.nuget\\packages\\",
-        "outputPath": "D:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Infrastructures\\obj\\",
+        "outputPath": "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Infrastructures\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\alexi\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\alexi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Domains\\Stas.Monitor.Domains.csproj": {
-                "projectPath": "D:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Domains\\Stas.Monitor.Domains.csproj"
+              "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Domains\\Stas.Monitor.Domains.csproj": {
+                "projectPath": "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Domains\\Stas.Monitor.Domains.csproj"
               }
             }
           }
@@ -357,34 +365,36 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.417\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Presentations\\Stas.Monitor.Presentations.csproj": {
+    "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Presentations\\Stas.Monitor.Presentations.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Presentations\\Stas.Monitor.Presentations.csproj",
+        "projectUniqueName": "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Presentations\\Stas.Monitor.Presentations.csproj",
         "projectName": "Stas.Monitor.Presentations",
-        "projectPath": "D:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Presentations\\Stas.Monitor.Presentations.csproj",
+        "projectPath": "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Presentations\\Stas.Monitor.Presentations.csproj",
         "packagesPath": "C:\\Users\\alexi\\.nuget\\packages\\",
-        "outputPath": "D:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Presentations\\obj\\",
+        "outputPath": "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Presentations\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\alexi\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\alexi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Domains\\Stas.Monitor.Domains.csproj": {
-                "projectPath": "D:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Domains\\Stas.Monitor.Domains.csproj"
+              "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Domains\\Stas.Monitor.Domains.csproj": {
+                "projectPath": "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Domains\\Stas.Monitor.Domains.csproj"
               }
             }
           }
@@ -432,34 +442,36 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.417\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Views\\Stas.Monitor.Views.csproj": {
+    "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Views\\Stas.Monitor.Views.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Views\\Stas.Monitor.Views.csproj",
+        "projectUniqueName": "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Views\\Stas.Monitor.Views.csproj",
         "projectName": "Stas.Monitor.Views",
-        "projectPath": "D:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Views\\Stas.Monitor.Views.csproj",
+        "projectPath": "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Views\\Stas.Monitor.Views.csproj",
         "packagesPath": "C:\\Users\\alexi\\.nuget\\packages\\",
-        "outputPath": "D:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Views\\obj\\",
+        "outputPath": "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Views\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\alexi\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\alexi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Presentations\\Stas.Monitor.Presentations.csproj": {
-                "projectPath": "D:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Presentations\\Stas.Monitor.Presentations.csproj"
+              "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Presentations\\Stas.Monitor.Presentations.csproj": {
+                "projectPath": "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Presentations\\Stas.Monitor.Presentations.csproj"
               }
             }
           }
@@ -523,7 +535,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.417\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }

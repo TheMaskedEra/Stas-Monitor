@@ -6,14 +6,21 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Stas.Monitor.Views.MeasurementList"
              >
-    
-    <ListBox x:Name="Measurements">
-        <ListBox.ItemTemplate>
-            <DataTemplate x:DataType="presentations:MeasurementViewModel">
-                <StackPanel Orientation="Horizontal" Background="{Binding Background}">
-                    <TextBlock Text="{Binding Value}"/>
-                </StackPanel>
-            </DataTemplate>
-        </ListBox.ItemTemplate>
-    </ListBox>
+    <StackPanel>
+        <TextBlock x:Name="Title" HorizontalAlignment="Center" FontSize="25"/>
+        <ItemsControl x:Name="Measurements">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate x:DataType="presentations:MeasurementViewModel">
+                    <StackPanel Margin="2" Spacing="5" Orientation="Horizontal" Background="{Binding Background}">
+                        <TextBlock FontSize="35" Text="{Binding Value}"/>
+                    
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="{Binding Moment}"/>
+                            <TextBlock Text="{Binding ExpectedValue}"/>
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </StackPanel>
 </UserControl>

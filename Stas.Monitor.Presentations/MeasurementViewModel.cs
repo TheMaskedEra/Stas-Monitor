@@ -12,7 +12,7 @@ public class MeasurementViewModel
     _measurement = measurement;
   }
 
-  public string Value => _measurement.Value.ToString(CultureInfo.CurrentCulture);
+  public string Value => GetFormattedValue();
 
   public string Moment => _measurement.Moment.ToString("dddd d MMMM yyyy hh:mm:ss");
 
@@ -20,14 +20,26 @@ public class MeasurementViewModel
   {
     get
     {
-      if ( _measurement.Alert != null )
+      if ( _measurement.AlertOffset != null )
       {
-        return "Expected : " + _measurement.Alert.ExpectedValue;
+        return "Expected : " + _measurement.AlertOffset;
       }
 
       return string.Empty;
     }
   }
 
-  public string? Background => _measurement.Alert != null ? "blue" : null;
+  public string? Background => _measurement.AlertOffset != null ? "blue" : null;
+
+  private string GetFormattedValue()
+  {
+      var format = _measurement.Type switch
+      {
+          "Temperature" => "00.0°C",
+          "Humidity" => "00%",
+          _ => string.Empty
+      };
+
+      return _measurement.Value.ToString(format);
+  }
 }

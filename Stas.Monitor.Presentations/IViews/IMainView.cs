@@ -4,7 +4,9 @@ public interface IMainView
 {
   event EventHandler<string> SelectedThermometer;
 
-  void SetNames(ISet<string> names); //TODO pourquoi enumerable ?
+  event EventHandler<string> SelectedTimer;
+
+  void SetupSettings(IEnumerable<string> names, IEnumerable<string> timers);
 
   void CreateType(string typeName, IEnumerable<MeasurementViewModel> measurements);
 }

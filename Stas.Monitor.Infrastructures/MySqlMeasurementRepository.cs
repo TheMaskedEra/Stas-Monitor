@@ -52,7 +52,7 @@ public class MySqlMeasurementRepository : IMeasurementRepository
         }
     }
 
-    public IEnumerable<Measurement> GetMeasurementsByThermometer(string thermometer, string type)
+    public IEnumerable<Measurement> GetMeasurementsByThermometer(string thermometer, string type, int limit)
     {
         using (var connection = new MySqlConnection(_connectionString))
         {
@@ -65,21 +65,21 @@ public class MySqlMeasurementRepository : IMeasurementRepository
                 {
                     command.Parameters.AddWithValue("thermometer", thermometer);
                     command.Parameters.AddWithValue("type", type);
+                    command.Parameters.AddWithValue("limit", limit);
                     using (var reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            Alert? alert = null;
+                            double? expectedValue = null;
                             if (!reader.IsDBNull("expected_value"))
                             {
-                                var expectedValue = reader.GetDouble("expected_value");
-                                alert = new Alert(expectedValue);
+                                expectedValue = reader.GetDouble("expected_value");
                             }
 
                             var moment = reader.GetDateTime("datetime");
                             var value = reader.GetDouble("value");
 
-                            measurements.Add(new Measurement(moment, value, alert));
+                            measurements.Add(new Measurement(type, moment, value, expectedValue));
                         }
 
                         return measurements;
@@ -93,16 +93,10 @@ public class MySqlMeasurementRepository : IMeasurementRepository
         }
     }
 
-    private static string Query
-    {
-        get
-        {
-            const string query = "SELECT m.*, a.expected_value " +
-                                 "FROM Measurements m " +
-                                 "LEFT jOIN Alerts a ON m.id = a.measurement_id " +
-                                 "WHERE room = @thermometer AND type = @type " +
-                                 "ORDER BY datetime DESC";
-            return query;
-        }
-    }
+    private static string Query =>
+        "SELECT m.value, m.datetime, a.expected_value " +
+        "FROM Measurements m " +
+        "LEFT jOIN Alerts a ON m.id = a.measurement_id " +
+        "WHERE room = @thermometer AND type = @type " + //AND m.datetime >= NOW() - INTERVAL @limit SECOND " +
+        "ORDER BY datetime DESC";
 }

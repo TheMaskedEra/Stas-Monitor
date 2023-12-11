@@ -28,16 +28,14 @@
                     
                     <StackPanel Orientation="Vertical">
                         <TextBlock Margin="3">Duration:</TextBlock>
-                        <ComboBox SelectedIndex="1" VerticalAlignment="Center">
-                            <ComboBoxItem>30 seconds</ComboBoxItem>
-                            <ComboBoxItem>1 minute</ComboBoxItem>
-                            <ComboBoxItem>5 minutes</ComboBoxItem>
-                        </ComboBox>
+                        <ComboBox x:Name="Timers" VerticalAlignment="Center" SelectionChanged="Timers_OnSelectionChanged"/>
                     </StackPanel>
                 </StackPanel>
             </Expander>
-            
-            <StackPanel Orientation="Horizontal" x:Name="MeasurementLists">
+            <ItemsControl>
+                
+            </ItemsControl>
+            <StackPanel Orientation="Horizontal" Spacing="10" x:Name="MeasurementLists">
                 <!-- Dynamic measurement list -->
             </StackPanel>
         </StackPanel>

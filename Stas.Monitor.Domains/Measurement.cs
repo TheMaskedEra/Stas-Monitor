@@ -1,3 +1,3 @@
 ﻿namespace Stas.Monitor.Domains;
 
-public record Measurement(DateTime Moment, double Value, Alert? Alert);
+public record Measurement(string Type, DateTime Moment, double Value, double? AlertOffset);

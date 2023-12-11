@@ -35,21 +35,22 @@ public class App : Application
         {
 
             _mainWindow = new MainWindow();
-            SetupApp(desktop.Args ?? Array.Empty<string>(), _mainWindow);
+            var mainPresenter = SetupApp(desktop.Args ?? Array.Empty<string>(), _mainWindow);
 
             desktop.MainWindow = _mainWindow;
 
             DispatcherTimer.Run(() =>
             {
+                mainPresenter.CheckForUpdates();
                 Log.Logger.Information("You should starts checking for file updates here");
                 return true;
-            }, TimeSpan.FromSeconds(1));
+            }, TimeSpan.FromSeconds(5));
         }
 
         base.OnFrameworkInitializationCompleted();
     }
 
-    private void SetupApp(string[] args, IMainView view)
+    private MainPresenter SetupApp(string[] args, IMainView view)
     {
       var cmdParser = new CommandLineParser(args);
       if ( !cmdParser.HasParameter("config-file") || string.IsNullOrEmpty(cmdParser.GetParameterValue("config-file")))
@@ -60,6 +61,6 @@ public class App : Application
       IConfigurationReader repository = new IniConfigurationReader(cmdParser.GetParameterValue("config-file"));
       var configuration = repository.RetrieveConfiguration();
       var measurementRepository = new MySqlMeasurementRepository(configuration.Data);
-      var mainPresenter = new MainPresenter(view, measurementRepository, configuration.ThermometerNames);
+      return new MainPresenter(view, measurementRepository, configuration.ThermometerNames);
     }
 }
