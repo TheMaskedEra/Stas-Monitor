@@ -1,4 +1,5 @@
 using System;
+using System.Data.Common;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
@@ -7,6 +8,7 @@ using Serilog;
 using Stas.Monitor.Views;
 using ClpNet;
 using ClpNet.Extensions;
+using MySql.Data.MySqlClient;
 using Stas.Monitor.Domains.Repository;
 using Stas.Monitor.Infrastructures;
 using Stas.Monitor.Presentations;
@@ -60,7 +62,12 @@ public class App : Application
 
       IConfigurationReader repository = new IniConfigurationReader(cmdParser.GetParameterValue("config-file"));
       var configuration = repository.RetrieveConfiguration();
-      var measurementRepository = new MySqlMeasurementRepository(configuration.Data);
+
+      DbProviderFactories.RegisterFactory("MySql.Data.MySqlClient", MySqlClientFactory.Instance);
+      var sqlFactory = DbProviderFactories.GetFactory("MySql.Data.MySqlClient");
+      var queries = new MySqlQueries();
+      var measurementRepository = new MeasurementRepository(sqlFactory, queries, configuration.Data);
+
       return new MainPresenter(view, measurementRepository, configuration.ThermometerNames);
     }
 }

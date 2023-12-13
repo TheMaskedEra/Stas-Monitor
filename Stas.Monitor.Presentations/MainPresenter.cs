@@ -31,7 +31,7 @@ public class MainPresenter
 
   public void CheckForUpdates()
   {
-      throw new NotImplementedException();
+      Console.WriteLine("BD source updated");
   }
 
   private void OnSelectThermometer(object? sender, string name)

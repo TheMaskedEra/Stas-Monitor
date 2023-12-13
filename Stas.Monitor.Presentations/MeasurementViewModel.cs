@@ -37,7 +37,7 @@ public class MeasurementViewModel
       {
           "Temperature" => "00.0°C",
           "Humidity" => "00%",
-          _ => string.Empty
+          _ => string.Empty,
       };
 
       return _measurement.Value.ToString(format);
