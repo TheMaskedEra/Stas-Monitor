@@ -2,6 +2,7 @@
 
 public class IniDataExtractor
 {
+    //TODO Static class ?
     public IDictionary<string, IDictionary<string, string>> ExtractData(string filePath)
     {
         var iniData = new Dictionary<string, IDictionary<string, string>>();

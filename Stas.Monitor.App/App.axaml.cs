@@ -37,13 +37,13 @@ public class App : Application
         {
 
             _mainWindow = new MainWindow();
-            var mainPresenter = SetupApp(desktop.Args ?? Array.Empty<string>(), _mainWindow);
+            var presenter = SetupApp(desktop.Args ?? Array.Empty<string>(), _mainWindow);
 
             desktop.MainWindow = _mainWindow;
 
             DispatcherTimer.Run(() =>
             {
-                mainPresenter.CheckForUpdates();
+                presenter.RefreshLists();
                 Log.Logger.Information("You should starts checking for file updates here");
                 return true;
             }, TimeSpan.FromSeconds(5));
@@ -68,6 +68,9 @@ public class App : Application
       var queries = new MySqlQueries();
       var measurementRepository = new MeasurementRepository(sqlFactory, queries, configuration.Data);
 
-      return new MainPresenter(view, measurementRepository, configuration.ThermometerNames);
+      var measurementPresenter = new MeasurementPresenter(measurementRepository);
+      var mainPresenter = new MainPresenter(view, measurementPresenter, configuration.ThermometerNames, configuration.Timers);
+
+      return mainPresenter;
     }
 }

@@ -1,50 +1,41 @@
-﻿using Stas.Monitor.Domains;
-using Stas.Monitor.Domains.Repository;
-using Stas.Monitor.Presentations.IViews;
+﻿using Stas.Monitor.Presentations.IViews;
 
 namespace Stas.Monitor.Presentations;
 
 public class MainPresenter
 {
   private readonly IMainView _view;
-  private readonly IMeasurementRepository _measurementRepository;
-  private readonly IDictionary<string, int> timers;
-  public int CurrentTimer { get; set; }
+  private readonly MeasurementPresenter _measurementPresenter; //TODO ???
 
-  public MainPresenter(IMainView view, IMeasurementRepository measurementRepository, ISet<string> thermometersNames)
+  public MainPresenter(IMainView view, MeasurementPresenter measurementPresenter, IEnumerable<string> thermometersNames, IEnumerable<TimeSpan> timers)
   {
       _view = view;
-      _measurementRepository = measurementRepository;
+      _measurementPresenter = measurementPresenter;
 
       _view.SelectedThermometer += OnSelectThermometer;
 
       _view.SelectedTimer += (sender, e) =>
       {
-          CurrentTimer = timers[e];
+          _measurementPresenter.CurrentTimeSpan = TimeSpan.FromSeconds(e);
       };
 
-      //TODO c'est pas à config de le faire ?
-      timers = new Dictionary<string, int> { { "30 seconds", 30 }, { "1 minute", 60 }, { "5 minutes", 300 } };
-
-      _view.SetupSettings(thermometersNames, timers.Keys);
-  }
-
-  public void CheckForUpdates()
-  {
-      Console.WriteLine("BD source updated");
+      _view.SetupSettings(thermometersNames, SetupTimeSpans(timers));
   }
 
   private void OnSelectThermometer(object? sender, string name)
   {
-      var types = _measurementRepository.GetMeasurementTypesFromThermometer(name);
+      _measurementPresenter.CurrentThermometer = name;
+      var thermometerMeasurements = _measurementPresenter.RetrieveThermometerMeasurements();
 
-      foreach (var type in types)
-      {
-          var measurements = _measurementRepository.GetMeasurementsByThermometer(name, type, CurrentTimer);
-
-          var viewModels = measurements.Select(measurement => new MeasurementViewModel(measurement)).ToList();
-          _view.CreateType(type, viewModels);
-      }
+      _view.GenerateThermometerSettings(thermometerMeasurements);
   }
+
+  public void RefreshLists()
+  {
+      //TODO
+      Console.WriteLine("Lists updated");
+  }
+
+  private IList<(int Value, string DisplayText)> SetupTimeSpans(IEnumerable<TimeSpan> timeSpan) => timeSpan.Select(timer => ((int)timer.TotalSeconds, TimeSpanFormatter.ToString(timer))).ToList();
 }
 

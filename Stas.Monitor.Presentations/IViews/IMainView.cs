@@ -4,9 +4,11 @@ public interface IMainView
 {
   event EventHandler<string> SelectedThermometer;
 
-  event EventHandler<string> SelectedTimer;
+  event EventHandler<int> SelectedTimer;
 
-  void SetupSettings(IEnumerable<string> names, IEnumerable<string> timers);
+  IDictionary<string, IList<MeasurementViewModel>> MeasurementLists { get; set; } //TODO reaction event ou trop mvvm ?
 
-  void CreateType(string typeName, IEnumerable<MeasurementViewModel> measurements);
+  void SetupSettings(IEnumerable<string> names, IList<(int Value, string DisplaySettings)> timers);
+
+  void GenerateThermometerSettings(IDictionary<string, IEnumerable<MeasurementViewModel>> measurements);
 }

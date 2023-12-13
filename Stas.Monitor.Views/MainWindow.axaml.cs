@@ -10,13 +10,17 @@ public partial class MainWindow : Window, IMainView
 {
   public event EventHandler<string>? SelectedThermometer;
 
-  public event EventHandler<string>? SelectedTimer;
+  public event EventHandler<int>? SelectedTimer;
+
+  public IDictionary<string, IList<MeasurementViewModel>> MeasurementLists { get; set; } //TODO donner des valeurs par défaut ?
 
   public MainWindow()
   {
     InitializeComponent();
+
+    MeasurementLists = new Dictionary<string, IList<MeasurementViewModel>>();
   }
-  public void SetupSettings(IEnumerable<string> names, IEnumerable<string> timers)
+  public void SetupSettings(IEnumerable<string> names, IList<(int Value, string DisplaySettings)> timers)
   {
     ListName.ItemsSource = names;
     ListName.SelectedIndex = 0;
@@ -25,37 +29,44 @@ public partial class MainWindow : Window, IMainView
     Timers.SelectedIndex = 1;
   }
 
-  public void CreateType(string typeName, IEnumerable<MeasurementViewModel> measurements)
+  public void GenerateThermometerSettings(IDictionary<string, IEnumerable<MeasurementViewModel>> measurements)
   {
+      Lists.Children.Clear();
+      CheckBoxTypes.Children.Clear();
 
-      var measurementList = new MeasurementList(measurements, typeName);
-
-      MeasurementLists.Children.Add(measurementList);
-
-      var checkBox = new CheckBox
+      foreach (var type in measurements.Keys)
       {
-          Content = typeName,
-          IsChecked = true
-      };
+          var measurementList = new MeasurementList(measurements[type], type);
 
-      checkBox.IsCheckedChanged += (sender, e) =>
-      {
-          measurementList.IsVisible = (bool)checkBox.IsChecked;
-      };
+          var checkBox = new CheckBox
+          {
+              Content = type,
+              IsChecked = true
+          };
 
-      CheckBoxTypes.Children.Add(checkBox);
+          checkBox.IsCheckedChanged += (sender, e) =>
+          {
+              measurementList.IsVisible = (bool)checkBox.IsChecked;
+          };
+
+          Lists.Children.Add(measurementList);
+
+          CheckBoxTypes.Children.Add(checkBox);
+      }
   }
 
-  private void OnSelectedThermometer(object? sender, SelectionChangedEventArgs selectionChangedEventArgs)
+  private void OnSelectedThermometer(object? sender, SelectionChangedEventArgs args)
   {
-      var thermometer = ListName.SelectedItem?.ToString();
-      CheckBoxTypes.Children.Clear();
-      MeasurementLists.Children.Clear();
+      var thermometer = args.AddedItems[0]!.ToString();
+      //TODO verify null
+
       SelectedThermometer?.Invoke(this, thermometer!);
   }
   private void Timers_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
   {
-      var timer = Timers.SelectedItem?.ToString();
-      SelectedTimer?.Invoke(this, timer!);
+      if (sender is ComboBox { SelectedItem: (int value, _) })
+      {
+          SelectedTimer?.Invoke(this, value);
+      }
   }
 }

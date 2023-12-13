@@ -13,7 +13,7 @@ public class MeasurementRepositoryTests
         ConnectionString = $"Data Source=database.sqlite;Version=3;";
         DbProviderFactories.RegisterFactory("System.Data.SQLite", SQLiteFactory.Instance);
 
-        DbProviderFactory factory = DbProviderFactories.GetFactory("System.Data.SQLite");
+        var factory = DbProviderFactories.GetFactory("System.Data.SQLite");
         measurementRepository = new MeasurementRepository(factory, new SQLiteQueries(), ConnectionString);
     }
 }

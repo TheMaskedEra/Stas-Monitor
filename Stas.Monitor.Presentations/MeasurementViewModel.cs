@@ -29,7 +29,7 @@ public class MeasurementViewModel
     }
   }
 
-  public string? Background => _measurement.AlertOffset != null ? "blue" : null;
+  public string? Background => _measurement.AlertOffset != null ? "red" : null;
 
   private string GetFormattedValue()
   {

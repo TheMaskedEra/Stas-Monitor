@@ -10,7 +10,7 @@
         >
     <ScrollViewer>
         <StackPanel>
-            <Expander Width="550" IsExpanded="true">
+            <Expander Width="550" IsExpanded="true" HorizontalAlignment="Stretch">
                 <Expander.Header>
                     Display Settings
                 </Expander.Header>
@@ -18,7 +18,7 @@
                     
                     <StackPanel Orientation="Vertical" Margin="0 0 10 0">
                         <TextBlock Margin="3">Available Thermometers:</TextBlock>
-                        <ComboBox x:Name="ListName" VerticalAlignment="Center" SelectionChanged="OnSelectedThermometer"></ComboBox>
+                        <ComboBox x:Name="ListName" VerticalAlignment="Center" SelectionChanged="OnSelectedThermometer"/>
                     </StackPanel>
                     
                     <StackPanel x:Name="CheckBoxTypes" Orientation="Vertical" Margin="0 0 10 0">
@@ -35,7 +35,7 @@
             <ItemsControl>
                 
             </ItemsControl>
-            <StackPanel Orientation="Horizontal" Spacing="10" x:Name="MeasurementLists">
+            <StackPanel Orientation="Horizontal" Spacing="10" x:Name="Lists">
                 <!-- Dynamic measurement list -->
             </StackPanel>
         </StackPanel>

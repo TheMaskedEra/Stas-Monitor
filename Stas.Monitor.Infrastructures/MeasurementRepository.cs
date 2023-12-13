@@ -8,84 +8,49 @@ namespace Stas.Monitor.Infrastructures;
 
 public class MeasurementRepository : IMeasurementRepository
 {
-    private DbProviderFactory Factory { get; }
-
-    private IQueries Queries { get; }
-
-    private string ConnectionString { get; }
+    private readonly DbProviderFactory _factory;
+    private readonly IQueries _queries;
+    private readonly string _connectionString;
 
     public MeasurementRepository(DbProviderFactory factory, IQueries queries, IDictionary<string, string> connectionData)
     {
-        Factory = factory;
-        Queries = queries;
+        _factory = factory;
+        _queries = queries;
 
         var host = connectionData["host"];
         var port = connectionData["port"];
         var database = connectionData["database"];
         var user = connectionData["user"];
         var password = connectionData["password"];
-        ConnectionString = $"Server={host};Database={database};User={user};Password={password};Port={port};";
+        _connectionString = $"Server={host};Database={database};User={user};Password={password};Port={port};";
     }
 
     public MeasurementRepository(DbProviderFactory factory, IQueries queries, string connectionString)
     {
-        Factory = factory;
-        Queries = queries;
-        ConnectionString = connectionString;
+        _factory = factory;
+        _queries = queries;
+        _connectionString = connectionString;
     }
 
-    public IEnumerable<string> GetMeasurementTypesFromThermometer(string thermometer)
+    public IEnumerable<Measurement> GetMeasurementsByThermometer(string thermometer, TimeSpan limit)
     {
-        var types = new List<string>();
-
-        using (var connection = Factory.CreateConnection())
+        using (var connection = _factory.CreateConnection())
         {
             try
             {
-                connection.ConnectionString = ConnectionString;
-                connection.Open();
-                using (var command = connection.CreateCommand())
-                {
-                    command.CommandText = Queries.SelectType;
-                    CreateParameter(command, "@thermometer", thermometer, DbType.String);
-                    using (var reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            types.Add(reader.GetString(0));
-                        }
-
-                        return types;
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                throw new CannotRetrieveMeasurementTypesException("Stas : Something went wrong while trying to retrieve measurement types : " + e.Message);
-            }
-        }
-    }
-
-    public IEnumerable<Measurement> GetMeasurementsByThermometer(string thermometer, string type, int limit)
-    {
-        using (var connection = Factory.CreateConnection())
-        {
-            try
-            {
-                connection.ConnectionString = ConnectionString;
+                connection.ConnectionString = _connectionString;
                 var measurements = new List<Measurement>();
                 connection.Open();
                 using (var command = connection.CreateCommand())
                 {
-                    command.CommandText = Queries.SelectMeasurements;
+                    command.CommandText = _queries.SelectMeasurements;
                     CreateParameter(command, "@thermometer", thermometer, DbType.String);
-                    CreateParameter(command, "@type", type, DbType.String);
-                    CreateParameter(command, "@limit", limit, DbType.Int16);
+                    CreateParameter(command, "@limit", limit, DbType.Time);
                     using (var reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            measurements.Add(InstantiateMeasurement(reader, type));
+                            measurements.Add(InstantiateMeasurement(reader));
                         }
 
                         return measurements;
@@ -99,7 +64,7 @@ public class MeasurementRepository : IMeasurementRepository
         }
     }
 
-    private Measurement InstantiateMeasurement(DbDataReader reader, string type)
+    private Measurement InstantiateMeasurement(DbDataReader reader)
     {
         double? expectedValue = null;
         if (!reader.IsDBNull("expected_value"))
@@ -108,6 +73,7 @@ public class MeasurementRepository : IMeasurementRepository
         }
 
         var moment = reader.GetDateTime("datetime");
+        var type = reader.GetString("type");
         var value = reader.GetDouble("value");
         return new Measurement(type, moment, value, expectedValue);
     }

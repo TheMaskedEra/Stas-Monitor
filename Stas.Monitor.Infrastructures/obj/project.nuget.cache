@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "gRJq4qE7zE79GNJB6uanZ0MmUrmfWeeQN7nqkTr0OLcqckO1+BUCNkYIHMEQ9jfF7/ZVf0BD9uEmBm3E4DZQEg==",
+  "dgSpecHash": "k8QytAiiI/z2Pxw8i19tiscxryjF+dLEZDe+bny+iYP1DNsnO9PJdIKr7IHsMBNODTf/C1Uu23z0sMkH/kZmug==",
   "success": true,
-  "projectFilePath": "D:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Infrastructures\\Stas.Monitor.Infrastructures.csproj",
+  "projectFilePath": "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Infrastructures\\Stas.Monitor.Infrastructures.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\alexi\\.nuget\\packages\\be.henni.analyzers\\1.0.3\\be.henni.analyzers.1.0.3.nupkg.sha512",
     "C:\\Users\\alexi\\.nuget\\packages\\bouncycastle.cryptography\\2.2.1\\bouncycastle.cryptography.2.2.1.nupkg.sha512",

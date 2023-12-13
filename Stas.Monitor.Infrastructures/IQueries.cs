@@ -2,7 +2,5 @@
 
 public interface IQueries
 {
-    string SelectType { get; }
-
     string SelectMeasurements { get; }
 }

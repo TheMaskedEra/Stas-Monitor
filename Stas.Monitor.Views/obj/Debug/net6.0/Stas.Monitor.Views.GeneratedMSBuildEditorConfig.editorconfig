@@ -17,13 +17,14 @@ build_property.InvariantGlobalization =
 build_property.PlatformNeutralAssembly = 
 build_property.PlatformNeutralAssembly = 
 build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Stas.Monitor.Views
-build_property.ProjectDir = D:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.Views\
+build_property.ProjectDir = F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.Views\
 
-[D:/Code/HELMo/AI/Stas.Monitor/Stas.Monitor.Views/MainWindow.axaml]
+[F:/Code/HELMo/AI/Stas.Monitor/Stas.Monitor.Views/MainWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[D:/Code/HELMo/AI/Stas.Monitor/Stas.Monitor.Views/MeasurementList.axaml]
+[F:/Code/HELMo/AI/Stas.Monitor/Stas.Monitor.Views/MeasurementList.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
