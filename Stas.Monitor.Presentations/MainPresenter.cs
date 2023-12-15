@@ -6,7 +6,7 @@ namespace Stas.Monitor.Presentations;
 public class MainPresenter
 {
   private readonly IMainView _view;
-  private readonly IMeasurementPresenter _measurementPresenter; //TODO ???
+  private readonly IMeasurementPresenter _measurementPresenter;
 
   public MainPresenter(IMainView view, IMeasurementPresenter measurementPresenter, IEnumerable<string> thermometersNames, TimerHandler timerHandler)
   {

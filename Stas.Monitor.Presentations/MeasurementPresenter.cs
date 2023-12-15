@@ -20,7 +20,7 @@ public class MeasurementPresenter : IMeasurementPresenter
 
     public IEnumerable<MeasurementViewModel> RetrieveThermometerMeasurements()
     {
-        var measurements = _measurementRepository.GetMeasurementsByThermometer(CurrentThermometer, CurrentTimeSpan);
+        var measurements = _measurementRepository.GetMeasurementsByThermometer(CurrentThermometer, CurrentTimeSpan.TotalSeconds);
 
         var viewModels = measurements.Select(measurement => new MeasurementViewModel(measurement));
 

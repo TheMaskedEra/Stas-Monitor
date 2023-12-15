@@ -15,7 +15,7 @@ public class MeasurementRepository : IMeasurementRepository
     private static string MeasurementQuery => "SELECT m.value, m.type, m.datetime, a.expected_value " +
                                               "FROM Measurements m " +
                                               "LEFT OUTER JOIN Alerts a ON m.id = a.measurement_id " +
-                                              "WHERE room = @thermometer AND m.datetime >= NOW() - INTERVAL @limit SECOND " +
+                                              "WHERE room = @thermometer AND m.datetime BETWEEN DATE_SUB(NOW(), INTERVAL @limit SECOND) AND NOW() " +
                                               "ORDER BY datetime DESC";
 
     public MeasurementRepository(DbProviderFactory factory, IDictionary<string, string> connectionData)
@@ -36,7 +36,7 @@ public class MeasurementRepository : IMeasurementRepository
         _connectionString = connectionString;
     }
 
-    public IEnumerable<Measurement> GetMeasurementsByThermometer(string thermometer, TimeSpan limit)
+    public IEnumerable<Measurement> GetMeasurementsByThermometer(string thermometer, double totalSeconds)
     {
         using (var connection = _factory.CreateConnection())
         {
@@ -49,7 +49,7 @@ public class MeasurementRepository : IMeasurementRepository
                 {
                     command.CommandText = MeasurementQuery;
                     CreateParameter(command, "@thermometer", thermometer, DbType.String);
-                    CreateParameter(command, "@limit", limit, DbType.Time);
+                    CreateParameter(command, "@limit", totalSeconds, DbType.Double);
                     using (var reader = command.ExecuteReader())
                     {
                         while (reader.Read())
@@ -68,7 +68,7 @@ public class MeasurementRepository : IMeasurementRepository
         }
     }
 
-    private Measurement InstantiateMeasurement(DbDataReader reader)
+    private static Measurement InstantiateMeasurement(DbDataReader reader)
     {
         double? expectedValue = null;
         if (!reader.IsDBNull("expected_value"))
@@ -82,7 +82,7 @@ public class MeasurementRepository : IMeasurementRepository
         return new Measurement(type, moment, value, expectedValue);
     }
 
-    private void CreateParameter(DbCommand command, string name, object value, DbType type)
+    private static void CreateParameter(DbCommand command, string name, object value, DbType type)
     {
         var parameter = command.CreateParameter();
         parameter.ParameterName = name;
