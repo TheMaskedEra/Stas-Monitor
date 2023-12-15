@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "V+ZB6j6X6ms2WH4Jta5CLfG9U4PEbOdneHiSbb0OWH/CxUI6zDIKoOQDFyF3k/xQ3FD0vQDSk0/YniIwQjmXkw==",
+  "dgSpecHash": "rybEwKs9+kbSz4w6qMtpLIH8YrcBXSp4JW+aZGJB2IUKG86CBDRYt18/UynX327hPRt+yIdWItG2fV25svZ2JQ==",
   "success": true,
-  "projectFilePath": "D:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Presentations\\Stas.Monitor.Presentations.csproj",
+  "projectFilePath": "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Presentations\\Stas.Monitor.Presentations.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\alexi\\.nuget\\packages\\be.henni.analyzers\\1.0.3\\be.henni.analyzers.1.0.3.nupkg.sha512",
     "C:\\Users\\alexi\\.nuget\\packages\\idisposableanalyzers\\4.0.7\\idisposableanalyzers.4.0.7.nupkg.sha512",

@@ -18,19 +18,11 @@ public class MeasurementPresenter
         CurrentTimeSpan = TimeSpan.Zero;
     }
 
-    public  IDictionary<string, IEnumerable<MeasurementViewModel>> RetrieveThermometerMeasurements()
+    public IEnumerable<MeasurementViewModel> RetrieveThermometerMeasurements()
     {
-        var viewModels = new Dictionary<string, IEnumerable<MeasurementViewModel>>();
-
         var measurements = _measurementRepository.GetMeasurementsByThermometer(CurrentThermometer, CurrentTimeSpan);
 
-        var groupedMeasurements = measurements.GroupBy(measurement => measurement.Type);
-        foreach (var group in groupedMeasurements)
-        {
-            var measurementViewModels = group.Select(measurement => new MeasurementViewModel(measurement));
-
-            viewModels.Add(group.Key, measurementViewModels);
-        }
+        var viewModels = measurements.Select(measurement => new MeasurementViewModel(measurement));
 
         return viewModels;
     }

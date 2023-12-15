@@ -1,4 +1,5 @@
-﻿using Stas.Monitor.Presentations.IViews;
+﻿using Stas.Monitor.Domains;
+using Stas.Monitor.Presentations.IViews;
 
 namespace Stas.Monitor.Presentations;
 
@@ -7,7 +8,7 @@ public class MainPresenter
   private readonly IMainView _view;
   private readonly MeasurementPresenter _measurementPresenter; //TODO ???
 
-  public MainPresenter(IMainView view, MeasurementPresenter measurementPresenter, IEnumerable<string> thermometersNames, IEnumerable<TimeSpan> timers)
+  public MainPresenter(IMainView view, MeasurementPresenter measurementPresenter, IEnumerable<string> thermometersNames, TimerHandler timerHandler)
   {
       _view = view;
       _measurementPresenter = measurementPresenter;
@@ -16,11 +17,11 @@ public class MainPresenter
 
       _view.SelectedTimer += (sender, e) =>
       {
-          _measurementPresenter.CurrentTimeSpan = TimeSpan.FromSeconds(e);
+          _measurementPresenter.CurrentTimeSpan = timerHandler.GetTimer(e);
           RefreshLists();
       };
 
-      _view.SetupSettings(thermometersNames, SetupTimeSpans(timers));
+      _view.SetupSettings(thermometersNames, timerHandler.DisplayTimers);
   }
 
   private void OnSelectThermometer(object? sender, string name)
@@ -32,7 +33,4 @@ public class MainPresenter
   }
 
   public void RefreshLists() => _view.UpdateLists(_measurementPresenter.RetrieveThermometerMeasurements());
-
-  private IList<(int Value, string DisplayText)> SetupTimeSpans(IEnumerable<TimeSpan> timeSpan) => timeSpan.Select(timer => ((int)timer.TotalSeconds, TimeSpanFormatter.ToString(timer))).ToList();
 }
-

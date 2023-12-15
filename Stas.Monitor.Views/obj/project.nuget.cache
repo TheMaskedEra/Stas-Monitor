@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wvsB6hQaIeln6L2mLMYhrfVYUiem/G7oOnOpPUrvUnUyVVVCJHriOpNigrxm96uQS44Mcehrr6Mly/MRpxVhDA==",
+  "dgSpecHash": "lPLGig6RnzUNM00mhf8sUYV1UlBFoP96Khbso3f0Wc8qnlLMaYay/UMO6jgJPmsD6rrvQCtbmQuyfj18ZvjQwQ==",
   "success": true,
-  "projectFilePath": "D:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Views\\Stas.Monitor.Views.csproj",
+  "projectFilePath": "F:\\Code\\HELMo\\AI\\Stas.Monitor\\Stas.Monitor.Views\\Stas.Monitor.Views.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\alexi\\.nuget\\packages\\avalonia\\11.0.2\\avalonia.11.0.2.nupkg.sha512",
     "C:\\Users\\alexi\\.nuget\\packages\\avalonia.angle.windows.natives\\2.1.0.2023020321\\avalonia.angle.windows.natives.2.1.0.2023020321.nupkg.sha512",

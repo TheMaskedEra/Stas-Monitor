@@ -4,11 +4,11 @@ public interface IMainView
 {
   event EventHandler<string> SelectedThermometer;
 
-  event EventHandler<int> SelectedTimer;
+  event EventHandler<string> SelectedTimer;
 
-  void SetupSettings(IEnumerable<string> names, IList<(int Value, string DisplaySettings)> timers);
+  void SetupSettings(IEnumerable<string> names, IEnumerable<string> displayTimers);
 
-  void GenerateThermometerSettings(IDictionary<string, IEnumerable<MeasurementViewModel>> measurements);
+  void GenerateThermometerSettings(IEnumerable<MeasurementViewModel> measurements);
 
-  void UpdateLists(IDictionary<string, IEnumerable<MeasurementViewModel>> viewModels);
+  void UpdateLists(IEnumerable<MeasurementViewModel> viewModels);
 }

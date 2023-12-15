@@ -14,7 +14,7 @@ public partial class MeasurementList : UserControl
     public string? Type
     {
         get => Title.Text;
-        set => Title.Text = value;
+        init => Title.Text = value;
     }
 
     public MeasurementList()

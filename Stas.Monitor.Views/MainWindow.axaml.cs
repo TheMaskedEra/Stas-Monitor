@@ -1,6 +1,7 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
+using System.Linq;
 using Avalonia.Controls;
 using Stas.Monitor.Presentations;
 using Stas.Monitor.Presentations.IViews;
@@ -11,31 +12,33 @@ public partial class MainWindow : Window, IMainView
 {
   public event EventHandler<string>? SelectedThermometer;
 
-  public event EventHandler<int>? SelectedTimer;
+  public event EventHandler<string>? SelectedTimer;
 
   public MainWindow()
   {
     InitializeComponent();
   }
-  public void SetupSettings(IEnumerable<string> names, IList<(int Value, string DisplaySettings)> timers)
+  public void SetupSettings(IEnumerable<string> names, IEnumerable<string> displayTimers)
   {
     ListName.ItemsSource = names;
     ListName.SelectedIndex = 0;
 
-    Timers.ItemsSource = timers;
+    Timers.ItemsSource = displayTimers;
     Timers.SelectedIndex = 1;
   }
 
-  public void GenerateThermometerSettings(IDictionary<string, IEnumerable<MeasurementViewModel>> measurements)
+  public void GenerateThermometerSettings(IEnumerable<MeasurementViewModel> viewModels)
   {
       Lists.Children.Clear();
       CheckBoxTypes.Children.Clear();
 
-      foreach (var type in measurements.Keys)
+      var groupedMeasurements = GroupMeasurementsByTypes(viewModels);
+
+      foreach (var type in groupedMeasurements.Keys)
       {
           var measurementList = new MeasurementList()
           {
-              ViewModels = measurements[type],
+              ViewModels = groupedMeasurements[type],
               Type = type,
           };
 
@@ -56,9 +59,10 @@ public partial class MainWindow : Window, IMainView
       }
   }
 
-  public void UpdateLists(IDictionary<string, IEnumerable<MeasurementViewModel>> viewModels)
+  public void UpdateLists(IEnumerable<MeasurementViewModel> viewModels)
   {
       var lists = Lists.Children;
+      var measurementDictionary = GroupMeasurementsByTypes(viewModels);
 
       foreach (var list in lists)
       {
@@ -67,7 +71,12 @@ public partial class MainWindow : Window, IMainView
               continue;
           }
 
-          measurementList.ViewModels = viewModels[measurementList.Type];
+          if (measurementList.Type == null)
+          {
+              continue;
+          }
+
+          measurementList.ViewModels = measurementDictionary[measurementList.Type];
       }
   }
 
@@ -80,9 +89,18 @@ public partial class MainWindow : Window, IMainView
   }
   private void Timers_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
   {
-      if (sender is ComboBox { SelectedItem: (int value, _) })
+      if (sender is not ComboBox)
       {
-          SelectedTimer?.Invoke(this, value);
+          return;
       }
+
+      var timer = e.AddedItems[0]!.ToString();
+      SelectedTimer?.Invoke(this, timer!);
+  }
+
+  private static IDictionary<string, IEnumerable<MeasurementViewModel>> GroupMeasurementsByTypes(IEnumerable<MeasurementViewModel> viewModels)
+  {
+      var groupedMeasurementViewModels = viewModels.GroupBy(measurement=> measurement.Type);
+      return groupedMeasurementViewModels.ToDictionary(group => group.Key, group => group.AsEnumerable());
   }
 }

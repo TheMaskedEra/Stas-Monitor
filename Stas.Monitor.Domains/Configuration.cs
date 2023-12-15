@@ -2,5 +2,5 @@
 
 public record Configuration(ISet<string> ThermometerNames,
     IDictionary<string, string> Data,
-    ISet<TimeSpan> Timers
+    TimerHandler TimerHandler
     );

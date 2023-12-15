@@ -42,4 +42,6 @@ public class MeasurementViewModel
 
       return _measurement.Value.ToString(format);
   }
+
+  public string Type => _measurement.Type;
 }

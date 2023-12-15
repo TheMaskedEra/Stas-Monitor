@@ -68,7 +68,7 @@ public class App : Application
       var measurementRepository = new MeasurementRepository(sqlFactory, configuration.Data);
 
       var measurementPresenter = new MeasurementPresenter(measurementRepository);
-      var mainPresenter = new MainPresenter(view, measurementPresenter, configuration.ThermometerNames, configuration.Timers);
+      var mainPresenter = new MainPresenter(view, measurementPresenter, configuration.ThermometerNames, configuration.TimerHandler);
 
       return mainPresenter;
     }
