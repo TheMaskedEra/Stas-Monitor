@@ -35,24 +35,31 @@ public class App : Application
     {
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-
-            _mainWindow = new MainWindow();
-            var presenter = SetupApp(desktop.Args ?? Array.Empty<string>(), _mainWindow);
-
-            desktop.MainWindow = _mainWindow;
-
-            DispatcherTimer.Run(() =>
+            try
             {
-                presenter.RefreshLists();
-                Log.Logger.Information("You should starts checking for file updates here");
-                return true;
-            }, TimeSpan.FromSeconds(5));
+                _mainWindow = new MainWindow();
+                var presenter = SetupApp(desktop.Args ?? Array.Empty<string>(), _mainWindow);
+
+                DispatcherTimer.Run(() =>
+                {
+                    presenter.RefreshLists();
+                    Log.Logger.Information("You should starts checking for file updates here");
+                    return true;
+                }, TimeSpan.FromSeconds(5));
+
+                desktop.MainWindow = _mainWindow;
+            }
+            catch (Exception e)
+            {
+                desktop.MainWindow = new ErrorWindow(e.Message);
+            }
+
         }
 
         base.OnFrameworkInitializationCompleted();
     }
 
-    private MainPresenter SetupApp(string[] args, IMainView view)
+    private static MainPresenter SetupApp(string[] args, IMainView view)
     {
       var cmdParser = new CommandLineParser(args);
       if ( !cmdParser.HasParameter("config-file") || string.IsNullOrEmpty(cmdParser.GetParameterValue("config-file")))
@@ -60,7 +67,7 @@ public class App : Application
         throw new ArgumentException("monitor: missing configuration file argument");
       }
 
-      IConfigurationReader repository = new IniConfigurationReader(cmdParser.GetParameterValue("config-file"));
+      var repository = new IniConfigurationReader(cmdParser.GetParameterValue("config-file"));
       var configuration = repository.RetrieveConfiguration();
 
       DbProviderFactories.RegisterFactory("MySql.Data.MySqlClient", MySqlClientFactory.Instance);

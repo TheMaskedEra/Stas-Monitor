@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using System.Data.Common;
+using System.Linq.Expressions;
 using Stas.Monitor.Domains;
 using Stas.Monitor.Domains.Repository;
 using Stas.Monitor.Domains.Repository.Exceptions;
@@ -14,7 +15,7 @@ public class MeasurementRepository : IMeasurementRepository
     private static string MeasurementQuery => "SELECT m.value, m.type, m.datetime, a.expected_value " +
                                               "FROM Measurements m " +
                                               "LEFT OUTER JOIN Alerts a ON m.id = a.measurement_id " +
-                                              "WHERE room = @thermometer " + //AND m.datetime >= NOW() - INTERVAL @limit SECOND " +
+                                              "WHERE room = @thermometer AND m.datetime >= NOW() - INTERVAL @limit SECOND " +
                                               "ORDER BY datetime DESC";
 
     public MeasurementRepository(DbProviderFactory factory, IDictionary<string, string> connectionData)

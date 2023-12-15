@@ -1,46 +1,37 @@
 ﻿namespace Stas.Monitor.Infrastructures;
 
-public class IniDataExtractor
+public static class IniDataExtractor
 {
-    //TODO Static class ?
-    public IDictionary<string, IDictionary<string, string>> ExtractData(string filePath)
+    public static IDictionary<string, IDictionary<string, string>> ExtractData(string filePath)
     {
         var iniData = new Dictionary<string, IDictionary<string, string>>();
         string? currentSection = null;
-
-        try
+        foreach (var line in File.ReadLines(filePath))
         {
-            foreach (var line in File.ReadLines(filePath))
+            var trimmedLine = line.Trim();
+
+            if (ShouldPass(line))
             {
-                var trimmedLine = line.Trim();
-
-                if (ShouldPass(line))
-                {
-                    continue;
-                }
-
-                if (trimmedLine.StartsWith("[") && trimmedLine.EndsWith("]"))
-                {
-                    currentSection = trimmedLine.Substring(1, trimmedLine.Length - 2);
-                    iniData[currentSection] = new Dictionary<string, string>();
-                }
-                else if (currentSection != null)
-                {
-                    PopulateSection(line, iniData, currentSection);
-                }
+                continue;
             }
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"An error occurred while reading the INI file: {ex.Message}");
+
+            if (trimmedLine.StartsWith("[") && trimmedLine.EndsWith("]"))
+            {
+                currentSection = trimmedLine.Substring(1, trimmedLine.Length - 2);
+                iniData[currentSection] = new Dictionary<string, string>();
+            }
+            else if (currentSection != null)
+            {
+                PopulateSection(line, iniData, currentSection);
+            }
         }
 
         return iniData;
     }
 
-    private bool ShouldPass(string line) => string.IsNullOrWhiteSpace(line) || line.StartsWith(";");
+    private static bool ShouldPass(string line) => string.IsNullOrWhiteSpace(line) || line.StartsWith(";");
 
-    private void PopulateSection(string line, IDictionary<string, IDictionary<string, string>> iniMap, string section)
+    private static void PopulateSection(string line, IDictionary<string, IDictionary<string, string>> iniMap, string section)
     {
         var parts = line.Split('=');
         if (parts.Length != 2)

@@ -1,5 +1,6 @@
 ﻿using Stas.Monitor.Domains;
 using Stas.Monitor.Domains.Repository;
+using Stas.Monitor.Domains.Repository.Exceptions;
 
 namespace Stas.Monitor.Infrastructures;
 
@@ -14,24 +15,15 @@ public class IniConfigurationReader : IConfigurationReader
 
     public Configuration RetrieveConfiguration()
     {
-        var dataExtractor = new IniDataExtractor();
-        var data = dataExtractor.ExtractData(_filePath);
-
-        var thermometers = new HashSet<string>();
-        var thermometerValues = data["thermometers"].Values;
-        foreach (var thermometer in thermometerValues)
+        try
         {
-          thermometers.Add(thermometer);
+            var data = IniDataExtractor.ExtractData(_filePath);
+
+            return IniConfigurationValidator.CheckArgumentsValidity(data);
         }
-
-        var databaseValues = data["database"];
-
-        var timers = new HashSet<int>();
-        foreach (var timerString in data["timers"].Values)
+        catch (FileNotFoundException)
         {
-            timers.Add(int.Parse(timerString));
+            throw new ConfigurationReaderException("monitor: configuration file not found");
         }
-
-        return new Configuration(thermometers, databaseValues, new TimerHandler(timers));
     }
 }

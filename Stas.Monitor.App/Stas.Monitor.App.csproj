@@ -34,11 +34,8 @@
     <None Update="configs\config.ini">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="configs\measurements.csv">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="configs\alerts.csv">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="configs\badfile.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 </Project>

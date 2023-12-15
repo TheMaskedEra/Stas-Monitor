@@ -6,9 +6,9 @@ namespace Stas.Monitor.Presentations;
 public class MainPresenter
 {
   private readonly IMainView _view;
-  private readonly MeasurementPresenter _measurementPresenter; //TODO ???
+  private readonly IMeasurementPresenter _measurementPresenter; //TODO ???
 
-  public MainPresenter(IMainView view, MeasurementPresenter measurementPresenter, IEnumerable<string> thermometersNames, TimerHandler timerHandler)
+  public MainPresenter(IMainView view, IMeasurementPresenter measurementPresenter, IEnumerable<string> thermometersNames, TimerHandler timerHandler)
   {
       _view = view;
       _measurementPresenter = measurementPresenter;
@@ -32,5 +32,5 @@ public class MainPresenter
       _view.GenerateThermometerSettings(thermometerMeasurements);
   }
 
-  public void RefreshLists() => _view.UpdateLists(_measurementPresenter.RetrieveThermometerMeasurements());
+  public void RefreshLists() => _view.GenerateThermometerSettings(_measurementPresenter.RetrieveThermometerMeasurements());
 }

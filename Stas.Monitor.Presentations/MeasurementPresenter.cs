@@ -2,7 +2,7 @@
 
 namespace Stas.Monitor.Presentations;
 
-public class MeasurementPresenter
+public class MeasurementPresenter : IMeasurementPresenter
 {
     private readonly IMeasurementRepository _measurementRepository;
 
