@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Avalonia.Controls;
 using Stas.Monitor.Presentations;
 using Stas.Monitor.Presentations.IViews;
@@ -12,13 +13,9 @@ public partial class MainWindow : Window, IMainView
 
   public event EventHandler<int>? SelectedTimer;
 
-  public IDictionary<string, IList<MeasurementViewModel>> MeasurementLists { get; set; } //TODO donner des valeurs par défaut ?
-
   public MainWindow()
   {
     InitializeComponent();
-
-    MeasurementLists = new Dictionary<string, IList<MeasurementViewModel>>();
   }
   public void SetupSettings(IEnumerable<string> names, IList<(int Value, string DisplaySettings)> timers)
   {
@@ -36,7 +33,11 @@ public partial class MainWindow : Window, IMainView
 
       foreach (var type in measurements.Keys)
       {
-          var measurementList = new MeasurementList(measurements[type], type);
+          var measurementList = new MeasurementList()
+          {
+              ViewModels = measurements[type],
+              Type = type,
+          };
 
           var checkBox = new CheckBox
           {
@@ -55,10 +56,25 @@ public partial class MainWindow : Window, IMainView
       }
   }
 
+  public void UpdateLists(IDictionary<string, IEnumerable<MeasurementViewModel>> viewModels)
+  {
+      var lists = Lists.Children;
+
+      foreach (var list in lists)
+      {
+          if (list is not MeasurementList measurementList)
+          {
+              continue;
+          }
+
+          measurementList.ViewModels = viewModels[measurementList.Type];
+      }
+  }
+
   private void OnSelectedThermometer(object? sender, SelectionChangedEventArgs args)
   {
       var thermometer = args.AddedItems[0]!.ToString();
-      //TODO verify null
+      //TODO verify null ?
 
       SelectedThermometer?.Invoke(this, thermometer!);
   }

@@ -9,13 +9,17 @@ namespace Stas.Monitor.Infrastructures;
 public class MeasurementRepository : IMeasurementRepository
 {
     private readonly DbProviderFactory _factory;
-    private readonly IQueries _queries;
     private readonly string _connectionString;
 
-    public MeasurementRepository(DbProviderFactory factory, IQueries queries, IDictionary<string, string> connectionData)
+    private static string MeasurementQuery => "SELECT m.value, m.type, m.datetime, a.expected_value " +
+                                              "FROM Measurements m " +
+                                              "LEFT OUTER JOIN Alerts a ON m.id = a.measurement_id " +
+                                              "WHERE room = @thermometer " + //AND m.datetime >= NOW() - INTERVAL @limit SECOND " +
+                                              "ORDER BY datetime DESC";
+
+    public MeasurementRepository(DbProviderFactory factory, IDictionary<string, string> connectionData)
     {
         _factory = factory;
-        _queries = queries;
 
         var host = connectionData["host"];
         var port = connectionData["port"];
@@ -25,10 +29,9 @@ public class MeasurementRepository : IMeasurementRepository
         _connectionString = $"Server={host};Database={database};User={user};Password={password};Port={port};";
     }
 
-    public MeasurementRepository(DbProviderFactory factory, IQueries queries, string connectionString)
+    public MeasurementRepository(DbProviderFactory factory, string connectionString)
     {
         _factory = factory;
-        _queries = queries;
         _connectionString = connectionString;
     }
 
@@ -43,7 +46,7 @@ public class MeasurementRepository : IMeasurementRepository
                 connection.Open();
                 using (var command = connection.CreateCommand())
                 {
-                    command.CommandText = _queries.SelectMeasurements;
+                    command.CommandText = MeasurementQuery;
                     CreateParameter(command, "@thermometer", thermometer, DbType.String);
                     CreateParameter(command, "@limit", limit, DbType.Time);
                     using (var reader = command.ExecuteReader())

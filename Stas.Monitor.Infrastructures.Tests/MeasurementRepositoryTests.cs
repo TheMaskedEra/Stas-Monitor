@@ -14,6 +14,6 @@ public class MeasurementRepositoryTests
         DbProviderFactories.RegisterFactory("System.Data.SQLite", SQLiteFactory.Instance);
 
         var factory = DbProviderFactories.GetFactory("System.Data.SQLite");
-        measurementRepository = new MeasurementRepository(factory, new SQLiteQueries(), ConnectionString);
+        measurementRepository = new MeasurementRepository(factory, ConnectionString);
     }
 }

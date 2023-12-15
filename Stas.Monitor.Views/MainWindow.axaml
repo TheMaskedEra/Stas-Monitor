@@ -10,7 +10,7 @@
         >
     <ScrollViewer>
         <StackPanel>
-            <Expander Width="550" IsExpanded="true" HorizontalAlignment="Stretch">
+            <Expander Width="550" IsExpanded="true">
                 <Expander.Header>
                     Display Settings
                 </Expander.Header>

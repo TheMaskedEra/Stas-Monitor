@@ -17,6 +17,7 @@ public class MainPresenter
       _view.SelectedTimer += (sender, e) =>
       {
           _measurementPresenter.CurrentTimeSpan = TimeSpan.FromSeconds(e);
+          RefreshLists();
       };
 
       _view.SetupSettings(thermometersNames, SetupTimeSpans(timers));
@@ -30,11 +31,7 @@ public class MainPresenter
       _view.GenerateThermometerSettings(thermometerMeasurements);
   }
 
-  public void RefreshLists()
-  {
-      //TODO
-      Console.WriteLine("Lists updated");
-  }
+  public void RefreshLists() => _view.UpdateLists(_measurementPresenter.RetrieveThermometerMeasurements());
 
   private IList<(int Value, string DisplayText)> SetupTimeSpans(IEnumerable<TimeSpan> timeSpan) => timeSpan.Select(timer => ((int)timer.TotalSeconds, TimeSpanFormatter.ToString(timer))).ToList();
 }

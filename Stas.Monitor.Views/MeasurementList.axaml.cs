@@ -6,12 +6,20 @@ namespace Stas.Monitor.Views;
 
 public partial class MeasurementList : UserControl
 {
-    public MeasurementList(IEnumerable<MeasurementViewModel> viewModels, string type)
+    public IEnumerable<MeasurementViewModel> ViewModels
+    {
+        set => Measurements.ItemsSource = value;
+    }
+
+    public string? Type
+    {
+        get => Title.Text;
+        set => Title.Text = value;
+    }
+
+    public MeasurementList()
     {
         InitializeComponent();
-
-        Measurements.ItemsSource = viewModels;
-        Title.Text = type;
     }
 }
 

@@ -65,8 +65,7 @@ public class App : Application
 
       DbProviderFactories.RegisterFactory("MySql.Data.MySqlClient", MySqlClientFactory.Instance);
       var sqlFactory = DbProviderFactories.GetFactory("MySql.Data.MySqlClient");
-      var queries = new MySqlQueries();
-      var measurementRepository = new MeasurementRepository(sqlFactory, queries, configuration.Data);
+      var measurementRepository = new MeasurementRepository(sqlFactory, configuration.Data);
 
       var measurementPresenter = new MeasurementPresenter(measurementRepository);
       var mainPresenter = new MainPresenter(view, measurementPresenter, configuration.ThermometerNames, configuration.Timers);
