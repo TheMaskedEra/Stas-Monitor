@@ -59,31 +59,9 @@ public partial class MainWindow : Window, IMainView
       }
   }
 
-  public void UpdateLists(IEnumerable<MeasurementViewModel> viewModels)
-  {
-      var lists = Lists.Children;
-      var measurementDictionary = GroupMeasurementsByTypes(viewModels);
-
-      foreach (var list in lists)
-      {
-          if (list is not MeasurementList measurementList)
-          {
-              continue;
-          }
-
-          if (measurementList.Type == null)
-          {
-              continue;
-          }
-
-          measurementList.ViewModels = measurementDictionary[measurementList.Type];
-      }
-  }
-
   private void OnSelectedThermometer(object? sender, SelectionChangedEventArgs args)
   {
       var thermometer = args.AddedItems[0]!.ToString();
-      //TODO verify null ?
 
       SelectedThermometer?.Invoke(this, thermometer!);
   }

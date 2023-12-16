@@ -314,6 +314,7 @@ D:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.App\bin\Debug\net6.0\Stas.Monitor.App
 D:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.App\obj\Debug\net6.0\Stas.Monitor.App.csproj.CopyComplete
 D:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.App\obj\Debug\net6.0\Stas.Monitor.App.genruntimeconfig.cache
 D:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.App\obj\Debug\net6.0\ref\Stas.Monitor.App.dll
+F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.App\bin\Debug\net6.0\configs\badfile.ini
 F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.App\bin\Debug\net6.0\configs\config.ini
 F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.App\bin\Debug\net6.0\Stas.Monitor.App.exe
 F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.App\bin\Debug\net6.0\Stas.Monitor.App.deps.json
@@ -482,4 +483,3 @@ F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.App\obj\Debug\net6.0\Stas.Monitor.App
 F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.App\obj\Debug\net6.0\Stas.Monitor.App.csproj.CopyComplete
 F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.App\obj\Debug\net6.0\Stas.Monitor.App.genruntimeconfig.cache
 F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.App\obj\Debug\net6.0\ref\Stas.Monitor.App.dll
-F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.App\bin\Debug\net6.0\configs\badfile.ini

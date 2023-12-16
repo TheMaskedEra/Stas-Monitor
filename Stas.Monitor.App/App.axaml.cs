@@ -9,7 +9,6 @@ using Stas.Monitor.Views;
 using ClpNet;
 using ClpNet.Extensions;
 using MySql.Data.MySqlClient;
-using Stas.Monitor.Domains.Repository;
 using Stas.Monitor.Infrastructures;
 using Stas.Monitor.Presentations;
 using Stas.Monitor.Presentations.IViews;
@@ -28,13 +27,14 @@ public class App : Application
             .WriteTo.Console()
             .CreateLogger();
 
-        Log.Logger = log; // Définit le log dans un singleton (Beurk) TODO
+        Log.Logger = log;
     }
 
     public override void OnFrameworkInitializationCompleted()
     {
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
+            var errorWindow = new ErrorWindow();
             try
             {
                 _mainWindow = new MainWindow();
@@ -43,7 +43,7 @@ public class App : Application
                 DispatcherTimer.Run(() =>
                 {
                     presenter.RefreshLists();
-                    Log.Logger.Information("You should starts checking for file updates here");
+                    Log.Logger.Information("Measurements Refreshed.");
                     return true;
                 }, TimeSpan.FromSeconds(5));
 
@@ -51,7 +51,8 @@ public class App : Application
             }
             catch (Exception e)
             {
-                desktop.MainWindow = new ErrorWindow(e.Message);
+                errorWindow.ErrorMessage = e.Message;
+                desktop.MainWindow = errorWindow;
             }
 
         }
@@ -72,7 +73,8 @@ public class App : Application
 
       DbProviderFactories.RegisterFactory("MySql.Data.MySqlClient", MySqlClientFactory.Instance);
       var sqlFactory = DbProviderFactories.GetFactory("MySql.Data.MySqlClient");
-      var measurementRepository = new MeasurementRepository(sqlFactory, configuration.Data);
+      var queries = new MySqlQueries();
+      var measurementRepository = new DatabaseMeasurementRepository(sqlFactory, queries, configuration.Data);
 
       var measurementPresenter = new MeasurementPresenter(measurementRepository);
       var mainPresenter = new MainPresenter(view, measurementPresenter, configuration.ThermometerNames, configuration.TimerHandler);

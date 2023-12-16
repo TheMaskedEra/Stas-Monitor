@@ -4,11 +4,14 @@ namespace Stas.Monitor.Views;
 
 public partial class ErrorWindow : Window
 {
-
-    public ErrorWindow(string errorMessage)
+    public string? ErrorMessage
+    {
+        get => TextError.Text;
+        set => TextError.Text = value;
+    }
+    public ErrorWindow()
     {
         InitializeComponent();
-        TextError.Text = errorMessage;
     }
 }
 

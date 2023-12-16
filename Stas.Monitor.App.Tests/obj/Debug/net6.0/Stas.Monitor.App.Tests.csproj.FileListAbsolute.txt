@@ -496,6 +496,7 @@ F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.App.Tests\bin\Debug\net6.0\CoverletSo
 F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.App.Tests\bin\Debug\net6.0\testhost.dll
 F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.App.Tests\bin\Debug\net6.0\Stas.Monitor.App.deps.json
 F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.App.Tests\bin\Debug\net6.0\Stas.Monitor.App.runtimeconfig.json
+F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.App.Tests\bin\Debug\net6.0\configs\badfile.ini
 F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.App.Tests\bin\Debug\net6.0\configs\config.ini
 F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.App.Tests\bin\Debug\net6.0\Stas.Monitor.App.exe
 F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.App.Tests\bin\Debug\net6.0\testhost.exe
@@ -749,4 +750,3 @@ F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.App.Tests\obj\Debug\net6.0\refint\Sta
 F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.App.Tests\obj\Debug\net6.0\Stas.Monitor.App.Tests.pdb
 F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.App.Tests\obj\Debug\net6.0\Stas.Monitor.App.Tests.genruntimeconfig.cache
 F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.App.Tests\obj\Debug\net6.0\ref\Stas.Monitor.App.Tests.dll
-F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.App.Tests\bin\Debug\net6.0\configs\badfile.ini

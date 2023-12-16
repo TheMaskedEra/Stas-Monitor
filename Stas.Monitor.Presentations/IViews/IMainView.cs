@@ -9,6 +9,4 @@ public interface IMainView
   void SetupSettings(IEnumerable<string> names, IEnumerable<string> displayTimers);
 
   void GenerateThermometerSettings(IEnumerable<MeasurementViewModel> measurements);
-
-  void UpdateLists(IEnumerable<MeasurementViewModel> viewModels);
 }

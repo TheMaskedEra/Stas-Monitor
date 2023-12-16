@@ -1,39 +1,54 @@
 ﻿using System.Data;
 using System.Data.Common;
-using System.Linq.Expressions;
 using Stas.Monitor.Domains;
 using Stas.Monitor.Domains.Repository;
 using Stas.Monitor.Domains.Repository.Exceptions;
 
 namespace Stas.Monitor.Infrastructures;
 
-public class MeasurementRepository : IMeasurementRepository
+public class DatabaseMeasurementRepository : IMeasurementRepository
 {
     private readonly DbProviderFactory _factory;
     private readonly string _connectionString;
+    private readonly IQueries _queries;
 
-    private static string MeasurementQuery => "SELECT m.value, m.type, m.datetime, a.expected_value " +
-                                              "FROM Measurements m " +
-                                              "LEFT OUTER JOIN Alerts a ON m.id = a.measurement_id " +
-                                              "WHERE room = @thermometer AND m.datetime BETWEEN DATE_SUB(NOW(), INTERVAL @limit SECOND) AND NOW() " +
-                                              "ORDER BY datetime DESC";
-
-    public MeasurementRepository(DbProviderFactory factory, IDictionary<string, string> connectionData)
+    public DatabaseMeasurementRepository(DbProviderFactory factory, IQueries queries, IDictionary<string, string> connectionData)
     {
         _factory = factory;
-
+        _queries = queries;
         var host = connectionData["host"];
         var port = connectionData["port"];
         var database = connectionData["database"];
         var user = connectionData["user"];
         var password = connectionData["password"];
         _connectionString = $"Server={host};Database={database};User={user};Password={password};Port={port};";
+
+        TestConnection();
     }
 
-    public MeasurementRepository(DbProviderFactory factory, string connectionString)
+    public DatabaseMeasurementRepository(DbProviderFactory factory, IQueries queries, string connectionString)
     {
         _factory = factory;
+        _queries = queries;
         _connectionString = connectionString;
+
+        TestConnection();
+    }
+
+    private void TestConnection()
+    {
+        using (var connection = _factory.CreateConnection())
+        {
+            try
+            {
+                connection!.ConnectionString = _connectionString;
+                connection.Open();
+            }
+            catch (Exception)
+            {
+                throw new MeasurementRepositoryException("Stas : unable to connect to the database");
+            }
+        }
     }
 
     public IEnumerable<Measurement> GetMeasurementsByThermometer(string thermometer, double totalSeconds)
@@ -42,12 +57,12 @@ public class MeasurementRepository : IMeasurementRepository
         {
             try
             {
-                connection.ConnectionString = _connectionString;
+                connection!.ConnectionString = _connectionString;
                 var measurements = new List<Measurement>();
                 connection.Open();
                 using (var command = connection.CreateCommand())
                 {
-                    command.CommandText = MeasurementQuery;
+                    command.CommandText = _queries.MeasurementSelect;
                     CreateParameter(command, "@thermometer", thermometer, DbType.String);
                     CreateParameter(command, "@limit", totalSeconds, DbType.Double);
                     using (var reader = command.ExecuteReader())
@@ -63,7 +78,7 @@ public class MeasurementRepository : IMeasurementRepository
             }
             catch (Exception e)
             {
-                throw new CannotRetrieveMeasurementException("Stas: Something went wrong while trying to retrieve a measurement : " + e.Message);
+                throw new MeasurementRepositoryException("Stas: unable to read Data : " + e.Message);
             }
         }
     }
