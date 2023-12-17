@@ -1,5 +1,4 @@
-﻿using System.Globalization;
-using Stas.Monitor.Domains;
+﻿using Stas.Monitor.Domains;
 
 namespace Stas.Monitor.Presentations;
 
@@ -12,7 +11,7 @@ public class MeasurementViewModel
     _measurement = measurement;
   }
 
-  public string Value => GetFormattedValue();
+  public string Value => GetFormattedValue(_measurement.Value);
 
   public string Moment => _measurement.Moment.ToString("dddd d MMMM yyyy hh:mm:ss");
 
@@ -20,18 +19,19 @@ public class MeasurementViewModel
   {
     get
     {
-      if ( _measurement.AlertOffset != null )
-      {
-        return "Expected : " + _measurement.AlertOffset;
-      }
+        if (_measurement.AlertOffset == null)
+        {
+            return string.Empty;
+        }
 
-      return string.Empty;
+        var value = (double) _measurement.AlertOffset;
+        return "Expected : " + GetFormattedValue(value);
     }
   }
 
   public string? Background => _measurement.AlertOffset != null ? "red" : null;
 
-  private string GetFormattedValue()
+  private string GetFormattedValue(double value)
   {
       var format = _measurement.Type switch
       {
@@ -40,7 +40,7 @@ public class MeasurementViewModel
           _ => string.Empty,
       };
 
-      return _measurement.Value.ToString(format);
+      return value.ToString(format);
   }
 
   public string Type => _measurement.Type;
