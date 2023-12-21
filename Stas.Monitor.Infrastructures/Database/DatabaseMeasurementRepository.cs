@@ -4,7 +4,7 @@ using Stas.Monitor.Domains;
 using Stas.Monitor.Domains.Repository;
 using Stas.Monitor.Domains.Repository.Exceptions;
 
-namespace Stas.Monitor.Infrastructures;
+namespace Stas.Monitor.Infrastructures.Database;
 
 public class DatabaseMeasurementRepository : IMeasurementRepository
 {

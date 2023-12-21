@@ -1,6 +1,7 @@
 ﻿using System.Data.Common;
 using System.Data.SQLite;
 using Stas.Monitor.Domains.Repository.Exceptions;
+using Stas.Monitor.Infrastructures.Database;
 
 namespace Stas.Monitor.Infrastructures.Tests;
 

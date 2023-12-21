@@ -1,4 +1,6 @@
-﻿namespace Stas.Monitor.Infrastructures.Tests;
+﻿using Stas.Monitor.Infrastructures.Database;
+
+namespace Stas.Monitor.Infrastructures.Tests;
 
 public class SqlLiteQueries : IQueries
 {

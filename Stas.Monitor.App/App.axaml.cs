@@ -10,6 +10,7 @@ using ClpNet;
 using ClpNet.Extensions;
 using MySql.Data.MySqlClient;
 using Stas.Monitor.Infrastructures;
+using Stas.Monitor.Infrastructures.Database;
 using Stas.Monitor.Presentations;
 using Stas.Monitor.Presentations.IViews;
 
@@ -37,12 +38,24 @@ public class App : Application
             var errorWindow = new ErrorWindow();
             try
             {
+                var cmdParser = VerifyArguments(desktop.Args ?? Array.Empty<string>());
+
                 _mainWindow = new MainWindow();
-                var presenter = SetupApp(desktop.Args ?? Array.Empty<string>(), _mainWindow);
+
+                var iniConfigReader = new IniConfigurationReader(cmdParser.GetParameterValue("config-file"));
+                var configuration = iniConfigReader.RetrieveConfiguration();
+
+                DbProviderFactories.RegisterFactory("MySql.Data.MySqlClient", MySqlClientFactory.Instance);
+                var sqlFactory = DbProviderFactories.GetFactory("MySql.Data.MySqlClient");
+                var queries = new MySqlQueries();
+                var measurementRepository = new DatabaseMeasurementRepository(sqlFactory, queries, configuration.Data);
+
+                var measurementPresenter = new MeasurementPresenter(measurementRepository);
+                var mainPresenter = new MainPresenter(_mainWindow, measurementPresenter, configuration.ThermometerNames, configuration.TimerHandler);
 
                 DispatcherTimer.Run(() =>
                 {
-                    presenter.RefreshLists();
+                    mainPresenter.RefreshLists();
                     Log.Logger.Information("Measurements Refreshed.");
                     return true;
                 }, TimeSpan.FromSeconds(5));
@@ -60,25 +73,14 @@ public class App : Application
         base.OnFrameworkInitializationCompleted();
     }
 
-    private static MainPresenter SetupApp(string[] args, IMainView view)
+    private static CommandLineParser VerifyArguments(string[] args)
     {
-      var cmdParser = new CommandLineParser(args);
-      if ( !cmdParser.HasParameter("config-file") || string.IsNullOrEmpty(cmdParser.GetParameterValue("config-file")))
-      {
-        throw new ArgumentException("monitor: missing configuration file argument");
-      }
+        var cmdParser = new CommandLineParser(args);
+        if ( !cmdParser.HasParameter("config-file") || string.IsNullOrEmpty(cmdParser.GetParameterValue("config-file")))
+        {
+            throw new ArgumentException("monitor: missing configuration file argument");
+        }
 
-      var repository = new IniConfigurationReader(cmdParser.GetParameterValue("config-file"));
-      var configuration = repository.RetrieveConfiguration();
-
-      DbProviderFactories.RegisterFactory("MySql.Data.MySqlClient", MySqlClientFactory.Instance);
-      var sqlFactory = DbProviderFactories.GetFactory("MySql.Data.MySqlClient");
-      var queries = new MySqlQueries();
-      var measurementRepository = new DatabaseMeasurementRepository(sqlFactory, queries, configuration.Data);
-
-      var measurementPresenter = new MeasurementPresenter(measurementRepository);
-      var mainPresenter = new MainPresenter(view, measurementPresenter, configuration.ThermometerNames, configuration.TimerHandler);
-
-      return mainPresenter;
+        return cmdParser;
     }
 }
