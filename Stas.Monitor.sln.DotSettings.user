@@ -1,15 +1,16 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:String x:Key="/Default/CodeInspection/PencilsConfiguration/ActualSeverity/@EntryValue">INFO</s:String>
-	<s:String x:Key="/Default/Environment/Highlighting/HighlightingSourceSnapshotLocation/@EntryValue">C:\Users\alexi\AppData\Local\JetBrains\Rider2023.3\resharper-host\temp\Rider\vAny\CoverageData\_Stas.Monitor.-119043532\Snapshot\snapshot.utdcvr</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=730dabb9_002De567_002D499f_002Db4d6_002D0f6caf5cd893/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Constructor_ShouldSubscribeToSelectedThermometerEvent" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=730dabb9_002De567_002D499f_002Db4d6_002D0f6caf5cd893/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Constructor_ShouldSubscribeToSelectedThermometerEvent" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;NUnit3x::D7340CAD-14C8-4E22-94EC-120A2125E46E::net6.0::Stas.Monitor.Presentations.Tests.MainPresenterTests&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::D7340CAD-14C8-4E22-94EC-120A2125E46E::net6.0::Stas.Monitor.Presentations.Tests.MeasurementPresenterTests.MeasurementPresenter_RetrieveThermometerMeasurements_CallsRepositoryWithCorrectParameters&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::D7340CAD-14C8-4E22-94EC-120A2125E46E::net6.0::Stas.Monitor.Presentations.Tests.MeasurementPresenterTests&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::078431ED-C1C9-49DF-B26C-81073B54BB5D::net6.0::Stas.Monitor.App.Tests.ArchTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::FA07206B-D5CC-432E-A6BB-92D353F9C623::net6.0::Stas.Monitor.Infrastructures.Tests.CSV.CsvDataReaderTests.CsvDataReader_Should_ThrowErrorOnEmptyFile&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=7548efd2_002D29eb_002D48c3_002Db8c5_002De51618ddf744/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="All tests from &amp;lt;test&amp;gt;\&amp;lt;Stas.Monitor.Domains.Tests&amp;gt;" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=7548efd2_002D29eb_002D48c3_002Db8c5_002De51618ddf744/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="All tests from &amp;lt;test&amp;gt;\&amp;lt;Stas.Monitor.Domains.Tests&amp;gt;" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;Or&gt;&#xD;
     &lt;Project Location="F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.Domains.Tests" Presentation="&amp;lt;test&amp;gt;\&amp;lt;Stas.Monitor.Domains.Tests&amp;gt;" /&gt;&#xD;
     &lt;TestAncestor&gt;&#xD;
@@ -17,6 +18,8 @@
       &lt;TestId&gt;NUnit3x::D7340CAD-14C8-4E22-94EC-120A2125E46E::net6.0::Stas.Monitor.Presentations.Tests.MeasurementViewModelTests&lt;/TestId&gt;&#xD;
       &lt;TestId&gt;NUnit3x::D7340CAD-14C8-4E22-94EC-120A2125E46E::net6.0::Stas.Monitor.Presentations.Tests.MainPresenterTests.OnSelectThermometer_ShouldGenerateThermometerSettings&lt;/TestId&gt;&#xD;
       &lt;TestId&gt;NUnit3x::D7340CAD-14C8-4E22-94EC-120A2125E46E::net6.0::Stas.Monitor.Presentations.Tests.MainPresenterTests&lt;/TestId&gt;&#xD;
+      &lt;TestId&gt;NUnit3x::FA07206B-D5CC-432E-A6BB-92D353F9C623::net6.0::Stas.Monitor.Infrastructures.Tests.CSV.CsvDataReaderTests.CsvDataReader_Should_ThrowErrorOnEmptyFile&lt;/TestId&gt;&#xD;
+      &lt;TestId&gt;NUnit3x::FA07206B-D5CC-432E-A6BB-92D353F9C623::net6.0::Stas.Monitor.Infrastructures.Tests.CSV.CsvDataReaderTests&lt;/TestId&gt;&#xD;
     &lt;/TestAncestor&gt;&#xD;
   &lt;/Or&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
