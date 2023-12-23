@@ -2,7 +2,7 @@
 using Stas.Monitor.Domains.Repository;
 using Stas.Monitor.Domains.Repository.Exceptions;
 
-namespace Stas.Monitor.Infrastructures;
+namespace Stas.Monitor.Infrastructures.Ini;
 
 public class IniConfigurationReader : IConfigurationReader
 {

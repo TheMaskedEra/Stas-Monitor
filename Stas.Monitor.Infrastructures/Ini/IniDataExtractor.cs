@@ -1,4 +1,4 @@
-﻿namespace Stas.Monitor.Infrastructures;
+﻿namespace Stas.Monitor.Infrastructures.Ini;
 
 public static class IniDataExtractor
 {

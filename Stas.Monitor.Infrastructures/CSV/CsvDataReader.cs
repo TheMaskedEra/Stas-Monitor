@@ -1,14 +1,21 @@
-﻿using Serilog;
+﻿using Google.Protobuf.WellKnownTypes;
+using Serilog;
 
 namespace Stas.Monitor.Infrastructures.CSV;
 
-public class CsvDataReader
+public class CsvDataReader : ICsvDataReader //TODO : Implementation qui prend un type en trop
 {
     private readonly string _filePath;
 
     public CsvDataReader(string filePath)
     {
         _filePath = filePath;
+
+        using var reader = new StreamReader(_filePath);
+        var header = reader.ReadLine()?.Split(",");
+
+        Header = header ?? throw new EndOfStreamException();
+        Ruler = Array.Empty<string>();
     }
 
     public IList<string[]> ReadFile()
@@ -16,15 +23,9 @@ public class CsvDataReader
         var records = new List<string[]>();
 
         using var reader = new StreamReader(_filePath);
-
-        var header = reader.ReadLine()?.Split(",");
-        if (header == null)
-        {
-            throw new EndOfStreamException("The File is empty.");
-        }
-
-        Header = header!;
         var lineCount = 0;
+        reader.ReadLine();
+
         while (!reader.EndOfStream)
         {
             lineCount++;
@@ -36,11 +37,43 @@ public class CsvDataReader
                 continue;
             }
 
-            records.Add(values);
+            if (VerifyArguments(values))
+            {
+                records.Add(values);
+            }
         }
 
         return records;
     }
 
-    public string[] Header { get; private set; }
+    private bool VerifyArguments(string[] values)
+    {
+        if (Ruler.Length == 0)
+        {
+            return true;
+        }
+
+        for (var i = 0; i < values.Length; i++)
+        {
+            if (Ruler[i] == string.Empty)
+            {
+                continue;
+            }
+
+            if (Ruler[i] != values[i])
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public string[] Header { get; }
+
+    public string[] Ruler
+    {
+        get;
+        set;
+    }
 }

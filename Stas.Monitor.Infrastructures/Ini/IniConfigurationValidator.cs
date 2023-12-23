@@ -1,7 +1,7 @@
 ﻿using Stas.Monitor.Domains;
 using Stas.Monitor.Domains.Repository.Exceptions;
 
-namespace Stas.Monitor.Infrastructures;
+namespace Stas.Monitor.Infrastructures.Ini;
 
 public static class IniConfigurationValidator
 {
