@@ -51,7 +51,9 @@ public class App : Application
                 var queries = new MySqlQueries();
                 var measurementRepository = new DatabaseMeasurementRepository(sqlFactory, queries, configuration.Data);
 
-                var measurementPresenter = new MeasurementPresenter(measurementRepository);
+                var measurementsRetriever = new MeasurementsRetriever(measurementRepository);
+                var measurementPresenter = new MeasurementPresenter(measurementsRetriever);
+
                 var mainPresenter = new MainPresenter(_mainWindow, measurementPresenter, configuration.ThermometerNames, configuration.TimerHandler);
 
                 DispatcherTimer.Run(() =>

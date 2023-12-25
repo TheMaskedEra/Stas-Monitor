@@ -37,49 +37,42 @@ public class DatabaseMeasurementRepository : IMeasurementRepository
 
     private void TestConnection()
     {
-        using (var connection = _factory.CreateConnection())
+        using var connection = _factory.CreateConnection();
+        try
         {
-            try
-            {
-                connection!.ConnectionString = _connectionString;
-                connection.Open();
-            }
-            catch (Exception)
-            {
-                throw new MeasurementRepositoryException("Stas : unable to connect to the database");
-            }
+            connection!.ConnectionString = _connectionString;
+            connection.Open();
+        }
+        catch (Exception)
+        {
+            throw new MeasurementRepositoryException("Stas : unable to connect to the database");
         }
     }
 
-    public IEnumerable<Measurement> GetMeasurementsByThermometer(string thermometer, double totalSeconds)
+    public IList<Measurement> GetMeasurementsByThermometer(string thermometer, string type, double totalSeconds)
     {
-        using (var connection = _factory.CreateConnection())
+        using var connection = _factory.CreateConnection();
+        try
         {
-            try
+            connection!.ConnectionString = _connectionString;
+            var measurements = new List<Measurement>();
+            connection.Open();
+            using var command = connection.CreateCommand();
+            command.CommandText = _queries.MeasurementSelect;
+            CreateParameter(command, "@thermometer", thermometer, DbType.String);
+            CreateParameter(command, "@limit", totalSeconds, DbType.Double);
+            CreateParameter(command, "@type", type, DbType.String);
+            using var reader = command.ExecuteReader();
+            while (reader.Read())
             {
-                connection!.ConnectionString = _connectionString;
-                var measurements = new List<Measurement>();
-                connection.Open();
-                using (var command = connection.CreateCommand())
-                {
-                    command.CommandText = _queries.MeasurementSelect;
-                    CreateParameter(command, "@thermometer", thermometer, DbType.String);
-                    CreateParameter(command, "@limit", totalSeconds, DbType.Double);
-                    using (var reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            measurements.Add(InstantiateMeasurement(reader));
-                        }
+                measurements.Add(InstantiateMeasurement(reader));
+            }
 
-                        return measurements;
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                throw new MeasurementRepositoryException("Stas: unable to read Data : " + e.Message);
-            }
+            return measurements;
+        }
+        catch (Exception e)
+        {
+            throw new MeasurementRepositoryException("Stas: unable to read Data : " + e.Message);
         }
     }
 

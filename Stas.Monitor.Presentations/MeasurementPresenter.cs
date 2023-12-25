@@ -1,29 +1,35 @@
-﻿using Stas.Monitor.Domains.Repository;
+﻿using Stas.Monitor.Domains;
+using Stas.Monitor.Presentations.IPresenters;
 
 namespace Stas.Monitor.Presentations;
 
 public class MeasurementPresenter : IMeasurementPresenter
 {
-    private readonly IMeasurementRepository _measurementRepository;
+    private readonly IMeasurementsRetriever _measurementsRetriever;
 
     public string CurrentThermometer { get; set; }
 
-    public TimeSpan CurrentTimeSpan { get; set; }
+    public double CurrentTimer { get; set; }
 
-    public MeasurementPresenter(IMeasurementRepository measurementRepository)
+    public MeasurementPresenter(IMeasurementsRetriever measurementsRetriever)
     {
-        _measurementRepository = measurementRepository;
+        _measurementsRetriever = measurementsRetriever;
 
         CurrentThermometer = string.Empty;
-        CurrentTimeSpan = TimeSpan.Zero;
+        CurrentTimer = 0;
     }
 
-    public IEnumerable<MeasurementViewModel> RetrieveThermometerMeasurements()
+    public IDictionary<string, IList<MeasurementViewModel>> RetrieveThermometerMeasurements()
     {
-        var measurements = _measurementRepository.GetMeasurementsByThermometer(CurrentThermometer, CurrentTimeSpan.TotalSeconds);
+        var types = Enum.GetNames(typeof(MeasurementType));
+        var measurementViewModels = new Dictionary<string, IList<MeasurementViewModel>>();
 
-        var viewModels = measurements.Select(measurement => new MeasurementViewModel(measurement));
+        for (var i = 1; i < types.Length; i++)
+        {
+            var type = types[i];
+            measurementViewModels.Add(type, _measurementsRetriever.RetrieveMeasurements(CurrentThermometer, type, CurrentTimer));
+        }
 
-        return viewModels;
+        return measurementViewModels;
     }
 }

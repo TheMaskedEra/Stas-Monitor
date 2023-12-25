@@ -1,6 +1,6 @@
 ﻿using Stas.Monitor.Infrastructures.Database;
 
-namespace Stas.Monitor.Infrastructures.Tests;
+namespace Stas.Monitor.Infrastructures.Tests.Database;
 
 public class SqlLiteQueries : IQueries
 {

@@ -27,18 +27,16 @@ public partial class MainWindow : Window, IMainView
     Timers.SelectedIndex = 1;
   }
 
-  public void GenerateThermometerSettings(IEnumerable<MeasurementViewModel> viewModels)
+  public void GenerateThermometerSettings(IDictionary<string, IList<MeasurementViewModel>> viewModels)
   {
       Lists.Children.Clear();
       CheckBoxTypes.Children.Clear();
 
-      var groupedMeasurements = GroupMeasurementsByTypes(viewModels);
-
-      foreach (var type in groupedMeasurements.Keys)
+      foreach (var type in viewModels.Keys)
       {
           var measurementList = new MeasurementList()
           {
-              ViewModels = groupedMeasurements[type],
+              ViewModels = viewModels[type],
               Type = type,
           };
 
@@ -74,11 +72,5 @@ public partial class MainWindow : Window, IMainView
 
       var timer = e.AddedItems[0]!.ToString();
       SelectedTimer?.Invoke(this, timer!);
-  }
-
-  private static IDictionary<string, IEnumerable<MeasurementViewModel>> GroupMeasurementsByTypes(IEnumerable<MeasurementViewModel> viewModels)
-  {
-      var groupedMeasurementViewModels = viewModels.GroupBy(measurement=> measurement.Type);
-      return groupedMeasurementViewModels.ToDictionary(group => group.Key, group => group.AsEnumerable());
   }
 }

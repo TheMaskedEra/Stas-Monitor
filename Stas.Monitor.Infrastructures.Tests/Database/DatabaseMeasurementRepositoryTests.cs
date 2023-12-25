@@ -3,7 +3,7 @@ using System.Data.SQLite;
 using Stas.Monitor.Domains.Repository.Exceptions;
 using Stas.Monitor.Infrastructures.Database;
 
-namespace Stas.Monitor.Infrastructures.Tests;
+namespace Stas.Monitor.Infrastructures.Tests.Database;
 
 public class DatabaseMeasurementRepositoryTests
 {
@@ -105,9 +105,9 @@ public class DatabaseMeasurementRepositoryTests
     [Test]
     public void Should_Return_Valid_Measurement_List()
     {
-        var measurementSize30Secs = _databaseMeasurementRepository.GetMeasurementsByThermometer("Living Room", 30);
-        var measurementSize1Min = _databaseMeasurementRepository.GetMeasurementsByThermometer("Living Room", 60);
-        var measurementSize5Min = _databaseMeasurementRepository.GetMeasurementsByThermometer("Living Room", 300);
+        var measurementSize30Secs = _databaseMeasurementRepository.GetMeasurementsByThermometer("Living Room","Temperature", 30);
+        var measurementSize1Min = _databaseMeasurementRepository.GetMeasurementsByThermometer("Living Room","Temperature", 60);
+        var measurementSize5Min = _databaseMeasurementRepository.GetMeasurementsByThermometer("Living Room", "Temperature", 300);
 
         Assert.Multiple(() =>
         {

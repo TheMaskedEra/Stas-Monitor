@@ -2,5 +2,5 @@
 
 public interface IMeasurementRepository
 {
-    IEnumerable<Measurement> GetMeasurementsByThermometer(string thermometer, double totalSeconds);
+    IList<Measurement> GetMeasurementsByThermometer(string thermometer, string type, double totalSeconds);
 }

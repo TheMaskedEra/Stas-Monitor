@@ -1,9 +1,7 @@
-using NUnit.Framework.Constraints;
-using Stas.Monitor.Domains;
 using Stas.Monitor.Domains.Repository.Exceptions;
 using Stas.Monitor.Infrastructures.Ini;
 
-namespace Stas.Monitor.Infrastructures.Tests;
+namespace Stas.Monitor.Infrastructures.Tests.Ini;
 
 public class Tests
 {

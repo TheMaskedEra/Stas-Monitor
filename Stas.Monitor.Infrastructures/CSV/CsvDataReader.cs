@@ -1,11 +1,18 @@
-﻿using Google.Protobuf.WellKnownTypes;
-using Serilog;
+﻿using Serilog;
 
 namespace Stas.Monitor.Infrastructures.CSV;
 
 public class CsvDataReader : ICsvDataReader //TODO : Implementation qui prend un type en trop
 {
     private readonly string _filePath;
+
+    public string[] Header { get; }
+
+    public string[] Ruler
+    {
+        get;
+        set;
+    }
 
     public CsvDataReader(string filePath)
     {
@@ -67,13 +74,5 @@ public class CsvDataReader : ICsvDataReader //TODO : Implementation qui prend un
         }
 
         return true;
-    }
-
-    public string[] Header { get; }
-
-    public string[] Ruler
-    {
-        get;
-        set;
     }
 }

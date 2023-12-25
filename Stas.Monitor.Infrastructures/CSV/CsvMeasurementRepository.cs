@@ -12,8 +12,5 @@ public class CsvMeasurementRepository : IMeasurementRepository
         _csvReader = new CsvDataReader(filePath);
     }
 
-    public IEnumerable<Measurement> GetMeasurementsByThermometer(string thermometer, double totalSeconds)
-    {
-        throw new NotImplementedException();
-    }
+    public IList<Measurement> GetMeasurementsByThermometer(string thermometer, string type, double totalSeconds) => throw new NotImplementedException();
 }

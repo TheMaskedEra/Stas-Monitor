@@ -1,4 +1,5 @@
 ﻿using Stas.Monitor.Domains;
+using Stas.Monitor.Presentations.IPresenters;
 using Stas.Monitor.Presentations.IViews;
 
 namespace Stas.Monitor.Presentations;
@@ -17,7 +18,8 @@ public class MainPresenter
 
       _view.SelectedTimer += (sender, e) =>
       {
-          _measurementPresenter.CurrentTimeSpan = timerHandler.GetTimer(e);
+          var timer = timerHandler.GetTimer(e);
+          _measurementPresenter.CurrentTimer = timer.TotalSeconds;
           RefreshLists();
       };
 

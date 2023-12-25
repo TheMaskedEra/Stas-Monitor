@@ -24,7 +24,7 @@ public static class IniConfigurationValidator
             throw new ConfigurationReaderException("monitor: missing required section thermometers");
         }
 
-        var databaseValues = data["database"];
+        var measurementsDataPath = ParseMeasurementsDataPath(data);
 
         var timers = new HashSet<int>();
         foreach (var timerString in data["timers"].Values)
@@ -32,6 +32,21 @@ public static class IniConfigurationValidator
             timers.Add(int.Parse(timerString));
         }
 
-        return new Configuration(thermometers, databaseValues, new TimerHandler(timers));
+        return new Configuration(thermometers, measurementsDataPath, new TimerHandler(timers));
+    }
+
+    private static IDictionary<string, string> ParseMeasurementsDataPath(IDictionary<string, IDictionary<string, string>> data) //TODO utiliser et rajouter type dans map ?
+    {
+        if (data.TryGetValue("database", out var database))
+        {
+            return database;
+        }
+
+        if (data.TryGetValue("paths", out var path))
+        {
+            return path;
+        }
+
+        throw new ConfigurationReaderException("monitor: no configurations were set to retrieve data."); //TODO
     }
 }

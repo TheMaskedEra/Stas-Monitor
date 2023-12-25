@@ -2,6 +2,7 @@
 
 public enum MeasurementType
 {
-    HUMIDITY,
-    TEMPERATURE,
+    None = 0,
+    Temperature,
+    Humidity,
 }
