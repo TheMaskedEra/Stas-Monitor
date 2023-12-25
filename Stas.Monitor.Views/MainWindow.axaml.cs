@@ -18,32 +18,30 @@ public partial class MainWindow : Window, IMainView
   {
     InitializeComponent();
   }
-  public void SetupSettings(IEnumerable<string> names, IEnumerable<string> displayTimers)
+  public void SetupSettings(IEnumerable<string> names, IEnumerable<string> displayTimers, string[] types)
   {
     ListName.ItemsSource = names;
     ListName.SelectedIndex = 0;
 
     Timers.ItemsSource = displayTimers;
     Timers.SelectedIndex = 1;
+
+    GenerateThermometerSettings(types);
   }
 
-  public void GenerateThermometerSettings(IDictionary<string, IList<MeasurementViewModel>> viewModels)
+  private void GenerateThermometerSettings(string[] types)
   {
-      Lists.Children.Clear();
-      CheckBoxTypes.Children.Clear();
-
-      foreach (var type in viewModels.Keys)
+      foreach (var type in types)
       {
-          var measurementList = new MeasurementList()
-          {
-              ViewModels = viewModels[type],
-              Type = type,
-          };
-
-          var checkBox = new CheckBox
+          var checkBox = new CheckBox()
           {
               Content = type,
               IsChecked = true
+          };
+
+          var measurementList = new MeasurementList()
+          {
+              Title = type
           };
 
           checkBox.IsCheckedChanged += (sender, e) =>
@@ -54,6 +52,17 @@ public partial class MainWindow : Window, IMainView
           Lists.Children.Add(measurementList);
 
           CheckBoxTypes.Children.Add(checkBox);
+      }
+  }
+
+  public void RefreshLists(IDictionary<string, IList<MeasurementViewModel>> data)
+  {
+      foreach (var measurementList in Lists.Children.OfType<MeasurementList>())
+      {
+          var type = measurementList.Title;
+          var exists = data.ContainsKey(type);
+
+          measurementList.Items = exists ? data[type] : new List<MeasurementViewModel>();
       }
   }
 

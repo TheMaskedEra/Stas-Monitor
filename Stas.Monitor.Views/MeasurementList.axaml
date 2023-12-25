@@ -7,7 +7,7 @@
              x:Class="Stas.Monitor.Views.MeasurementList"
              >
     <StackPanel>
-        <TextBlock x:Name="Title" HorizontalAlignment="Center" FontSize="25"/>
+        <TextBlock HorizontalAlignment="Center" FontSize="25"/>
         <ItemsControl x:Name="Measurements">
             <ItemsControl.ItemTemplate>
                 <DataTemplate x:DataType="presentations:MeasurementViewModel">

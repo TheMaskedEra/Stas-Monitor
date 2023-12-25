@@ -6,5 +6,7 @@ public interface IMeasurementPresenter
 
     double CurrentTimer { set; }
 
+    string[] Types { get; init; }
+
     IDictionary<string, IList<MeasurementViewModel>> RetrieveThermometerMeasurements();
 }

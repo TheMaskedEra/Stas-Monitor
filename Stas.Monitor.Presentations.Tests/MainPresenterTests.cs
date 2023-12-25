@@ -1,6 +1,4 @@
-﻿using Microsoft.VisualBasic;
-using NSubstitute;
-using NSubstitute.Routing.Handlers;
+﻿using NSubstitute;
 using Stas.Monitor.Domains;
 using Stas.Monitor.Presentations.IPresenters;
 using Stas.Monitor.Presentations.IViews;
@@ -65,11 +63,11 @@ public class MainPresenterTests
 
         //Assert
         measurementPresenterMock.Received(1).RetrieveThermometerMeasurements();
-        mainViewMock.Received(1).GenerateThermometerSettings(returnedDictionary);
+        mainViewMock.Received(1).RefreshLists(returnedDictionary);
     }
 
     [Test]
-    public void MainPresenter_WhenThermometerSelected_ShouldChangeViewInformationsAndRefreshList()
+    public void MainPresenter_WhenThermometerSelected_ShouldChangeViewInformationAndRefreshList()
     {
         //Arrange
         var measurementPresenterMock = Substitute.For<IMeasurementPresenter>();
@@ -85,7 +83,7 @@ public class MainPresenterTests
         //Assert
         measurementPresenterMock.Received(1).CurrentThermometer = thermometersNames[0];
         measurementPresenterMock.Received(1).RetrieveThermometerMeasurements();
-        mainViewMock.Received(1).GenerateThermometerSettings(Arg.Any<IEnumerable<MeasurementViewModel>>());
+        mainViewMock.Received(1).RefreshLists(Arg.Any<IDictionary<string, IList<MeasurementViewModel>>>());
     }
 
     [Test]
@@ -104,8 +102,8 @@ public class MainPresenterTests
         mainViewMock.SelectedTimer += Raise.Event<EventHandler<string>>(mainViewMock, displays[1]);
 
         //Assert
-        measurementPresenterMock.Received(1).CurrentTimer = timerHandler.GetTimer(displays[1]);
+        measurementPresenterMock.Received(1).CurrentTimer = timerHandler.GetTimer(displays[1]).TotalSeconds;
         measurementPresenterMock.Received(1).RetrieveThermometerMeasurements();
-        mainViewMock.Received(1).GenerateThermometerSettings(Arg.Any<IEnumerable<MeasurementViewModel>>());
+        mainViewMock.Received(1).RefreshLists(Arg.Any<IDictionary<string, IList<MeasurementViewModel>>>());
     }
 }

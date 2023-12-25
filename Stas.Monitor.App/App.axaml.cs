@@ -9,6 +9,7 @@ using Stas.Monitor.Views;
 using ClpNet;
 using ClpNet.Extensions;
 using MySql.Data.MySqlClient;
+using Stas.Monitor.Domains;
 using Stas.Monitor.Infrastructures;
 using Stas.Monitor.Infrastructures.Database;
 using Stas.Monitor.Infrastructures.Ini;
@@ -51,8 +52,13 @@ public class App : Application
                 var queries = new MySqlQueries();
                 var measurementRepository = new DatabaseMeasurementRepository(sqlFactory, queries, configuration.Data);
 
+                var measurementTypes = Enum.GetNames(typeof(MeasurementType));
+
                 var measurementsRetriever = new MeasurementsRetriever(measurementRepository);
-                var measurementPresenter = new MeasurementPresenter(measurementsRetriever);
+                var measurementPresenter = new MeasurementPresenter(measurementsRetriever)
+                {
+                    Types = measurementTypes
+                };
 
                 var mainPresenter = new MainPresenter(_mainWindow, measurementPresenter, configuration.ThermometerNames, configuration.TimerHandler);
 

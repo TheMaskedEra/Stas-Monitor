@@ -6,7 +6,7 @@ public interface IMainView
 
   event EventHandler<string> SelectedTimer;
 
-  void SetupSettings(IEnumerable<string> names, IEnumerable<string> displayTimers);
+  void SetupSettings(IEnumerable<string> names, IEnumerable<string> displayTimers, string[] types);
 
-  void GenerateThermometerSettings(IDictionary<string, IList<MeasurementViewModel>> measurements);
+  void RefreshLists(IDictionary<string, IList<MeasurementViewModel>> data);
 }

@@ -11,6 +11,8 @@ public class MeasurementPresenter : IMeasurementPresenter
 
     public double CurrentTimer { get; set; }
 
+    public string[] Types { get; init; } = Array.Empty<string>();
+
     public MeasurementPresenter(IMeasurementsRetriever measurementsRetriever)
     {
         _measurementsRetriever = measurementsRetriever;
@@ -21,12 +23,11 @@ public class MeasurementPresenter : IMeasurementPresenter
 
     public IDictionary<string, IList<MeasurementViewModel>> RetrieveThermometerMeasurements()
     {
-        var types = Enum.GetNames(typeof(MeasurementType));
         var measurementViewModels = new Dictionary<string, IList<MeasurementViewModel>>();
 
-        for (var i = 1; i < types.Length; i++)
+        for (var i = 0; i < Types.Length; i++)
         {
-            var type = types[i];
+            var type = Types[i];
             measurementViewModels.Add(type, _measurementsRetriever.RetrieveMeasurements(CurrentThermometer, type, CurrentTimer));
         }
 

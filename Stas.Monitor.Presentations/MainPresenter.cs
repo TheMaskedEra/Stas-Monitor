@@ -23,16 +23,14 @@ public class MainPresenter
           RefreshLists();
       };
 
-      _view.SetupSettings(thermometersNames, timerHandler.DisplayTimers);
+      _view.SetupSettings(thermometersNames, timerHandler.DisplayTimers, measurementPresenter.Types);
   }
 
   private void OnSelectThermometer(object? sender, string name)
   {
       _measurementPresenter.CurrentThermometer = name;
-      var thermometerMeasurements = _measurementPresenter.RetrieveThermometerMeasurements();
-
-      _view.GenerateThermometerSettings(thermometerMeasurements);
+      RefreshLists();
   }
 
-  public void RefreshLists() => _view.GenerateThermometerSettings(_measurementPresenter.RetrieveThermometerMeasurements());
+  public void RefreshLists() => _view.RefreshLists(_measurementPresenter.RetrieveThermometerMeasurements());
 }
