@@ -3,11 +3,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:presentations="clr-namespace:Stas.Monitor.Presentations;assembly=Stas.Monitor.Presentations"
+             xmlns:views="clr-namespace:Stas.Monitor.Views"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Stas.Monitor.Views.MeasurementList"
              >
     <StackPanel>
-        <TextBlock HorizontalAlignment="Center" FontSize="25"/>
+        <TextBlock x:Name="Header" HorizontalAlignment="Center" FontSize="25"/>
         <ItemsControl x:Name="Measurements">
             <ItemsControl.ItemTemplate>
                 <DataTemplate x:DataType="presentations:MeasurementViewModel">

@@ -11,21 +11,22 @@ public class CsvDataReaderTests
     {
         //Arrange
         var filePath = $"{Directory.GetCurrentDirectory()}/resources/CSV/EmptyFile.csv";
-        var csvReader = new CsvDataReader(filePath);
+
 
         //Act & Assert
-        Assert.Throws<EndOfStreamException>(() => csvReader.ReadFile());
+        Assert.Throws<EndOfStreamException>(() =>
+        {
+            var csvDataReader = new CsvDataReader(filePath);
+        });
     }
 
     [Test]
-    public void CsvDataReader_Should_ThrowError_OnFileNotFound()
-    {
-        //Arrange
-        var csvReader = new CsvDataReader("A Bad Path");
-
-        //Act & Assert
-        Assert.Throws<FileNotFoundException>(() => csvReader.ReadFile());
-    }
+    public void CsvDataReader_Should_ThrowError_OnFileNotFound() =>
+        //Arrange & Act & Assert
+        Assert.Throws<FileNotFoundException>(() =>
+        {
+            var csvReader = new CsvDataReader("A Bad Path");
+        });
 
     [Test]
     public void CsvDataReader_WhenReadFile_Should_IgnoreLinesOfDifferentSizeThanHeader()

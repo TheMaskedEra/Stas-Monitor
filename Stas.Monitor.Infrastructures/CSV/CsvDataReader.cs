@@ -12,6 +12,8 @@ public class CsvDataReader
         init;
     }
 
+    = Array.Empty<string>();
+
     public CsvDataReader(string filePath)
     {
         _filePath = filePath;
@@ -20,7 +22,6 @@ public class CsvDataReader
         var header = reader.ReadLine()?.Split(",");
 
         Header = header ?? throw new EndOfStreamException();
-        Ruler = Array.Empty<string>();
     }
 
     public IList<string[]> ReadFile()

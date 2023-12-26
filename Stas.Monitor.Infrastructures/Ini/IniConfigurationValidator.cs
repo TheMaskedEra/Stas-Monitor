@@ -44,9 +44,19 @@ public static class IniConfigurationValidator
 
         if (data.TryGetValue("paths", out var path))
         {
+            if (!path.ContainsKey("measurements"))
+            {
+                throw new ConfigurationReaderException("monitor: missing required properties measurements file path.");
+            }
+
+            if (!path.ContainsKey("alerts"))
+            {
+                throw new ConfigurationReaderException("monitor: missing required properties alerts filepath.");
+            }
+
             return path;
         }
 
-        throw new ConfigurationReaderException("monitor: no configurations were set to retrieve data."); //TODO
+        throw new ConfigurationReaderException("monitor: no configurations were set to retrieve data.");
     }
 }

@@ -1,4 +1,5 @@
-﻿using Stas.Monitor.Domains;
+﻿using System.Globalization;
+using Stas.Monitor.Domains;
 
 namespace Stas.Monitor.Presentations;
 
@@ -29,19 +30,47 @@ public class MeasurementViewModel
     }
   }
 
-  public string? Background => _measurement.AlertOffset != null ? "red" : null;
+  public string? Background
+  {
+      get
+      {
+          if (_measurement.AlertOffset == null)
+          {
+              return null;
+          }
+
+          return _measurement.AlertOffset < _measurement.Value ? "red" : "blue";
+      }
+  }
 
   private string GetFormattedValue(double value)
   {
       var format = _measurement.Type switch
       {
-          "Temperature" => "00.0°C",
-          "Humidity" => "00%",
-          _ => string.Empty,
+          "Temperature" => "0.0°C",
+          "Humidity" => "0.0%",
+          _ => "0.0",
       };
 
-      return value.ToString(format);
+      return value.ToString(format, CultureInfo.InvariantCulture);
   }
 
   public string Type => _measurement.Type;
+
+  public override bool Equals(object? obj)
+  {
+      if (obj == null || GetType() != obj.GetType())
+      {
+          return false;
+      }
+
+      var other = (MeasurementViewModel)obj;
+      return Value == other.Value
+          && Moment == other.Moment
+                      && ExpectedValue == other.ExpectedValue
+                      && Background == other.Background
+                      && Type == other.Type;
+  }
+
+  public override int GetHashCode() => HashCode.Combine(Value, Moment, ExpectedValue, Background, Type);
 }

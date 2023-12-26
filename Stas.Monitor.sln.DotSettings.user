@@ -13,15 +13,11 @@
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=7548efd2_002D29eb_002D48c3_002Db8c5_002De51618ddf744/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="All tests from &amp;lt;test&amp;gt;\&amp;lt;Stas.Monitor.Domains.Tests&amp;gt;" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;Or&gt;&#xD;
+    &lt;Project Location="F:\Code\HELMo\AI\Stas.Monitor" Presentation="&amp;lt;test&amp;gt;" /&gt;&#xD;
+    &lt;Project Location="F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.App.Tests" Presentation="&amp;lt;test&amp;gt;\&amp;lt;Stas.Monitor.App.Tests&amp;gt;" /&gt;&#xD;
     &lt;Project Location="F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.Domains.Tests" Presentation="&amp;lt;test&amp;gt;\&amp;lt;Stas.Monitor.Domains.Tests&amp;gt;" /&gt;&#xD;
-    &lt;TestAncestor&gt;&#xD;
-      &lt;TestId&gt;NUnit3x::D7340CAD-14C8-4E22-94EC-120A2125E46E::net6.0::Stas.Monitor.Presentations.Tests.MeasurementViewModelTests.MeasurementViewModel_Value_ShouldReturnFormattedValue&lt;/TestId&gt;&#xD;
-      &lt;TestId&gt;NUnit3x::D7340CAD-14C8-4E22-94EC-120A2125E46E::net6.0::Stas.Monitor.Presentations.Tests.MeasurementViewModelTests&lt;/TestId&gt;&#xD;
-      &lt;TestId&gt;NUnit3x::D7340CAD-14C8-4E22-94EC-120A2125E46E::net6.0::Stas.Monitor.Presentations.Tests.MainPresenterTests.OnSelectThermometer_ShouldGenerateThermometerSettings&lt;/TestId&gt;&#xD;
-      &lt;TestId&gt;NUnit3x::D7340CAD-14C8-4E22-94EC-120A2125E46E::net6.0::Stas.Monitor.Presentations.Tests.MainPresenterTests&lt;/TestId&gt;&#xD;
-      &lt;TestId&gt;NUnit3x::FA07206B-D5CC-432E-A6BB-92D353F9C623::net6.0::Stas.Monitor.Infrastructures.Tests.CSV.CsvDataReaderTests.CsvDataReader_Should_ThrowErrorOnEmptyFile&lt;/TestId&gt;&#xD;
-      &lt;TestId&gt;NUnit3x::FA07206B-D5CC-432E-A6BB-92D353F9C623::net6.0::Stas.Monitor.Infrastructures.Tests.CSV.CsvDataReaderTests&lt;/TestId&gt;&#xD;
-    &lt;/TestAncestor&gt;&#xD;
+    &lt;Project Location="F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.Infrastructures.Tests" Presentation="&amp;lt;test&amp;gt;\&amp;lt;Stas.Monitor.Infrastructures.Tests&amp;gt;" /&gt;&#xD;
+    &lt;Project Location="F:\Code\HELMo\AI\Stas.Monitor\Stas.Monitor.Presentations.Tests" Presentation="&amp;lt;test&amp;gt;\&amp;lt;Stas.Monitor.Presentations.Tests&amp;gt;" /&gt;&#xD;
   &lt;/Or&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	

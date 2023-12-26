@@ -39,10 +39,7 @@ public partial class MainWindow : Window, IMainView
               IsChecked = true
           };
 
-          var measurementList = new MeasurementList()
-          {
-              Title = type
-          };
+          var measurementList = new MeasurementList(type);
 
           checkBox.IsCheckedChanged += (sender, e) =>
           {

@@ -32,7 +32,7 @@ public class MeasurementViewModelTests
         var formattedValue = viewModel.Value;
 
         //Assert
-        Assert.That(formattedValue, Is.EqualTo("50%"));
+        Assert.That(formattedValue, Is.EqualTo("50.0%"));
     }
 
     [Test]
@@ -46,7 +46,7 @@ public class MeasurementViewModelTests
         var formattedValue = viewModel.Value;
 
         //Assert
-        Assert.That(formattedValue, Is.EqualTo("125"));
+        Assert.That(formattedValue, Is.EqualTo("125.0"));
     }
 
     [Test]
@@ -81,7 +81,7 @@ public class MeasurementViewModelTests
         // Assert
         Assert.Multiple(() =>
         {
-            Assert.That(expectedValueWithAlert, Is.EqualTo("Expected : 02.0°C"));
+            Assert.That(expectedValueWithAlert, Is.EqualTo("Expected : 2.0°C")); //TODO
             Assert.That(expectedValueWithoutAlert, Is.EqualTo(string.Empty));
         });
     }
@@ -120,5 +120,45 @@ public class MeasurementViewModelTests
 
         // Assert
         Assert.That(type, Is.EqualTo("Humidity"));
+    }
+
+    [Test]
+    public void Equals_ShouldReturnFalse_WhenComparedToNull()
+    {
+        //Arrange
+        var measurementViewModel = new MeasurementViewModel(new Measurement("Temperature", DateTime.Now, 20, null));
+
+        //Act
+        var result = measurementViewModel.Equals(null);
+
+        //Assert
+        Assert.That(result, Is.False);
+    }
+
+    [Test]
+    public void Equals_ShouldReturnTrue_WhenComparedToSame()
+    {
+        //Arrange
+        var measurementViewModel = new MeasurementViewModel(new Measurement("Temperature", DateTime.Now, 20, null));
+        var measurementViewModelCompared = new MeasurementViewModel(new Measurement("Temperature", DateTime.Now, 20, null));
+
+        //Act
+        var result = measurementViewModel.Equals(measurementViewModelCompared);
+
+        //Assert
+        Assert.That(result, Is.True);
+    }
+
+    [Test]
+    public void GetHashCode_ShouldNotThrowException()
+    {
+        // Arrange
+        var measurementViewModel = new MeasurementViewModel(new Measurement("Temperature", DateTime.Now, 20, null));
+
+        // Act & Assert
+        Assert.DoesNotThrow(() =>
+        {
+            var hashCode = measurementViewModel.GetHashCode();
+        });
     }
 }

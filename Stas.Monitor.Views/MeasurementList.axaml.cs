@@ -9,17 +9,18 @@ public partial class MeasurementList : UserControl
     public string Title
     {
         get;
-        init;
-    } = "None";
+    }
 
     public IEnumerable<MeasurementViewModel> Items
     {
         set => Measurements.ItemsSource = value;
     }
 
-    public MeasurementList()
+    public MeasurementList(string type)
     {
         InitializeComponent();
+        Header.Text = type;
+        Title = type;
     }
 }
 

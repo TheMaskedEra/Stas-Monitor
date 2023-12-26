@@ -5,12 +5,12 @@
         mc:Ignorable="d" d:DesignWidth="550" d:DesignHeight="700"
         x:Class="Stas.Monitor.Views.MainWindow"
         Title="UE36 - Stas Monitor - Alexis Vanden Broeck"
-        MinWidth="550" MinHeight="700"
+        MinWidth="850" MinHeight="700"
         Width="550" Height="700" CanResize="True"
         >
     <ScrollViewer>
         <StackPanel>
-            <Expander Width="550" IsExpanded="true">
+            <Expander Width="850" IsExpanded="true">
                 <Expander.Header>
                     Display Settings
                 </Expander.Header>

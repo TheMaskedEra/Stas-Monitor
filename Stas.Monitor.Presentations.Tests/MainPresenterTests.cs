@@ -56,7 +56,7 @@ public class MainPresenterTests
         var returnedDictionary = new Dictionary<string, IList<MeasurementViewModel>>();
         returnedDictionary.Add("Temperature", new List<MeasurementViewModel> { new (measurement) });
 
-    measurementPresenterMock.RetrieveThermometerMeasurements().Returns(returnedDictionary);
+        measurementPresenterMock.RetrieveThermometerMeasurements().Returns(returnedDictionary);
 
         //Act
         mainPresenter.RefreshLists();
