@@ -11,6 +11,7 @@ using ClpNet.Extensions;
 using MySql.Data.MySqlClient;
 using Stas.Monitor.Domains;
 using Stas.Monitor.Infrastructures;
+using Stas.Monitor.Infrastructures.CSV;
 using Stas.Monitor.Infrastructures.Database;
 using Stas.Monitor.Infrastructures.Ini;
 using Stas.Monitor.Presentations;
@@ -47,10 +48,13 @@ public class App : Application
                 var iniConfigReader = new IniConfigurationReader(cmdParser.GetParameterValue("config-file"));
                 var configuration = iniConfigReader.RetrieveConfiguration();
 
-                DbProviderFactories.RegisterFactory("MySql.Data.MySqlClient", MySqlClientFactory.Instance);
+                /*DbProviderFactories.RegisterFactory("MySql.Data.MySqlClient", MySqlClientFactory.Instance);
                 var sqlFactory = DbProviderFactories.GetFactory("MySql.Data.MySqlClient");
                 var queries = new MySqlQueries();
-                var measurementRepository = new DatabaseMeasurementRepository(sqlFactory, queries, configuration.Data);
+                var measurementRepository = new DatabaseMeasurementRepository(sqlFactory, queries, configuration.Data);$*/
+
+                var measurementsData = configuration.Data;
+                var measurementRepository = new CsvMeasurementRepository(measurementsData["measurements"], measurementsData["alerts"]);
 
                 var measurementTypes = Enum.GetNames(typeof(MeasurementType));
 

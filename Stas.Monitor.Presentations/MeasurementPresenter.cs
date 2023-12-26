@@ -25,7 +25,7 @@ public class MeasurementPresenter : IMeasurementPresenter
     {
         var measurementViewModels = new Dictionary<string, IList<MeasurementViewModel>>();
 
-        for (var i = 0; i < Types.Length; i++)
+        for (var i = 1; i < Types.Length; i++)
         {
             var type = Types[i];
             measurementViewModels.Add(type, _measurementsRetriever.RetrieveMeasurements(CurrentThermometer, type, CurrentTimer));

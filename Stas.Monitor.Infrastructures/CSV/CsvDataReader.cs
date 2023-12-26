@@ -1,17 +1,15 @@
-﻿using Serilog;
+﻿namespace Stas.Monitor.Infrastructures.CSV;
 
-namespace Stas.Monitor.Infrastructures.CSV;
-
-public class CsvDataReader : ICsvDataReader //TODO : Implementation qui prend un type en trop
+public class CsvDataReader
 {
     private readonly string _filePath;
 
-    public string[] Header { get; }
+    private string[] Header { get; }
 
     public string[] Ruler
     {
         get;
-        set;
+        init;
     }
 
     public CsvDataReader(string filePath)
@@ -30,17 +28,14 @@ public class CsvDataReader : ICsvDataReader //TODO : Implementation qui prend un
         var records = new List<string[]>();
 
         using var reader = new StreamReader(_filePath);
-        var lineCount = 0;
         reader.ReadLine();
 
         while (!reader.EndOfStream)
         {
-            lineCount++;
             var line = reader.ReadLine();
             var values = line!.Split(",");
             if (values.Length != Header.Length)
             {
-                Log.Logger.Warning("Something is wrong in the " + _filePath + " file: Line " + lineCount + " doesn't have the same amount of variables than the header.");
                 continue;
             }
 

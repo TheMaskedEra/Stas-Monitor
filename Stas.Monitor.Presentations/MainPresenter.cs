@@ -24,6 +24,7 @@ public class MainPresenter
       };
 
       _view.SetupSettings(thermometersNames, timerHandler.DisplayTimers, measurementPresenter.Types);
+      RefreshLists();
   }
 
   private void OnSelectThermometer(object? sender, string name)
