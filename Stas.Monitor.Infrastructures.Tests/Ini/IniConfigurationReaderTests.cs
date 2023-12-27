@@ -1,3 +1,4 @@
+using Stas.Monitor.Domains;
 using Stas.Monitor.Domains.Repository.Exceptions;
 using Stas.Monitor.Infrastructures.Ini;
 
@@ -6,23 +7,31 @@ namespace Stas.Monitor.Infrastructures.Tests.Ini;
 public class Tests
 {
     private readonly string _filePath = $"{Directory.GetCurrentDirectory()}/resources/configs/config.ini";
-    private IniConfigurationReader _reader;
-
-    [SetUp]
-    public void SetUp() => _reader = new IniConfigurationReader(_filePath);
 
     [Test]
     public void Returns_Valid_Configuration()
     {
-        var config = _reader.RetrieveConfiguration();
+        var reader = new IniConfigurationReader(_filePath);
+        var config = reader.RetrieveConfiguration();
 
-        if (config.Data.Count > 0
-            && config.ThermometerNames.Count > 0)
+        var thermometers = config.ThermometerNames;
+        var expectedThermometers = new HashSet<string> { "Living Room", "Kitchen", "Bedroom" };
+        CollectionAssert.AreEquivalent(thermometers, expectedThermometers);
+
+        var measurementsData = config.Data;
+        var expectedMeasurementData = new Dictionary<string, string>
         {
-            Assert.Pass();
-        }
+            { "host", "192.168.132.200" },
+            { "port", "13306" },
+            { "database", "E200971" },
+            { "user", "E200971" },
+            { "password", "0971" }
+        };
+        CollectionAssert.AreEquivalent(measurementsData, expectedMeasurementData);
 
-        Assert.Fail();
+        var timerHandler = config.TimerHandler;
+        var expectedTimerHandler = new TimerHandler(new List<int> { 30, 60, 300 });
+        Assert.That(timerHandler, Is.EqualTo(expectedTimerHandler));
     }
 
     [Test]
@@ -31,14 +40,7 @@ public class Tests
         const string badFilePath = "I'm a bad file path.";
 
         var badReader = new IniConfigurationReader(badFilePath);
-        try
-        {
-            var config = badReader.RetrieveConfiguration();
-        }
-        catch (ConfigurationReaderException)
-        {
-            Assert.Pass();
-        }
-        Assert.Fail();
+
+        Assert.Throws<ConfigurationReaderException>(() => badReader.RetrieveConfiguration());
     }
 }

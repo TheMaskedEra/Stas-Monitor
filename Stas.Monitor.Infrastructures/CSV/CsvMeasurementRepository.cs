@@ -1,6 +1,6 @@
-﻿using System.Globalization;
-using Stas.Monitor.Domains;
+﻿using Stas.Monitor.Domains;
 using Stas.Monitor.Domains.Repository;
+using Stas.Monitor.Domains.Repository.Exceptions;
 
 namespace Stas.Monitor.Infrastructures.CSV;
 
@@ -17,22 +17,29 @@ public class CsvMeasurementRepository : IMeasurementRepository
 
     public IList<Measurement> GetMeasurementsByThermometer(string thermometer, string type, double timer)
     {
-        var measurementsReader = new CsvDataReader(_measurementsFilePath)
+        try
         {
-            Ruler = new [] { thermometer, string.Empty, type, string.Empty },
-        };
-        var alertsReader = new CsvDataReader(_alertsFilePath)
+            var measurementsReader = new CsvDataReader(_measurementsFilePath)
+            {
+                Ruler = new [] { thermometer, string.Empty, type, string.Empty },
+            };
+            var alertsReader = new CsvDataReader(_alertsFilePath)
+            {
+                Ruler = new [] { thermometer, string.Empty, string.Empty, string.Empty },
+            };
+
+            var measurementsValues = measurementsReader.ReadFile();
+            var alertsValues = alertsReader.ReadFile();
+
+            var parsedMeasurementValues = ParseMeasurementsByTimers(measurementsValues, timer);
+            var measurements = CreateMeasurements(parsedMeasurementValues, alertsValues);
+
+            return measurements;
+        }
+        catch (Exception e)
         {
-            Ruler = new [] { thermometer, string.Empty, string.Empty, string.Empty },
-        };
-
-        var measurementsValues = measurementsReader.ReadFile();
-        var alertsValues = alertsReader.ReadFile();
-
-        var parsedMeasurementValues = ParseMeasurementsByTimers(measurementsValues, timer);
-        var measurements = CreateMeasurements(parsedMeasurementValues, alertsValues);
-
-        return measurements;
+            throw new MeasurementRepositoryException("Monitor: something went wrong while parsing the csv file: " + e.Message);
+        }
     }
 
     private IList<string[]> ParseMeasurementsByTimers(IList<string[]> measurementsValues, double timer)
@@ -63,7 +70,7 @@ public class CsvMeasurementRepository : IMeasurementRepository
 
         foreach (var currentMeasurementValues in parsedMeasurementsValues)
         {
-            var alertIndex = FindCompatibleAlert(currentMeasurementValues[1], alertsValues);
+            var alertIndex = FindCompatibleAlert(currentMeasurementValues[1], currentMeasurementValues[3], alertsValues);
             double? alertValue = null;
             if (alertIndex != -1)
             {
@@ -79,11 +86,11 @@ public class CsvMeasurementRepository : IMeasurementRepository
         return measurements;
     }
 
-    private int FindCompatibleAlert(string datetime, IList<string[]> alertsValues)
+    private int FindCompatibleAlert(string datetime, string observedValue, IList<string[]> alertsValues)
     {
         for (var i = 0; i < alertsValues.Count; i++)
         {
-            if (alertsValues[i][1].Equals(datetime))
+            if (alertsValues[i][1].Equals(datetime) && alertsValues[i][3].Equals(observedValue))
             {
                 return i;
             }

@@ -10,6 +10,7 @@ using ClpNet;
 using ClpNet.Extensions;
 using MySql.Data.MySqlClient;
 using Stas.Monitor.Domains;
+using Stas.Monitor.Domains.Repository.Exceptions;
 using Stas.Monitor.Infrastructures;
 using Stas.Monitor.Infrastructures.CSV;
 using Stas.Monitor.Infrastructures.Database;
@@ -48,11 +49,13 @@ public class App : Application
                 var iniConfigReader = new IniConfigurationReader(cmdParser.GetParameterValue("config-file"));
                 var configuration = iniConfigReader.RetrieveConfiguration();
 
+                //Repository database
                 DbProviderFactories.RegisterFactory("MySql.Data.MySqlClient", MySqlClientFactory.Instance);
                 var sqlFactory = DbProviderFactories.GetFactory("MySql.Data.MySqlClient");
                 var queries = new MySqlQueries();
                 var measurementRepository = new DatabaseMeasurementRepository(sqlFactory, queries, configuration.Data);
 
+                //Repository CSV
                 //var measurementsData = configuration.Data;
                 //var measurementRepository = new CsvMeasurementRepository(measurementsData["measurements"], measurementsData["alerts"]);
 
@@ -68,15 +71,33 @@ public class App : Application
 
                 DispatcherTimer.Run(() =>
                 {
-                    mainPresenter.RefreshLists();
-                    Log.Logger.Information("Measurements Refreshed.");
-                    return true;
+                    try
+                    {
+                        mainPresenter.RefreshLists();
+                        Log.Logger.Information("Measurements Refreshed.");
+                        return true;
+                    }
+                    catch (MeasurementRepositoryException e)
+                    {
+                        Log.Logger.Error(e.Message);
+
+                        errorWindow.ErrorMessage = e.Message;
+                        errorWindow.Closed += (s, args) =>
+                        {
+                            desktop.Shutdown();
+                        };
+                        errorWindow.Show();
+
+                        return false;
+                    }
+
                 }, TimeSpan.FromSeconds(5));
 
                 desktop.MainWindow = _mainWindow;
             }
             catch (Exception e)
             {
+                Log.Logger.Error(e.Message);
                 errorWindow.ErrorMessage = e.Message;
                 desktop.MainWindow = errorWindow;
             }

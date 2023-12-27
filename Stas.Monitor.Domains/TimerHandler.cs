@@ -38,4 +38,32 @@ public class TimerHandler
     }
 
     public IEnumerable<string> DisplayTimers => _timers.Values;
+
+    public override bool Equals(object? obj)
+    {
+        if (obj == null || GetType() != obj.GetType())
+        {
+            return false;
+        }
+
+        var other = (TimerHandler)obj;
+        var otherTimers = other.DisplayTimers.ToList();
+
+        if (otherTimers.Count != DisplayTimers.Count())
+        {
+            return false;
+        }
+
+        foreach (var timer in DisplayTimers)
+        {
+            if (!otherTimers.Contains(timer))
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public override int GetHashCode() => _timers.GetHashCode();
 }

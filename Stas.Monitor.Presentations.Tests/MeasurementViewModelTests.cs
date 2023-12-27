@@ -81,7 +81,7 @@ public class MeasurementViewModelTests
         // Assert
         Assert.Multiple(() =>
         {
-            Assert.That(expectedValueWithAlert, Is.EqualTo("Expected : 2.0°C")); //TODO
+            Assert.That(expectedValueWithAlert, Is.EqualTo("Expected : 2.0°C"));
             Assert.That(expectedValueWithoutAlert, Is.EqualTo(string.Empty));
         });
     }

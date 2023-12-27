@@ -21,7 +21,7 @@ public class IniConfigurationReader : IConfigurationReader
 
             return IniConfigurationValidator.CheckArgumentsValidity(data);
         }
-        catch (FileNotFoundException)
+        catch (Exception ex) when (ex is FileNotFoundException or DirectoryNotFoundException)
         {
             throw new ConfigurationReaderException("monitor: configuration file not found");
         }

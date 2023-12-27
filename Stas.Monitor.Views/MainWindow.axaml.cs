@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Avalonia.Controls;
@@ -39,7 +38,11 @@ public partial class MainWindow : Window, IMainView
               IsChecked = true
           };
 
-          var measurementList = new MeasurementList(type);
+          var measurementList = new MeasurementList()
+          {
+              Type = type,
+              Title = type
+          };
 
           checkBox.IsCheckedChanged += (sender, e) =>
           {
@@ -56,7 +59,7 @@ public partial class MainWindow : Window, IMainView
   {
       foreach (var measurementList in Lists.Children.OfType<MeasurementList>())
       {
-          var type = measurementList.Title;
+          var type = measurementList.Type;
           var exists = data.ContainsKey(type);
 
           measurementList.Items = exists ? data[type] : new List<MeasurementViewModel>();

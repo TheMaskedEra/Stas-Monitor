@@ -6,9 +6,15 @@ namespace Stas.Monitor.Views;
 
 public partial class MeasurementList : UserControl
 {
-    public string Title
+    public string Type
     {
         get;
+        init;
+    } = "None";
+
+    public string Title
+    {
+        init => Header.Text = value;
     }
 
     public IEnumerable<MeasurementViewModel> Items
@@ -16,11 +22,9 @@ public partial class MeasurementList : UserControl
         set => Measurements.ItemsSource = value;
     }
 
-    public MeasurementList(string type)
+    public MeasurementList()
     {
         InitializeComponent();
-        Header.Text = type;
-        Title = type;
     }
 }
 

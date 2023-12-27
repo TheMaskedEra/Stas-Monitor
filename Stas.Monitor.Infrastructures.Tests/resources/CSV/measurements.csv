@@ -1,0 +1,9 @@
+﻿Name,Datetime,Type,Value
+Living Room,2023-12-15 Friday 14:30:30,Temperature,18
+Living Room,2023-12-15 Friday 14:30:28,Temperature,15.5
+Living Room,2023-12-15 Friday 14:29:26,Temperature,18.2
+Living Room,2023-12-15 Friday 14:29:24,Temperature17.9
+Bedroom,2023-12-15 Friday 14:30:30,Temperature,18
+Bedroom,2023-12-15 Friday 14:30:28,Temperature,17.9
+Living Room,2023-12-15 Friday 14:30:30,Humidity,0.35
+Living Room,2023-12-15 Friday 14:30:28,Humidity,0.33
