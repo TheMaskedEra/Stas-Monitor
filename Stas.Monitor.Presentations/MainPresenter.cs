@@ -16,7 +16,7 @@ public class MainPresenter
 
       _view.SelectedThermometer += OnSelectThermometer;
 
-      _view.SelectedTimer += (sender, e) =>
+      _view.SelectedTimer += (_, e) =>
       {
           var timer = timerHandler.GetTimer(e);
           _measurementPresenter.CurrentTimer = timer.TotalSeconds;
